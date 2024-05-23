@@ -1,15 +1,23 @@
 :root{
     --color-azul-escuro: #001039;
     --color-azul-destaque: #2c76ce;
+    --color-azul-destaque-hover: #235da3;
 
     --color-azul: #001C8F;
     --color-azul2: #22356f;
     --color-azul3: #3e83d3;
+    --color-azul4: #19549b;
+
+    --color-blue-light: #93C5FD;
+    --color-blue-light2: #E1EFFE;
+
     --color-light: #f6f9fc;
     --color-gray: #F9FAFB;
+    --color-gray-hover: #cedae9;
     --color-gray2: #e5e7eb;
     --color-gray3: #B8B8B8;
     --color-gray4: #6B7280;
+    --color-gray5: #374151;
 
     --color-white: #ffffff;
     --color-black: #000000;
@@ -107,6 +115,15 @@
     align-items: center;
     width: auto;
     cursor: pointer;
+    transition: all .23s;
+}
+.btn-hover:hover{
+    transform: translateY(-2px);
+    box-shadow: 0px 6px 0px var(--color-gray3);
+}
+.btn-default:active{
+    transform: translateY(4px);
+    box-shadow: 0px 0px 0px var(--color-gray3)!important;
 }
 .btn-gray{
     color: var(--color-black)!important;
@@ -119,6 +136,13 @@
     background-color: var(--color-azul-destaque);
     border-color: var(--color-azul3);
     box-shadow: 0px 4px 0px var(--color-azul-destaque);
+}
+.btn-gray-hover:hover{
+    background-color: var(--color-gray-hover);
+}
+.btn-blue-hover:hover{
+    background-color: var(--color-azul-destaque-hover);
+    box-shadow: 0px 6px 0px var(--color-azul-destaque);
 }
 .btn-default img{
     width: 14px;
@@ -245,7 +269,7 @@ header.header{
     left: 0;
     background-color: var(--color-white);
     border-radius: 0 0 15px 15px;
-    box-shadow: 2px 2px 10px rgba(10,10,10, .1);
+    box-shadow: 4px 4px 14px rgba(46, 105, 255, .3);
 }
 
 .contact_header{
@@ -407,7 +431,7 @@ nav.menu ul{
     margin: 5px;
     border-radius: 5px;
     overflow: hidden;
-    box-shadow: 2px 2px 10px rgba(46, 105, 255, .3);
+    box-shadow: 4px 4px 14px rgba(46, 105, 255, .3);
 }
 .info_card{
     display: flex;
@@ -476,7 +500,7 @@ nav.menu ul{
     align-items: center;
     justify-content: center;
     color: var(--color-white);
-    background-color: var(--color-azul-destaque);
+    background-color: var(--color-azul4);
 }
 .info_card_simple{
     text-align: center;
@@ -505,7 +529,7 @@ nav.menu ul{
 
 .card_hori{
     background-color: var(--color-white);
-    box-shadow: 2px 2px 10px rgba(46, 105, 255, .3);
+    box-shadow: 4px 4px 14px rgba(46, 105, 255, .3);
     border-radius: 8px;
     position: relative;
     margin-bottom: 24px;
@@ -833,6 +857,52 @@ nav.menu ul{
     display: none;
 }
 
+.head_page{
+    width: 100%;
+    height: 320px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.content_head_page{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    height: 100%;
+    position: relative;
+}
+.content_head_page::after{
+    content: "";
+    width: 110px;
+    height: 95px;
+    background-image: url(../img/stars-2.png);
+    background-size: cover;
+    position: absolute;
+    right: 0;
+    bottom: 40px;
+}
+.content_head_page h2{
+    width: 100%;
+    text-align: center;
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 60px;
+    letter-spacing: -1%;
+    color: var(--color-white);
+    margin-bottom: 10px;
+}
+.content_head_page p{
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 15px;
+    color: var(--color-white);
+}
+.content_head_page p img{
+    width: 14px;
+}
 
 
 @media(max-width: 1400px){
@@ -858,25 +928,27 @@ nav.menu ul{
     }
     nav.menu{
         position: fixed;
-        top: -110%;
-        left: 0;
+        top: 0;
+        right: -110%;
         background-color: var(--color-azul-escuro);
         width: 100%;
         height: 100vh;
         display: flex;
         flex-wrap: wrap;
         align-content: flex-start;
+        overflow: scroll;
         transition: all .23s;
     }
     .open_menu_mobile{
-        top: 0!important;
+        right: 0!important;
     }
     nav.menu ul{
         display: flex;
         flex-wrap: wrap;
         width: 100%;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
         border-bottom: 1px solid rgba(233,233,233, .1);
+        padding-bottom: 20px;
     }
     nav.menu ul li{
         width: 100%;
@@ -1147,6 +1219,7 @@ nav.menu ul{
     }
     .card{
         width: calc(100% - 10px);
+        margin: 12px 5px;
     }
 }
 

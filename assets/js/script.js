@@ -2,29 +2,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const img_center_card_hori = document.querySelector('.img_center_card_hori img');
 
-    let height_img = img_center_card_hori.getBoundingClientRect().height;
+    if(img_center_card_hori){
 
-    console.log('height: '+height_img);
+        let height_img = img_center_card_hori.getBoundingClientRect().height;
 
-    const card_hori = document.querySelectorAll('.card_hori');
+        console.log('height: '+height_img);
 
-    let height_terco = height_img / 3;
+        const card_hori = document.querySelectorAll('.card_hori');
 
-    card_hori.forEach((item) => {
+        let height_terco = height_img / 3;
 
-        item.style.minHeight = (height_terco - 24)+"px";
+        card_hori.forEach((item) => {
 
-    });
+            item.style.minHeight = (height_terco - 24)+"px";
 
-    const open_menu_mobile = document.querySelector('.open_menu_mobile');
-    const close_menu_mobile = document.querySelector('.close_menu_mobile');
-    const nav_menu = document.querySelector('nav.menu');
-    open_menu_mobile.addEventListener('click', () => {
-        nav_menu.classList.add('open_menu_mobile');
-    });
-    close_menu_mobile.addEventListener('click', () => {
-        nav_menu.classList.remove('open_menu_mobile');
-    })
+        });
+
+        const open_menu_mobile = document.querySelector('.open_menu_mobile');
+        const close_menu_mobile = document.querySelector('.close_menu_mobile');
+        const nav_menu = document.querySelector('nav.menu');
+        open_menu_mobile.addEventListener('click', () => {
+            nav_menu.classList.add('open_menu_mobile');
+        });
+        close_menu_mobile.addEventListener('click', () => {
+            nav_menu.classList.remove('open_menu_mobile');
+        })
+    }
+
+    
     
 });
 
