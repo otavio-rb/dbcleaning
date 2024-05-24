@@ -90,3 +90,270 @@
     padding-bottom: 30px;
     margin-bottom: 30px;
 }
+.second_select_quote{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 50px;
+}
+.second_select_quote .over_card_select{
+    width: calc(100% / 5 - 12px);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: normal;
+    position: relative;
+}
+.second_select_quote .card_select{
+    padding: 15px;
+    border: 1px solid var(--color-gray2);
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    cursor: pointer;
+    transition: all .2s;
+}
+.second_select_quote .card_select input{
+    display: none;
+}
+.second_select_quote .card_select p{
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--color-gray5);
+    line-height: 24px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.second_select_quote .card_select svg{
+    margin-bottom: 10px;
+}
+.second_select_quote .card_select svg path{
+    fill: #9CA3AF;
+}
+.second_select_quote .card_select span{
+    color: var(--color-azul-destaque);
+    text-decoration: underline;
+    cursor: pointer;
+}
+.over_card_select .over_checkbox{
+    padding: 6px 0;
+    display: flex;
+    align-items: flex-start;
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    cursor: pointer;
+}
+.over_card_select .over_checkbox label{
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+}
+.over_card_select .over_checkbox input{
+    margin-right: 5px;
+}
+.over_card_select .over_checkbox span{
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-dark);
+}
+.second_select_quote .card_select:hover{
+    box-shadow: 4px 4px 14px rgba(46, 105, 255, .3);
+}
+
+/* ============== card_select active ====================== */
+.over_card_select.active .card_select{
+    background-color: var(--color-azul-destaque);
+}
+.over_card_select.active .card_select p, 
+.over_card_select.active .card_select span{
+    color: var(--color-white);
+}
+
+.over_card_select.active .card_select svg path{
+    fill: var(--color-white);
+}
+.over_card_select.active .over_checkbox{
+    display: flex!important;
+}
+/* ============== card_select active ====================== */
+
+
+
+.second_select_quote2{
+    display: flex;
+}
+.second_select_quote2 .card_select2{
+    padding: 15px 20px;
+    border-radius: 8px;
+    background-color: var(--color-gray6);
+    margin-right: 15px;
+    border: 1px solid var(--color-gray2);
+    transition: all .2s;
+    cursor: pointer;
+}
+.second_select_quote2 .card_select2 input{
+    display: none;
+}
+.second_select_quote2 .card_select2:hover{
+    box-shadow: 4px 4px 14px rgba(46, 105, 255, .3);
+}
+.second_select_quote2 .card_select2.active{
+    background-color: var(--color-azul-destaque);
+    color: var(--color-white);
+}
+
+.subtitle-quote{
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 27px;
+    color: var(--color-gray5);
+    margin-bottom: 10px;
+}
+.title-simple-quote{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    color: var(--color-gray4);
+    margin-bottom: 10px;
+}
+.title-quote-less{
+    margin-bottom: 10px;
+}
+
+
+.second_select_quote3{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.second_select_quote3 .card_select3{
+    width: calc(100% / 5 - 20px);
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    height: 178px;
+    margin-right: 20px;
+    margin-top: 20px;
+    border: 1px solid var(--color-gray2);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all .2s;
+}
+.second_select_quote3 .card_select3 input{
+    display: none;
+}
+.second_select_quote3 .card_select3 p{
+    width: 100%;
+    text-align: center;
+}
+.second_select_quote3 .card_select3 svg{
+    margin-bottom: 8px;
+}
+.second_select_quote3 .card_select3 svg path{
+    fill: #9CA3AF;
+}
+.second_select_quote3 .card_select3 p{
+    color: var(--color-gray5);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+}
+.second_select_quote3 .card_select3:hover{
+    box-shadow: 4px 4px 14px rgba(46, 105, 255, .3);
+}
+.second_select_quote3 .card_select3.active{
+    background-color: var(--color-azul-destaque);
+    color: var(--color-white);
+}
+.second_select_quote3 .card_select3.active p{
+    color: var(--color-white);
+}
+.second_select_quote3 .card_select3.active svg path{
+    fill: var(--color-white);
+}
+
+.fields_form_quote{
+    display: flex;
+    flex-wrap: wrap;
+}
+.fields_form_quote h4{
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 27px;
+    color: var(--color-gray5);
+    margin-bottom: 10px;
+}
+.fields_form_quote_row{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.form_group_field_33{
+    width: 33%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 10px 10px 0;
+}
+.form_group_field_33 label{
+    width: 100%;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: var(--color-dark);
+}
+.form_group_field_33 input{
+    width: 100%;
+    padding: 12px 15px;
+    background-color: var(--color-blue-light2);
+    border: 1px solid var(--color-blue-light);
+    border-radius: 40px;
+    outline: none;
+}
+.form_group_field_33 select{
+    width: 100%;
+    padding: 12px 15px;
+    background-color: var(--color-blue-light2);
+    border: 1px solid var(--color-blue-light);
+    border-radius: 40px;
+    outline: none;
+}
+.form_quote_row textarea{
+    width: 100%;
+    padding: 12px 15px;
+    background-color: var(--color-gray);
+    border: 1px solid var(--color-blue-light);
+    border-radius: 8px;
+    outline: none;
+}
+
+.form_group_field_33 input::-webkit-input-placeholder{
+    color: var(--color-black);
+}
+.checkbox_line{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.checkbox_line label{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.checkbox_line input{
+    width: auto;
+    margin-right: 5px;
+}
+.checkbox_line span{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 14px;
+    color: var(--color-dark);
+}
+.btn_submit_form{
+    display: flex;
+    justify-content: center;
+}

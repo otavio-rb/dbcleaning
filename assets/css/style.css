@@ -18,7 +18,9 @@
     --color-gray3: #B8B8B8;
     --color-gray4: #6B7280;
     --color-gray5: #374151;
-
+    --color-gray6: #F3F4F6;
+    
+    --color-dark: #111928;
     --color-white: #ffffff;
     --color-black: #000000;
 }
@@ -61,7 +63,10 @@
     flex-basis: 75%;
 }
 .w-100{
-    width: 100%;
+    width: 100%!important;
+}
+.text-center{
+    text-align: center;
 }
 .text-uppercase{
     text-transform: uppercase;
