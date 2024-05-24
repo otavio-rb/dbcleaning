@@ -18,16 +18,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         });
 
-        const open_menu_mobile = document.querySelector('.open_menu_mobile');
-        const close_menu_mobile = document.querySelector('.close_menu_mobile');
-        const nav_menu = document.querySelector('nav.menu');
-        open_menu_mobile.addEventListener('click', () => {
-            nav_menu.classList.add('open_menu_mobile');
-        });
-        close_menu_mobile.addEventListener('click', () => {
-            nav_menu.classList.remove('open_menu_mobile');
-        })
     }
+
+    //================== button mobile menu ===================================
+    const open_menu_mobile = document.querySelector('.open_menu_mobile');
+    const close_menu_mobile = document.querySelector('.close_menu_mobile');
+    const nav_menu = document.querySelector('nav.menu');
+    open_menu_mobile.addEventListener('click', () => {
+        nav_menu.classList.add('open_menu_mobile');
+    });
+    close_menu_mobile.addEventListener('click', () => {
+        nav_menu.classList.remove('open_menu_mobile');
+    })
 
     
     

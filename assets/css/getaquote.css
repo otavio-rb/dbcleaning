@@ -370,7 +370,8 @@
 }
 
 .content_quote_right{
-    
+    position: sticky;
+    top: 0;
     width: calc(30% - 20px);
 }
 .content_quote_right h3{
@@ -488,6 +489,10 @@
     top: -20px;
     width: 50px !important;
 }
+.over_summary_quote_right{
+    position: sticky;
+    top: 10px;
+}
 
 @media(max-width: 1200px){
     .content_quote_left, .content_quote_right{
@@ -533,6 +538,11 @@
     }
     .second_select_quote3 .card_select3{
         width: calc(100% / 3 - 20px);
+    }
+}
+@media(max-width: 700px){
+    .over_summary_quote_right{
+        padding-bottom: 40px;
     }
 }
 

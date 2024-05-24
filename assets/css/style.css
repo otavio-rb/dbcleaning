@@ -31,6 +31,9 @@
     max-width: 1200px;
     margin: auto;
 }
+.p-10{
+    padding: 10px;
+}
 .d-flex{
     display: flex;
     flex-wrap: wrap;
@@ -40,6 +43,12 @@
 }
 .justify-between{
     justify-content: space-between;
+}
+.align-content-center{
+    align-content: center;
+}
+.aling-items-center{
+    align-items: center;
 }
 .f-100{
     flex-basis: 100%;
@@ -109,6 +118,17 @@
     font-weight: 400;
     line-height: 30px;
     color: var(--color-azul-escuro);
+}
+.list-default{
+    list-style-image: url(../img/check2.png);
+    margin-left: 28px;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--color-gray4);
+    margin-bottom: 20px;
+}
+.list-default li{
+    padding: 10px 0;
 }
 /* ======================== general style =============================== */
 .btn-default{
@@ -233,12 +253,14 @@
     font-weight: 400;
     line-height: 30px;
     color: var(--color-gray4);
+    margin-bottom: 20px;
 }
 .text-default2{
     font-size: 18px;
     font-weight: 400;
     line-height: 24px;
     color: var(--color-gray4);
+    margin-bottom: 20px;
 }
 .head_section{
     padding-bottom: 50px;
@@ -908,6 +930,9 @@ nav.menu ul{
 .content_head_page p img{
     width: 14px;
 }
+.content_head_page p a{
+    color: var(--color-white);
+}
 
 
 @media(max-width: 1400px){
@@ -1093,6 +1118,9 @@ nav.menu ul{
     }
     .content_head_page h2{
         font-size: 38px;
+    }
+    .f-70, .f-30, .f-50{
+        flex-basis: 100%;
     }
 }
 
