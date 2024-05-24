@@ -1085,6 +1085,15 @@ nav.menu ul{
     .card{
         width: calc(50% - 10px);
     }
+    .head_page{
+        height: 170px;
+    }
+    .over_logo{
+        height: 115px;
+    }
+    .content_head_page h2{
+        font-size: 38px;
+    }
 }
 
 @media(max-width: 700px){
