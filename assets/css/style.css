@@ -1235,6 +1235,10 @@ nav.menu ul{
         width: calc(100% - 10px);
         margin: 12px 5px;
     }
+    .content_head_page h2{
+        font-size: 28px;
+        line-height: 30px;
+    }
 }
 
 @media(max-width: 480px){
@@ -1306,6 +1310,13 @@ nav.menu ul{
     }
     .col_footer_img .img_footer_star{
         width: 100px;
+    }
+    .head_page{
+        height: 130px;
+    }
+    .content_head_page h2{
+        font-size: 22px;
+        line-height: 26px;
     }
 }
 
