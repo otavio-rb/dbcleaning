@@ -1,0 +1,119 @@
+
+
+.left_page_clean{
+    padding-right: 40px;
+}
+.right_page_clean{
+    padding-left: 40px;
+}
+.img_left_page_clean{
+    position: relative;
+    margin-bottom: 20px;
+}
+.img_left_page_clean img{
+    width: 100%;
+}
+.img_left_page_clean .float_img_left_page_clean{
+    position: absolute;
+    right: -60px;
+    bottom: 50px;
+    width: 125px;
+}
+.bottom_left_page_clean{
+    padding: 10px 0;
+}
+.bottom_left_page_clean .f-50 img{
+    width: 45px;
+    margin-right: 16px;
+}
+.bottom_left_page_clean .info_page_clean p{
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--color-gray4);
+}
+.bottom_left_page_clean .info_page_clean p strong{
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--color-pink);
+}
+.left_third_cleaning p, .left_third_cleaning h5, .left_third_cleaning ul{
+    margin-bottom: 40px;
+}
+.row_faq_over{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid #E6E6E6;
+    margin-bottom: 24px;
+}
+.row_faq_over .head_row_faq_over{
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.row_faq_over .head_row_faq_over h4{
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-azul5);
+}
+.row_faq_over .head_row_faq_over .control_row_faq{
+    cursor: pointer;
+}
+.control_row_faq img{
+    width: 20px;
+}
+.row_faq_over p{
+    padding: 0 15px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: var(--color-gray4);
+    height: 0;
+    overflow: hidden;
+    transition: all .23s;
+}
+.open_row_faq{
+    height: unset!important;
+    min-height: 0px;
+    padding: 15px!important;
+}
+.row_faq_over.active{
+    position: relative;
+}
+.row_faq_over.active::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 6px;
+    background-color: var(--color-blue-light);
+}
+
+@media(max-width: 768px){
+    .right_page_clean{
+        padding: 10px;
+    }
+    .img_left_page_clean .float_img_left_page_clean{
+        right: -40px;
+    }
+    .bottom_left_page_clean .f-50{
+        flex-basis: 50%;
+        justify-content: center;
+    }
+    .left_page_clean{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .img_left_page_clean{
+        width: 70%;
+        margin: auto;
+        padding: 10px;
+    }
+    .bottom_left_page_clean{
+        width: 100%;
+        padding: 10px;
+    }
+}

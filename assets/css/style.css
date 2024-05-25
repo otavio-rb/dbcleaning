@@ -7,6 +7,12 @@
     --color-azul2: #22356f;
     --color-azul3: #3e83d3;
     --color-azul4: #19549b;
+    --color-azul5: #082680;
+
+    --color-pink: #F48CB4;
+    --color-pink-light: #fda1c5;
+    --color-pink-hover: #c46d8e;
+    --color-pink2: #FF498F;
 
     --color-blue-light: #93C5FD;
     --color-blue-light2: #E1EFFE;
@@ -33,6 +39,9 @@
 }
 .p-10{
     padding: 10px;
+}
+.d-none{
+    display: none;
 }
 .d-flex{
     display: flex;
@@ -70,6 +79,12 @@
 }
 .f-75{
     flex-basis: 75%;
+}
+.f-40{
+    flex-basis: 40%;
+}
+.f-60{
+    flex-basis: 60%;
 }
 .w-100{
     width: 100%!important;
@@ -130,6 +145,17 @@
 .list-default li{
     padding: 10px 0;
 }
+.list-simple{
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--color-gray4);
+    margin-bottom: 20px;
+    list-style: disc;
+    margin-left: 28px;
+}
+.list-simple li{
+    padding: 10px 0;
+}
 /* ======================== general style =============================== */
 .btn-default{
     border-radius: 40px;
@@ -162,12 +188,22 @@
     border-color: var(--color-azul3);
     box-shadow: 0px 4px 0px var(--color-azul-destaque);
 }
+.btn-pink{
+    color: var(--color-white)!important;
+    background-color: var(--color-pink);
+    border-color: var(--color-pink-light);
+    box-shadow: 0px 4px 0px var(--color-pink2);
+}
 .btn-gray-hover:hover{
     background-color: var(--color-gray-hover);
 }
 .btn-blue-hover:hover{
     background-color: var(--color-azul-destaque-hover);
     box-shadow: 0px 6px 0px var(--color-azul-destaque);
+}
+.btn-pink-hover:hover{
+    background-color: var(--color-pink-hover);
+    box-shadow: 0px 6px 0px var(--color-pink2);
 }
 .btn-default img{
     width: 14px;
@@ -194,6 +230,7 @@
     font-weight: 400;
     line-height: 39px;
     color: var(--color-azul-escuro);
+    margin-bottom: 20px;
 }
 .title-simple{
     font-size: 24px;
@@ -228,6 +265,12 @@
     width: 56px;
     height: 100%;
 }
+.special-title-pink::before{
+    background-image: url(../img/star-pink.png);
+}
+.special-title-pink::after{
+    background-image: url(../img/star-pink.png);
+}
 .special-title-simple{
     padding-left: 44px;
     position: relative;
@@ -241,6 +284,9 @@
     background-size: cover;
     width: 34px;
     height: 100%;
+}
+.special-title-simple-pink::before{
+    background-image: url(../img/star-pink.png);
 }
 .p-0-40{
     padding: 0 40px;
@@ -933,6 +979,34 @@ nav.menu ul{
 .content_head_page p a{
     color: var(--color-white);
 }
+.min-title{
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--color-gray4);
+}
+.content_body p{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+    color: var(--color-gray4);
+    margin-bottom: 20px;
+}
+.content_body h4{
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--color-gray4);
+}
+.content_body ul{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+    color: var(--color-gray4);
+    margin-bottom: 20px;
+    list-style: disc;
+    margin-left: 30px;
+}
 
 
 @media(max-width: 1400px){
@@ -1119,8 +1193,22 @@ nav.menu ul{
     .content_head_page h2{
         font-size: 38px;
     }
-    .f-70, .f-30, .f-50{
+    .f-70, .f-30, .f-50, .f-40, .f-60{
         flex-basis: 100%;
+    }
+    .column-reverse-mobile{
+        flex-direction: column-reverse;   
+    }
+    .content_body p{
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .content_body h4{
+        font-size: 17px;
+    }
+    .content_body ul{
+        font-size: 16px;
+        line-height: 24px;
     }
 }
 
