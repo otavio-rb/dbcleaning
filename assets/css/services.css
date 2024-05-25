@@ -66,3 +66,18 @@
     top: 0;
     left: -20px;
 }
+
+.head_cleaning_checklist{
+    padding-left: 120px;
+    display: flex;
+    justify-content: flex-end;
+}
+.th_cleaning_checklist{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+}
+.th_cleaning_checklist:nth-child(2){
+    background-color: #2C76CE;
+}
