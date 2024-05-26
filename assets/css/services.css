@@ -68,16 +68,187 @@
 }
 
 .head_cleaning_checklist{
-    padding-left: 120px;
+    padding-left: 300px;
     display: flex;
     justify-content: flex-end;
+    border-radius: 0 8px 0 0;
 }
 .th_cleaning_checklist{
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--color-white);
+    padding: 20px 10px;
+    width: 160px;
+    text-align: center;
+}
+.th_cleaning_checklist p{
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 600;
+}
+.th_cleaning_checklist:nth-child(1){
+    background-color: #eff4fb;
+    border: 3px solid var(--color-azul-destaque);
+    border-radius: 8px 0 0 0;
+    border-bottom: none;
+    position: relative;
+}
+.th_cleaning_checklist:nth-child(1)::before{
+    content: "Most Popular";
+    position: absolute;
+    top: -10px;
+    left: 15px;
+    padding: 2px;
+    width: calc(100% - 30px);
+    background-color: var(--color-azul-destaque);
+    border-radius: 4px;
+    color: var(--color-white);
 }
 .th_cleaning_checklist:nth-child(2){
     background-color: #2C76CE;
+}
+.th_cleaning_checklist:nth-child(3){
+    background-color: #85B1D1;
+}
+.th_cleaning_checklist:nth-child(4){
+    background-color: #70A3C7;
+}
+.th_cleaning_checklist:nth-child(5){
+    background-color: #5492BD;
+}
+.th_main{
+    color: var(--color-azul-escuro);
+}
+.head_body_cleaning_checklist{
+    width: 100%;
+    background-color: #cddef3;
+    padding: 10px 16px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+.row_body_cleaning_checklist{
+    
+}
+.col_first_body_cleaning_checklist, .col_normal{
+    padding: 30px 8px;
+}
+.row_single{
+    display: flex;
+    width: 100%;
+}
+.col_first_body_cleaning_checklist{
+    font-size: 16px;
+    font-weight: 400;
+    color: #374151;
+}
+.content_single .row_single:nth-child(odd){
+    background-color: #f9fafb;
+}
+.body_cleaning_checklist{
+    height: 500px;
+    border-radius: 8px 0 8px 8px;
+    border: 1px solid #d1d5db;
+    overflow-y: scroll;
+}
+.body_cleaning_checklist::-webkit-scrollbar{
+    width: 6px;
+    background-color:transparent;
+    position: relative;
+}
+.body_cleaning_checklist::-webkit-scrollbar-thumb{
+    background-color: var(--color-azul-destaque);
+    border-radius: 10px;
+}
+.row_single .col_normal:nth-child(2){
+    border: 3px solid var(--color-azul-destaque);
+    border-top: none;
+    border-bottom: none;
+}
+.col_normal.checked{
+    position: relative;
+}
+.col_normal.checked::before{
+    content: "";
+    background-image: url(../img/check.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 18px;
+    height: 14px;
+    position: absolute;
+    top: calc(50% - 9px);
+    left: calc(50% - 7px);
+}
+.map iframe{
+    width: 100%;
+}
+
+@media(max-width: 768px){
+    .card_blue{
+        width: calc(50% - 20px);
+        margin-bottom: 40px;
+    }
+    .card_min{
+        width: calc(50% - 40px);
+    }
+    .cleaning_checklist{
+        width: 100%;
+        overflow-x: scroll;
+    }
+    .content_cleaning_checklist{
+        min-width: 900px;
+        padding-top: 20px;
+    }
+    .cleaning_checklist::-webkit-scrollbar{
+        height: 6px;
+        background-color:transparent;
+    }
+    .cleaning_checklist::-webkit-scrollbar-thumb{
+        background-color: var(--color-azul-destaque);
+        border-radius: 10px;
+    }
+    .col_first_body_cleaning_checklist{
+        position: sticky;
+        left: 0;
+    }
+    .content_sec_bottom{
+        padding: 0 10px 40px 10px;
+    }
+}
+
+@media(max-width: 650px){
+    .card_blue{
+        width: 100%;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+    .card_min{
+        width: 100%;
+        margin: 10px 0;
+        margin-left: 20px;
+    }
+}
+
+@media(max-width: 500px){
+    .th_cleaning_checklist{
+        padding: 15px 10px;
+    }
+    .th_cleaning_checklist p{
+        font-size: 14px;
+        line-height: 14px;
+    }
+    .th_cleaning_checklist:nth-child(1)::before{
+        font-size: 12px;
+    }
+    .info_card_blue h4{
+        font-size: 18px;
+    }
+    .info_card_blue p{
+        font-size: 14px;
+    }
+    .col_first_body_cleaning_checklist{
+        font-size: 14px;
+    }
 }
