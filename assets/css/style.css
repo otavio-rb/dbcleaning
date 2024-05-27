@@ -1027,6 +1027,16 @@ nav.menu ul{
 .content_sec_bottom{
     padding: 0 10px 80px 10px;
 }
+.head_section_min{
+    margin-bottom: 40px;
+}
+.head_section_min .title-default-2{
+    margin-bottom: 10px;
+}
+.head_section_min p{
+    text-align: left;
+    color: var(--color-gray4);
+}
 
 
 @media(max-width: 1400px){

@@ -63,10 +63,11 @@
     border-radius: 6px;
     border: none;
     outline: none;
-    font-size: 14ṕx;
+    font-size: 14px;
     font-weight: 500;
     margin-right: 10px;
     cursor: pointer;
+    background-color: transparent;
 }
 .switch_default button.active{
     background-color: var(--color-azul-destaque);
