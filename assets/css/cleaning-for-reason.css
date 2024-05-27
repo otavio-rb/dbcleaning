@@ -57,9 +57,12 @@
     font-size: 14px;
     font-weight: 700;
     color: var(--color-azul5);
+    width: calc(100% - 20px);
+    padding-right: 10px;
 }
 .row_faq_over .head_row_faq_over .control_row_faq{
     cursor: pointer;
+    width: 20px;
 }
 .control_row_faq img{
     width: 20px;
