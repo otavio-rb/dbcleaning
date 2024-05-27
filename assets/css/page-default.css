@@ -150,6 +150,9 @@
         flex-direction: column;
         margin-bottom: 60px;
     }
+    .big_icon{
+        padding: 5%;
+    }
 }
 @media(max-width: 500px){
     .card_min_simple{
@@ -158,5 +161,13 @@
     .cards_min_simple h4{
         font-size: 18px;
         line-height: 22px;
+    }
+    .big_icon{
+        padding: 8%;
+    }
+}
+@media(max-width: 420px){
+    .big_icon{
+        padding: 12%;
     }
 }
