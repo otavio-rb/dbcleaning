@@ -374,6 +374,89 @@
     margin-bottom: 8px;
     color: var(--color-azul-escuro);
 }
+.head_page_help p{
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--color-azul-escuro);
+}
+.over_form_page_help{
+    display: flex;
+}
+.over_form_page_help form{
+    padding: 14px 16px;
+    border: 1px solid #2C76CE;
+    border-radius: 60px;
+    width: 100%;
+    display: flex;
+}
+.over_form_page_help form input{
+    width: 100%;
+    padding: 5px 10px;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    color: var(--color-azul-destaque);
+}
+.over_form_page_help form input::-webkit-input-placeholder{
+    color: var(--color-azul-destaque);
+}
+.over_form_page_help form button{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.over_form_page_help form button img{
+    width: 20px;
+}
+
+.card_help{
+    width: calc(50% - 30px);
+    margin: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 4px 4px 14px rgba(46, 105, 255, .3);
+    padding: 16px;
+    border-radius: 8px;
+}
+.img_card_help{
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background-color: var(--color-azul-destaque);
+    box-shadow: 4px 4px 14px rgba(46, 105, 255, .3);
+    margin: auto;
+    margin-bottom: 14px;
+    padding: 15px;
+}
+.card_help hr{
+    width: 56px;
+    height: 3px;
+    background-color: var(--color-azul-destaque);
+    margin: 0 auto 14px;
+    border: none;
+}
+.card_help h3{
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-azul-escuro);
+    margin-bottom: 14px;
+    text-align: center;
+}
+.card_help p{
+    font-size: 18px;
+    font-weight: 400;
+    color: #6B7280;
+    line-height: 26px;
+    text-align: center;
+}
+.card_min_simple.v2{
+    flex-direction: column;
+    padding: 40px 20px;
+}
+
 
 @media(max-width: 992px){
     .left_page_default, .right_page_default{
@@ -434,7 +517,23 @@
         width: 100%;
         margin-bottom: 10px;
     }
+    .card_help{
+        width: 100%;
+    }
+    .over_form_page_help form{
+        padding: 5px 10px;
+    }
+    .over_form_page_help form input{
+        font-size: 16px;
+    }
 }
+
+@media(max-width: 480px){
+    .w-mobile{
+        width: 100%;
+    }
+}
+
 @media(max-width: 420px){
     .big_icon{
         padding: 12%;

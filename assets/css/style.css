@@ -37,8 +37,15 @@
     max-width: 1200px;
     margin: auto;
 }
+.container-medium{
+    max-width: 800px;
+    margin: auto;
+}
 .p-10{
     padding: 10px;
+}
+.p-b-0{
+    padding-bottom: 0!important;
 }
 .d-none{
     display: none;
@@ -156,6 +163,12 @@
 .list-simple li{
     padding: 10px 0;
 }
+.btn-m{
+    margin: 10px;
+}
+.btn-m img{
+    margin: 0 10px;
+}
 /* ======================== general style =============================== */
 .btn-default{
     border-radius: 40px;
@@ -194,6 +207,12 @@
     border-color: var(--color-pink-light);
     box-shadow: 0px 4px 0px var(--color-pink2);
 }
+.btn-white{
+    color: var(--color-dark)!important;
+    background-color: var(--color-white);
+    border-color: #B8B8B8;
+    box-shadow: 0px 4px 0px var(--color-gray4);
+}
 .btn-gray-hover:hover{
     background-color: var(--color-gray-hover);
 }
@@ -204,6 +223,10 @@
 .btn-pink-hover:hover{
     background-color: var(--color-pink-hover);
     box-shadow: 0px 6px 0px var(--color-pink2);
+}
+.btn-white-hover:hover{
+    background-color: #efefef;
+    box-shadow: 0px 6px 0px var(--color-gray4);
 }
 .btn-default img{
     width: 14px;
@@ -310,6 +333,9 @@
 }
 .m-20-0{
     margin: 20px 0;
+}
+.m-40-0-20{
+    margin: 40px 0 20px;
 }
 .text-default{
     font-size: 20px;
@@ -1027,6 +1053,10 @@ nav.menu ul{
     margin-bottom: 20px;
     list-style: disc;
     margin-left: 30px;
+}
+.content_body ul li a{
+    color: var(--color-azul-destaque);
+    text-decoration: underline;
 }
 .content_sec_bottom{
     padding: 0 10px 80px 10px;
