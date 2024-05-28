@@ -803,6 +803,7 @@ nav.menu ul{
 }
 .stars_testi{
     display: flex;
+    align-items: center;
 }
 .stars_testi img{
     width: 14px!important;
@@ -815,6 +816,9 @@ nav.menu ul{
     position: absolute;
     left: 120px;
     bottom: -100px;
+}
+.btn-right-img img{
+    margin-right: 10px;
 }
 
 

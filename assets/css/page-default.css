@@ -195,7 +195,185 @@
     left: unset;
     right: -20px;
 }
+.card_portfolio{
+    flex-basis: unset;
+    width: calc(50% - 40px);
+    margin-bottom: 30px;
+}
+.card_portfolio img{
+    width: 100%;
+    margin-bottom: 15px;
+}
+.top_head_reviews{
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
 
+.over_points_reviews{
+    display: flex;
+    border-bottom: 1px solid var(--color-gray2);
+}
+.over_points_reviews a{
+    padding: 2px 20px;
+    color: var(--color-gray4);
+}
+.over_points_reviews a.active{
+    border-bottom: 1px solid var(--color-azul-destaque);
+    color: var(--color-azul-destaque);
+}
+.over_points_reviews a img{
+    height: 20px;
+    margin-right: 5px;
+}
+.bottom_head_reviews{
+    padding: 5px 0;
+}
+.bottom_head_reviews p:first-child{
+    margin-bottom: 10px;
+}
+.bottom_head_reviews .inf .stars_testi{
+    margin: 0 10px;
+}
+.card_review{
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid var(--color-gray2);
+    background-color: #f9fafb;
+    width: calc(33% - 20px);
+    margin-bottom: 40px;
+}
+.card_review p{
+    color: var(--color-gray4);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    margin-bottom: 10px;
+}
+.head_card_review{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.head_card_review img{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 14px;
+}
+.head_card_review p{
+    color: var(--color-gray4);
+    margin: 0;
+}
+.head_card_review p strong{
+    color: var(--color-black);
+}
+.content_reviews{
+    padding: 40px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.bottom_card_review{
+    padding: 24px 0 0 0;
+}
+.bottom_card_review p{
+    color: var(--color-gray4);
+    margin-bottom: 10px;
+}
+.bottom_card_review img{
+    width: 80px;
+}
+.row_address{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid var(--color-gray2);
+    border-radius: 8px;
+    margin-bottom: 24px;
+}
+.row_address img{
+    width: 20px;
+    margin-right: 10px;
+}
+.info_row_address p{
+    color: var(--color-gray4);
+}
+.info_row_address p strong{
+    color: var(--color-black);
+}
+.left_contact_page{
+    width: 40%;
+}
+.right_contact_page{
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+.contact_page{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.form_simple{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.row_form{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 16px 0;
+}
+.row_form label{
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.row_form input{
+    padding: 10px;
+    border: 1px solid #E5E7EB;
+    background-color: #F9FAFB;
+    border-radius: 8px;
+    width: 100%;
+}
+.row_form textarea{
+    width: 100%;
+    border: 1px solid #E5E7EB;
+    background-color: #F9FAFB;
+    padding: 10px;
+}
+.row_form select{
+    padding: 8px 10px!important;
+    border: 2px solid var(--color-blue-light)!important;
+    background-color: var(--color-blue-light2)!important;
+    border-radius: 60px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 0;
+    text-align: center;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: transparent;
+}
+
+.row_form h4{
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-azul-escuro);
+    margin-bottom: 8px;
+}
+.row_form p{
+    margin-bottom: 8px;
+    color: var(--color-azul-escuro);
+}
 
 @media(max-width: 992px){
     .left_page_default, .right_page_default{
@@ -212,6 +390,34 @@
     .big_icon{
         padding: 5%;
     }
+    .card_portfolio{
+        width: 100%;
+    }
+    .card_review{
+        width: calc(50% - 20px);
+    }
+    .top_head_reviews{
+        flex-wrap: wrap;
+    }
+    .points_reviews{
+        overflow-x: scroll;
+    }
+    .over_points_reviews{
+        min-width: 800px;
+    }
+    .points_reviews::-webkit-scrollbar{
+        height: 6px;
+        width: 4px;
+        background-color: transparent;
+    }
+    .points_reviews::-webkit-scrollbar-thumb{
+        height: 4px;
+        background-color: var(--color-azul-destaque);
+        border-radius: 10px;
+    }
+    .right_contact_page, .left_contact_page{
+        width: 100%;
+    }
 }
 @media(max-width: 500px){
     .card_min_simple{
@@ -223,6 +429,10 @@
     }
     .big_icon{
         padding: 8%;
+    }
+    .card_review{
+        width: 100%;
+        margin-bottom: 10px;
     }
 }
 @media(max-width: 420px){
