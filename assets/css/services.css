@@ -2,14 +2,74 @@
 .card_blue{
     background-color: #DEE5EB;
     border-radius: 8px;
-    padding: 30px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: flex-start;
     width: calc(33% - 34px);
     margin: 0 0 60px 0;
-    transition: all .2s;
+    overflow: hidden;
+    position: relative;
+    transition: all .4s;
+}
+.card_blue a{
+    padding: 30px;
+    position: relative;
+    z-index: 1;
+    background-color: #DEE5EB;
+    transition: all .4s;
+}
+.card_blue a .before_card_blue{
+    content: "";
+    width: 0;
+    height: 0;
+    border: 8px solid var(--color-white);
+    position: absolute;
+    top: 210px;
+    left: -10px;
+    z-index: -1;
+    border-top: 0 solid transparent;
+    border-left: calc(355px / 2) solid transparent;
+    border-right: calc(355px / 2) solid transparent;
+    border-bottom: 50px solid #DEE5EB;
+    transition: all .4s;
+}
+.card_blue a .before_card_blue::after{
+    content: "";
+    width: 500px;
+    height: 8px;
+    position: absolute;
+    top: 60px;
+    left: -5px;
+    background-color: var(--color-white);
+    transform: rotate(15deg);
+    opacity: 0;
+    transition: all .4s;
+}
+.card_blue a .before_card_blue::before{
+    content: "";
+    width: 500px;
+    height: 8px;
+    position: absolute;
+    top: 60px;
+    right: -14px;
+    background-color: var(--color-white);
+    transform: rotate(-15deg);
+    opacity: 0;
+    transition: all .4s;
+}
+.card_blue:hover a .before_card_blue::after{
+    opacity: 1;
+}
+.card_blue:hover a .before_card_blue::before{
+    opacity: 1;
+}
+.card_blue:hover a{
+    background-color: transparent!important;
+}
+.card_blue:hover a .before_card_blue{
+    display: block;
+    top: 132px;
 }
 .card_blue:hover{
     transform: translateY(-5px);
@@ -25,6 +85,44 @@
     justify-content: center;
     padding: 16px;
     margin-bottom: 30px;
+    transition: all .4s;
+    position: relative;
+}
+.card_blue:hover a{
+    margin-top: 20px;
+    padding-top: 100px;
+}
+.card_blue:hover .head_card_blue{
+    opacity: 0;
+    overflow: hidden;
+}
+.card_blue .head_card_blue_hide{
+    position: absolute;
+    top: -100%;
+    left: calc(50% - 36px);
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background-color: var(--color-azul-destaque);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    z-index: 10;
+    opacity: 0;
+    transition: all .4s;
+}
+.card_blue:hover .head_card_blue_hide{
+    top: 110px;
+    opacity: 1;
+}
+.card_blue .hide_img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
 }
 .info_card_blue h4{
     color: var(--color-azul5);
