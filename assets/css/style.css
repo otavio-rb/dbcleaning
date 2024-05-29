@@ -543,11 +543,15 @@ nav.menu ul{
 }
 
 .card{
-    width: calc(25% - 10px);
-    margin: 5px;
+    width: calc(25% - 20px);
+    margin: 10px;
     border-radius: 5px;
     overflow: hidden;
     box-shadow: 4px 4px 14px rgba(46, 105, 255, .3);
+    transition: all .23s;
+}
+.card:hover{
+    transform: translateY(-5px);
 }
 .info_card{
     display: flex;
@@ -861,7 +865,7 @@ nav.menu ul{
     overflow: hidden;
 }
 .slide-track {
-    animation: scroll 40s linear infinite;
+    animation: scroll 50s linear infinite;
     display: flex;
     align-items: center ;
     padding: 10px;
