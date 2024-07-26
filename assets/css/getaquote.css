@@ -582,6 +582,9 @@
 .form_button_container {
   position: static;
   bottom: 200px;
+  border: 1px solid var(--color-gray4);
+  padding: 8px 8px;
+  background-color: var(--color-white);
   display: flex;
   justify-content: flex-end;
   gap: 16px;
@@ -620,6 +623,17 @@
   }
   .second_select_quote3 .card_select3 {
     width: calc(100% / 4 - 20px);
+  }
+
+  #form-buttons{
+    display: flex;
+    justify-content: space-between !important; 
+    position: fixed !important;
+    background-color: white !important;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
   }
 }
 
