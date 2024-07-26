@@ -1,12 +1,14 @@
+import Popup from "../class/Popup/Popup.js";
+
 document.addEventListener('DOMContentLoaded', () => {
 
     const img_center_card_hori = document.querySelector('.img_center_card_hori img');
 
-    if(img_center_card_hori){
+    if (img_center_card_hori) {
 
         let height_img = img_center_card_hori.getBoundingClientRect().height;
 
-        console.log('height: '+height_img);
+        console.log('height: ' + height_img);
 
         const card_hori = document.querySelectorAll('.card_hori');
 
@@ -14,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         card_hori.forEach((item) => {
 
-            item.style.minHeight = (height_terco - 24)+"px";
+            item.style.minHeight = (height_terco - 24) + "px";
 
         });
 
@@ -31,30 +33,30 @@ document.addEventListener('DOMContentLoaded', () => {
         nav_menu.classList.remove('open_menu_mobile');
     })
 
-    
-    
+
+
 });
 
 
-$(document).ready(function(){
-    
+$(document).ready(function () {
+
     $('.carousel_testimonials').owlCarousel({
-      loop:true,
-      margin:20,
-      nav:false,
-      dots: true,
-      responsive:{
-          0:{
-              items:1
-          },
-          600:{
-              items:2
-          },
-          1000:{
-              items:3
-          }
-      }
-  })
+        loop: true,
+        margin: 20,
+        nav: false,
+        dots: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 2
+            },
+            1000: {
+                items: 3
+            }
+        }
+    })
 
 });
 
@@ -72,3 +74,18 @@ submenu_footer_li.forEach((item, index) => {
     });
 
 });
+
+document.querySelector(".right_bottom_header .btn-default").onclick = (e) => {
+    e.preventDefault();
+    const zipCodePopup = new Popup("Enter your zip code", "Okay", `
+        <div class="form_group">
+            <input />    
+        </div>
+    `);
+
+    zipCodePopup.popupDiv.style.maxHeight = "235px";
+    zipCodePopup.confirm(() => {
+        window.location.href = "./get-a-quote.html"
+    })
+    zipCodePopup.show();
+}

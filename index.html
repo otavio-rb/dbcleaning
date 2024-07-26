@@ -160,27 +160,27 @@
                     </div>
                     <div class="f-50">
                         <div class="form_hero">
-                            <form action="" method="post">
+                            <form id="instant-quote-form" action="" method="post">
                                 <h3>Get an Instant Quote</h3>
     
                                 <div class="form_row">
                                     <label for="">Name</label>
-                                    <input type="text" name="" id="">
+                                    <input required type="text" name="" id="name">
                                 </div>
     
                                 <div class="form_row">
                                     <label for="">Phone Number</label>
-                                    <input type="text" name="" id="">
+                                    <input required type="text" name="" id="phone-number">
                                 </div>
     
                                 <div class="form_row">
                                     <label for="">Email</label>
-                                    <input type="text" name="" id="">
+                                    <input required type="email" name="" id="email">
                                 </div>
     
                                 <div class="form_row">
                                     <label for="">ZIP Code</label>
-                                    <input type="text" name="" id="">
+                                    <input id="zip-code" type="text" name="" id="">
                                 </div>
     
                                 <div class="form_row">
@@ -862,6 +862,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <script src="assets/js/script.js"></script>
+    <script type="module" src="assets/js/script.js"></script>
+    <script src="assets/js/home.js"></script>
 </body>
 </html>
