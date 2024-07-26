@@ -605,6 +605,17 @@
   }
 }
 
+#form-buttons{
+  display: flex;
+  justify-content: space-between !important; 
+  position: sticky !important;
+  background-color: white !important;
+  width: 100%;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+}
+
 @media (max-width: 840px) {
   .first_select_quote {
     flex-wrap: wrap;
@@ -635,17 +646,6 @@
     right: 0;
     z-index: 1;
   }
-}
-
-#form-buttons{
-  display: flex;
-  justify-content: space-between !important; 
-  position: fixed !important;
-  background-color: white !important;
-  width: 100%;
-  bottom: 0;
-  right: 0;
-  z-index: 1;
 }
 
 @media (max-width: 768px) {
