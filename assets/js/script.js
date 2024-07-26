@@ -1,4 +1,6 @@
+import zipCodes from "../constants/zip-codes.js";
 import Popup from "../class/Popup/Popup.js";
+import Toast from "../class/Toast/Toast.js";
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -75,17 +77,31 @@ submenu_footer_li.forEach((item, index) => {
 
 });
 
+const notCoveredPopup = new Popup("Location not covered", "Okay", `
+    <h3>We are sorry!</h3>
+    <span>We don't have support to your location.</span>    
+`)
+notCoveredPopup.popupDiv.style.maxHeight = "260px";
+
 document.querySelector(".right_bottom_header .btn-default").onclick = (e) => {
     e.preventDefault();
     const zipCodePopup = new Popup("Enter your zip code", "Okay", `
         <div class="form_group">
-            <input />    
+            <input type="text" placeholder="Insert your zip code" id="popup-zipCode" />    
         </div>
     `);
 
+
     zipCodePopup.popupDiv.style.maxHeight = "235px";
     zipCodePopup.confirm(() => {
-        window.location.href = "./get-a-quote.html"
+        const zipCode = zipCodePopup.main.querySelector("#popup-zipCode").value;
+        if (zipCode.length > 0) {
+            if (!zipCodes.includes(zipCode)) {
+                notCoveredPopup.show();
+            } else {
+                window.location.href = "./get-a-quote.html"
+            }
+        }
     })
     zipCodePopup.show();
 }
