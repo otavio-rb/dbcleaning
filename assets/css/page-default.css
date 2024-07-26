@@ -54,24 +54,29 @@
     font-weight: 500;
 }
 .switch_default{
-    padding: 20px 0;
+    padding: 20px 0 0;
     display: flex;
 }
 .switch_default button{
     padding: 12px 20px;
     text-align: center;
-    border-radius: 6px;
+    border-radius: 6px 6px 0 0;
     border: none;
     outline: none;
     font-size: 14px;
     font-weight: 500;
-    margin-right: 10px;
+    margin-right: 1px;
+    margin-bottom: -1px;
     cursor: pointer;
     background-color: transparent;
-}
-.switch_default button.active{
     background-color: var(--color-azul-destaque);
     color: var(--color-white);
+}
+.switch_default button.active{
+    background-color: #f6f9fc;
+    border: 1px solid var(--color-gray2);
+    border-bottom: none;
+    color: var(--color-black);
 }
 
 .big_icon{
@@ -98,6 +103,9 @@
     font-weight: 700;
     color: var(--color-azul-destaque);
     margin-bottom: 24px;
+}
+.section-inner .big_card:first-child{
+    border-radius: 0 8px 8px 8px;
 }
 
 .head_left_page_default{

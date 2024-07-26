@@ -169,6 +169,9 @@
 .btn-m img{
     margin: 0 10px;
 }
+.bord-0-9{
+    border-radius: 0 8px 8px 8px!important;
+}
 /* ======================== general style =============================== */
 .btn-default{
     border-radius: 40px;
@@ -918,7 +921,7 @@ nav.menu ul{
     flex-wrap: wrap;
 }
 .col_footer{
-    width: calc(100% / 7);
+    width: calc(100% / 4);
     padding: 0 10px 0 0;
 }
 .col_footer h4{
@@ -930,7 +933,7 @@ nav.menu ul{
 }
 .col_footer ul li a{
     color: var(--color-white);
-    padding: 8px 0;
+    padding: 4px 0;
     font-size: 16px;
     font-weight: 300;
     display: flex;
@@ -1074,6 +1077,42 @@ nav.menu ul{
 .head_section_min p{
     text-align: left;
     color: var(--color-gray4);
+}
+.col_footer ul li.has-children ul.submenu{
+    margin-left: 10px;
+    margin-bottom: 0;
+}
+.col_footer ul li.has-children > ul.submenu .min-has-children > a::after{
+    content: "\25BC";
+    margin-left: 10px;
+}
+.col_footer ul li.has-children > ul.submenu .min-has-children > a{
+    width: 100%;
+}
+.col_footer ul li.has-children ul.submenu li ul.min-submenu{
+    margin-left: 10px;
+    margin-bottom: 0;
+    display: none;
+    flex-wrap: wrap;
+}
+.open_submenu{
+    display: flex!important;
+}
+.min-submenu li{
+    width: 100%;
+    padding: 0;
+}
+.min-submenu li a{
+    padding: 2px 0!important;
+}
+.col_footer ul h5{
+    color: var(--color-white);
+    margin: 10px 0;
+}
+.col_footer p{
+    color: var(--color-white);
+    font-size: .9em;
+    font-weight: 200;
 }
 
 
@@ -1488,7 +1527,7 @@ nav.menu ul{
         font-weight: 400;
     }
     .col_footer ul li a{
-        padding: 4px 0;
+        padding: 2px 0;
         line-height: 20px;
         font-weight: 200;
     }

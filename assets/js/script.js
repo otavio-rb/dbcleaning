@@ -56,4 +56,19 @@ $(document).ready(function(){
       }
   })
 
-})
+});
+
+
+const submenu_footer_li = document.querySelectorAll('.submenu .min-has-children > a');
+const submenu_footer_ul = document.querySelectorAll('.submenu .min-has-children .min-submenu');
+
+submenu_footer_li.forEach((item, index) => {
+
+    item.addEventListener('click', (e) => {
+
+        e.preventDefault();
+        submenu_footer_ul[index].classList.toggle('open_submenu')
+
+    });
+
+});
