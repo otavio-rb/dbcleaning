@@ -265,9 +265,15 @@ const page = {
   },
 
   validateStepInformations() {
-    const currentStep = document.querySelector("#form-step-" + this.currentFormStep);
-    const allStepFields = currentStep.querySelectorAll(".field");
+    let currentStep; 
+    let allStepFields;
     const formErrors = [];
+    if (this.currentFormStep == 8) {
+      allStepFields = document.querySelectorAll(".field");
+    } else {
+      currentStep = document.querySelector("#form-step-" + this.currentFormStep);
+      allStepFields =  currentStep.querySelectorAll(".field")
+    }
 
     allStepFields.forEach(field => {
       const parent = field.parentElement;
@@ -286,7 +292,8 @@ const page = {
     if (this.validateStepInformations() || this.hasFormErrors()) return;
 
     if (this.currentFormStep === 8) {
-      await this.onSubmit();
+      if (this.validateStepInformations(true))
+        await this.onSubmit();
 
       return;
     }
