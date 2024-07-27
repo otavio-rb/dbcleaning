@@ -738,6 +738,10 @@ const page = {
 
     this.totalValue -= discount;
 
+    if (this.formData.bedrooms == 0 && this.formData.bathrooms == 0 && this.formData.frequency == "-") {
+      this.totalValue = 0;
+    }
+
     const fakePrice = document.querySelector("#fake-price");
     const servicePrice = document.querySelector("#service-price");
     const totalValueText = document.querySelector("#total-value");
@@ -758,8 +762,8 @@ const page = {
 
     if (this.formData.frequency !== "-")
       servicePrice.innerHTML = `$ ${totalRecurringValue.toFixed(0, 2)}`;
-    if(this.formData.frequency === "One Time"){
-      servicePrice.innerHTML = `$ ${(totalRecurringValue * 2.5).toFixed(0,2)}`
+    if (this.formData.frequency === "One Time") {
+      servicePrice.innerHTML = `$ ${(totalRecurringValue * 2.5).toFixed(0, 2)}`
     }
 
     totalValueText.innerHTML = this.totalValue.toFixed(2);
@@ -792,8 +796,7 @@ const page = {
     let currentValue = parseFloat(input.value, 10);
 
     let newValue = currentValue + delta;
-    if (newValue <= 5) {
-
+    if (newValue <= 6) {
       if (newValue < 0) {
         input.value = 0;
       } else {
@@ -989,8 +992,9 @@ const page = {
 
     const frequencyDetails = document.querySelectorAll(".frequency-details");
     frequencyDetails.forEach(detail => {
+      console.log(detail)
       detail.onclick = () => {
-        const detailPopup = new Popup("Details", "Okay", frequencyPopupDetails[detail.dataset.frequency])
+        const detailPopup = new Popup(detail.dataset.frequency, "Okay", frequencyPopupDetails[detail.dataset.frequency])
         detailPopup.show();
       }
     })

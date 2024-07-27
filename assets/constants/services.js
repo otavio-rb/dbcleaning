@@ -1053,117 +1053,31 @@ export const extraRooms = {
 }
 
 export const details = [
-  {
-    name: "Dining Room",
-    topics: [
-       "All wall hangings dusted and cleaned",
-       "All furniture polished and dusted ",
-       "All glass and mirrors cleaned and sparkled Floors vacuumed, swept, and mopped (if needed)" ,
-       "Dust for cobwebs",
-       "Dust open window sills and frames ",
-       "Dust top of door frames and door knobs ",
-       "Dust decorative accessories" ,
-       "All light fixtures and window treatments dusted ",
-       "Dust all baseboards, switch plates, and outlet covers"
-    ]
-  },
-  {
-    name: "Utility Room",
-    topics: [
-      "Exterior of washer and dryer cleaned",
-      "Floors vacuumed, swept, and mopped (if needed)",
-      "Dust for cobwebs",
-      "Dust open window sills and frames",
-      "All mirrors and glass cleaned and sparkled",
-      "Dust decorative accessories",
-      "All light fixtures and window treatments dusted",
-      "Dust all baseboards, switch plates, and outlet covers",
-      "Dust all wall hangings",
-      "Clean and sanitize utility sink",
-      "Empty wastebaskets and reline"
-    ]
-  },
-  {
-    name: "Living Room",
-    topics: [
-      "All wall hangings dusted and cleaned",
-      "All furniture polished and dusted",
-      "All glass and mirrors cleaned and sparkled",
-      "Floors vacuumed, swept, and mopped (if needed)",
-      "Dust for cobwebs",
-      "Dust open window sills and frames",
-      "Dust top of door frames and door knobs",
-      "Dust decorative accessories",
-      "All light fixtures and window treatments dusted",
-      "Dust all baseboards, switch plates, and outlet covers",
-      "Vacuum under furniture cushions"
-    ]
-  },
-  {
-    name: "Bedrooms",
-    topics: [
-      "All wall hangings dusted and cleaned",
-      "All furniture polished and dusted",
-      "All glass and mirrors cleaned and sparkled",
-      "Floors vacuumed, swept, and mopped (if needed)",
-      "Dust for cobwebs",
-      "Trash emptied",
-      "Dust open window sills and frames",
-      "Dust top of door frames and door knobs",
-      "Dust decorative accessories",
-      "All light fixtures and window treatments dusted",
-      "Dust all baseboards, switch plates, and outlet covers",
-      "Vacuum under bed ( if accessible )"
-    ]
-  },
-  {
-    name: "Kitchen",
-    topics: [
-      "Cabinet fronts and knobs dusted and spot cleaned",
-      "Microwave oven cleaned inside and out",
-      "All sinks, countertops, backsplash, and tabletops cleaned and sanitized",
-      "All glass and mirrors cleaned and sparkled",
-      "All stainless steel and chrome fixtures cleaned and shined",
-      "Floors vacuumed, swept, and mopped",
-      "Stove and drip pans cleaned and sanitized",
-      "Exterior of large appliances wiped (stove, refrigerator, dishwasher)",
-      "Exterior of small appliances wiped (toaster, blender, etc…)",
-      "Dust for cobwebs",
-      "Clean outside and top of refrigerator",
-      "Dust all open window sills and frames",
-      "Dust all wall hangings",
-      "Dust tops of door frames and spot clean doors and knobs",
-      "Dust light fixtures and window treatments",
-      "Empty wastebaskets and reline",
-      "Dust all baseboards, switch plates, and outlet covers",
-      "Dust decorative accessories"
-    ]
-  },
-  {
-    name: "Bathroom",
-    topics: [
-      "Cabinet fronts and knobs dusted and spot cleaned",
-      "All vanities, sinks, and countertops cleaned and sanitized",
-      "All glass and mirrors cleaned and sparkled",
-      "All stainless steel and chrome fixtures cleaned and shined",
-      "Floors vacuumed, swept, and mopped",
-      "Toilets cleaned and sanitized including base and rear",
-      "Tub and shower cleaned and sanitized",
-      "All light fixtures cleaned and dusted",
-      "Dust for cobwebs",
-      "All shower tile cleaned and sanitized",
-      "Dust windows, all open window sills, and frames",
-      "Dust all wall hangings",
-      "Empty wastebaskets and reline",
-      "Dust all baseboards, switch plates, and outlet covers",
-      "Dust top of door frames and spot clean doors and knobs",
-      "Clean tissue and towel holders"
-    ]
-  }
 ]
 
 export const frequencyPopupDetails = {
-  "Weekly": `Regular upkeep to keep your home spotless. Includes dusting, sweeping, vacuuming, mopping, and bathroom cleaning. For inside appliances, windows, and detailed baseboard cleaning, choose our Deep Cleaning. To see what's fully covered, check 'Regular Cleaning' on our Services page. Recurring cleanings always start with an Initial Deep Cleaning to set up the DB standards and maintain them with regular recurring cleanings.`,
-  "Every 2 Weeks": `Bi-weekly maintenance for routine cleaning tasks. Includes dusting, sweeping, vacuuming, mopping, and bathroom cleaning. For inside appliances, windows, and detailed baseboard cleaning, choose our Deep Cleaning. To see what's fully covered, check 'Regular Cleaning' on our Services page. Recurring cleanings always start with an Initial Deep Cleaning to set up the DB standards and maintain them with regular recurring cleanings.`,
-  "Every 4 Weeks": `Monthly cleaning for general maintenance. Includes dusting, sweeping, vacuuming, mopping, and bathroom cleaning. For inside appliances, windows, and detailed baseboard cleaning, choose our Deep Cleaning. To see what's fully covered, check 'Regular Cleaning' on our Services page. Recurring cleanings always start with an Initial Deep Cleaning to set up the DB standards and maintain them with regular recurring cleanings.`
+  "Weekly": `
+    <h3 class="color-black">Initial Deep Cleaning:</h3>
+    <span>
+    We start with an initial deep cleaning, which includes cleaning inside appliances and windows to set up DB standards for top quality.
+    </span>
+    <h3 class="color-black">Weekly Maintenance Cleaning:</h3>
+    <span>After the initial deep cleaning, we switch to weekly maintenance cleaning, covering all routine tasks. Note that this does not include fridge, oven, or window interiors, which can be added separately.</span>
+  `,
+  "Every 2 Weeks": `
+   <h3 class="color-black">Initial Deep Cleaning:</h3>
+    <span>
+    We start with an initial deep cleaning, which includes cleaning inside appliances and windows to set up DB standards for top quality.
+    </span>
+    <h3 class="color-black">Bi-Weekly Maintenance Cleaning:</h3>
+    <span>After the initial deep cleaning, we switch to bi-weekly maintenance cleaning, covering all routine tasks. Note that this does not include fridge, oven, or window interiors, which can be added separately.</span>
+  `,
+  "Every 4 Weeks": `
+    <h3 class="color-black">Initial Deep Cleaning:</h3>
+    <span>
+    We start with an initial deep cleaning, which includes cleaning inside appliances and windows to set up DB standards for top quality.
+    </span>
+    <h3 class="color-black">Monthly Maintenance Cleaning:</h3>
+    <span>After the initial deep cleaning, we switch to monthly maintenance cleaning, covering all routine tasks. Note that this does not include fridge, oven, or window interiors, which can be added separately.</span>
+  `
 }
