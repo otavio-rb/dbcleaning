@@ -62,9 +62,11 @@ export default class Popup {
         this.hide();
     }
 
-    confirm(func) {
+    confirm(func, skipHide) {
         this.confirmButton.onclick = () => {
-            this.hide();
+            if (!skipHide) {
+                this.hide();
+            }
             func()
         };
     }

@@ -15,7 +15,7 @@
   display: flex;
   flex-direction: column;
   width: 416px;
-  height: 537px;
+  max-height: 600px;
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: white;
@@ -45,6 +45,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  min-height: 500px;
   overflow-y: auto;
 }
 
@@ -73,6 +74,18 @@
   background-color: white;
 }
 
+.form_error{
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form_group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .form_group input {
   width: 100%;
   padding: 12px 15px;
@@ -80,4 +93,17 @@
   border: 1px solid var(--color-blue-light);
   border-radius: 40px;
   outline: none;
+}
+
+.form_group input.error {
+  background-color: var(--bg-error);
+  border: 1px solid var(--color-error);
+  color: var(--color-error);
+  font-weight: 500;
+  border-radius: 40px;
+  outline: none;
+}
+
+.form_group input.error::placeholder {
+  color: var(--color-error);
 }

@@ -1,8 +1,73 @@
 import Toast from "../class/Toast/Toast.js";
-import servicesData, { details, extraRooms, frequencyPopupDetails } from "../constants/services.js";
+import servicesData, { serviceDetails, extraRooms, frequencyPopupDetails } from "../constants/services.js";
 import Popup from "../class/Popup/Popup.js";
+import { quoteFormSchema } from "../constants/form-schema.js";
 
 const toast = new Toast(5000);
+
+const limitPopup = new Popup("On-Site Visit Required", "Schedule a Free Visit",
+  `
+  <span>
+    We can't provide an instant quote for homes with more than 7 bedrooms or 6 bathrooms.
+    Schedule a free-on-site visit for an accurate quote. Please fill out the form below.
+  </span>
+  <form class="grid col-2">
+    <div class="form_group_field_33 w-100">
+        <label for="">Name*</label>
+          <input
+            type="text"
+            data-key="name"
+            id="name"
+            class="field"
+            placeholder=""
+            required
+          />
+      </div>
+      <div class="form_group_field_33 w-100">
+        <label for="">Email*</label>
+          <input
+            type="text"
+            data-key="email"
+            id="email"
+            class="field"
+            placeholder=""
+            required
+          />
+      </div>
+      <div class="form_group_field_33 w-100">
+        <label for="">Phone*</label>
+          <input
+            type="text"
+            data-key="phone"
+            id="phone"
+            class="field"
+            placeholder=""
+            required
+          />
+      </div>
+      <div class="form_group_field_33 w-100">
+        <label for="">Service address*</label>
+          <input
+            type="text"
+            data-key="address"
+            id=""
+            class="field"
+            placeholder=""
+            required
+          />
+      </div>
+      <div class="form_group_field_33 w-100 col-span-2">
+        <label for="">Preferred Scheduling Times (optional)</label>
+          <input
+            type="text"
+            data-key=""
+            id="name"
+            class="field"
+            placeholder="e.g Weekdays after 3 PM"
+          />
+      </div>
+    </form>
+`);
 
 const page = {
   formData: {
@@ -14,7 +79,8 @@ const page = {
     service: "-",
     frequency: "-",
     additionalServices: {},
-    name: "",
+    firstName: "",
+    lastName: "",
     phone: "",
     email: "",
     streetName: "",
@@ -29,7 +95,8 @@ const page = {
     houseIs: "empty",
     houseEmptyConfirmation: false,
     addressLine: "",
-    addressLine2: ""
+    addressLine2: "",
+    smallAppliances: 0,
   },
 
   init() {
@@ -41,12 +108,15 @@ const page = {
     this.extraRooms = [];
     this.currentFormStep = 1;
 
-    document.querySelector("#bed-minus").onclick = () => this.changeValue(-1);
-    document.querySelector("#bed-plus").onclick = () => this.changeValue(1);
+    const bedroomInput = document.querySelector("#number-input-bed");
+    const bathroomInput = document.querySelector("#number-input-bath");
+
+    document.querySelector("#bed-minus").onclick = () => this.changeValue(-1, bedroomInput, 7, "bedrooms");
+    document.querySelector("#bed-plus").onclick = () => this.changeValue(1, bedroomInput, 7, "bedrooms");
     document.querySelector("#bath-minus").onclick = () =>
-      this.changeValueBathrooms(-0.5);
+      this.changeValue(-0.5, bathroomInput, 6, "bathrooms");
     document.querySelector("#bath-plus").onclick = () =>
-      this.changeValueBathrooms(0.5);
+      this.changeValue(0.5, bathroomInput, 6, "bathrooms");
     document.getElementById("number-input-square").onchange = (e) =>
       this.changeValueSquareFoot(e);
     document.querySelector("#apply-discout-button").onclick = () =>
@@ -81,8 +151,8 @@ const page = {
     const phone = params.get("phoneNumber");
     const zipCode = params.get("zipCode");
 
-    document.querySelector("#name").value = name;
-    this.formData.name = name;
+    document.querySelector("#first-name").value = name;
+    this.formData.firstName = name;
 
     document.querySelector("#email").value = email;
     this.formData.email = email;
@@ -118,7 +188,6 @@ const page = {
     autocomplete1.addListener("place_changed", (e) => {
       const place = autocomplete1.getPlace();
       let postCode;
-      console.log(place)
       document.querySelector("#city").value = "";
       document.querySelector("#state").value = "";
       document.querySelector("#zipCode").value = "";
@@ -166,13 +235,12 @@ const page = {
         this.formData.zipCode = postCode;
       }
       this.formData.addressLine = input.value;
+      this.validateStepInformations();
       input2.focus();
     });
   },
 
   hasFormErrors() {
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const nameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ]+(?: [A-Za-zÀ-ÖØ-öø-ÿ]+)+$/;
     if (this.currentFormStep === 1 && this.formData.squareFootage == 0 || this.formData.bathrooms == 0 || this.formData.bedrooms == 0) {
       toast.error("Fill in all required fields!");
       return true;
@@ -191,34 +259,31 @@ const page = {
     } else if (this.currentFormStep === 3 && this.formData.service == "recurringCleaning") {
       toast.error("Choose a cleaning service type!");
       return true;
-    } else if (this.currentFormStep === 5 && this.formData.name.length == 0) {
-      toast.error("Fill in all required fields!");
-      return true;
-    } else if (this.currentFormStep === 5 && !nameRegex.test(this.formData.name)) {
-      toast.error("Enter your full name. Only characters!");
-      return true;
-    } else if (this.currentFormStep === 5 && this.formData.email.length == 0) {
-      toast.error("Fill in all required fields!");
-      return true;
-    } else if (this.currentFormStep === 5 && !emailRegex.test(this.formData.email)) {
-      toast.error("This email is invalid!");
-      return true;
-    } else if (this.currentFormStep === 6 && this.formData.addressLine.length == 0) {
-      toast.error("Fill in all required fields!");
-      return true;
-    } else if (this.currentFormStep === 6 && this.formData.zipCode.length == 0) {
-      toast.error("Fill in all required fields!");
-      return true;
-    } else if (this.currentFormStep === 6 && this.formData.city.length == 0) {
-      toast.error("Fill in all required fields!");
-      return true;
     }
 
     return false;
   },
 
+  validateStepInformations() {
+    const currentStep = document.querySelector("#form-step-" + this.currentFormStep);
+    const allStepFields = currentStep.querySelectorAll(".field");
+    const formErrors = [];
+
+    allStepFields.forEach(field => {
+      const parent = field.parentElement;
+      const value = field.value;
+      const schema = quoteFormSchema[field.dataset.key];
+      if (typeof schema === "function") {
+        const validation = schema(value, parent);
+        formErrors.push(validation);
+      }
+    });
+
+    return formErrors.includes(true);
+  },
+
   async nextFormStep() {
-    if (this.hasFormErrors()) return;
+    if (this.validateStepInformations() || this.hasFormErrors()) return;
 
     if (this.currentFormStep === 8) {
       await this.onSubmit();
@@ -245,9 +310,6 @@ const page = {
 
       this.onStepChange(curElement, nextElement);
     };
-
-    console.log(this.formData)
-
   },
 
   previousFormStep() {
@@ -344,7 +406,7 @@ const page = {
         <input type="radio" name="type_service" id="${service}-radio" />
         ${curService.svg}
         <p>${curService.name}</p>
-        <span class="service-details">Details</span>
+        <span class="service-details" data-service="${service}">Details</span>
       `;
 
       const checkboxContainer = document.createElement("div");
@@ -429,47 +491,15 @@ const page = {
       }
     });
 
-    const serviceDetails = document.querySelectorAll(".service-details");
+    const serviceDetailsSpan = document.querySelectorAll(".service-details");
 
-    serviceDetails.forEach((d) => {
+    serviceDetailsSpan.forEach((d) => {
+      const details = serviceDetails[d.dataset.service];
       d.onclick = () => {
-        const detailsPopup = new Popup("Details", "Okay", `
-          <span><span class="title">Initial Deep Cleaning:</span> Your first session includes a comprehensive deep cleaning from top to bottom and left to right. For the complete checklist, please refer to the Deep Cleaning card.</span>
-          <span><span class="title">Regular Cleanings:</span> DB will maintain the high standards set during the initial deep cleaning with recurring regular cleanings, covering all essentials for a clean environment.</span>
-          <div class="d-flex g-5 justify-center w-100">
-            <img width="20" src="/img/stars.png" />  
-              What's included in your Deep Cleaning
-            <img width="20" src="/img/stars.png" />
-          </div>
-          
-        `, () => {
+        const detailsPopup = new Popup(details.title, "Okay", details.bodyContent, () => {
 
         });
 
-        const topicsContainer = document.createElement("div");
-
-        for (let detail of details) {
-          const detailDiv = document.createElement("div");
-          detailDiv.className = "d-flex f-column g-15";
-          detailDiv.style.marginBottom = "10px";
-          detailDiv.innerHTML = `<h3 class="color-azul-destaque">${detail.name}</h3>`
-
-          for (let topic of detail.topics) {
-            const topicDiv = document.createElement("div");
-            topicDiv.className = "d-flex align-center g-10 nowrap";
-
-            topicDiv.innerHTML = `
-              <img src="/img/icon/check.png" />
-              <span>${topic}</span>
-            `;
-
-            detailDiv.appendChild(topicDiv);
-          }
-
-          topicsContainer.appendChild(detailDiv);
-        }
-
-        detailsPopup.injectInMain(topicsContainer);
         detailsPopup.show();
       }
     })
@@ -504,13 +534,11 @@ const page = {
       </div>
     `);
 
-    let areaType = "interior";
     const areaTypeContainer = ExtraRoomPopup.main.querySelector("#area-type-container");
 
     const renderLabels = () => {
       for (let areaType in extraRooms) {
         const areaContainer = document.createElement("div");
-        console.log(areaType)
         areaContainer.innerHTML = `<span class="title">${areaType === "exterior" ? "Exterior" : "Interior"}</span>`
         areaContainer.className = "d-flex f-column g-5";
         for (let idx in extraRooms[areaType]) {
@@ -534,7 +562,6 @@ const page = {
       if (allCheckedExtraRoom.length > 0) {
         this.extraRooms = [];
         allCheckedExtraRoom.forEach(roomNode => {
-          console.log(extraRooms[roomNode.dataset.areatype][roomNode.value])
           this.extraRooms.push(extraRooms[roomNode.dataset.areatype][roomNode.value]);
         })
 
@@ -559,6 +586,59 @@ const page = {
     ExtraRoomPopup.show();
   },
 
+  handleSmallAppliances(extra, div) {
+    if (div.classList.contains("active")) {
+      const addOnData = this.formData.additionalServices[extra.name];
+      if (typeof extra.currentValue === "number") {
+        this.additionalFees -= addOnData.currentValue;
+      }
+      delete this.formData.additionalServices[extra.name];
+      div.classList.remove("active");
+      this.renderQuoteSummary();
+
+      return;
+    }
+
+    const appliancesPopup = new Popup("Enter the number of small appliances", "Okay", `
+      <span>Please specify the number of small appliances (e.g, blender, air fryer) you would like us to handwash.</span>
+      <div class="d-flex justify-center w-100"> 
+        <div style="max-width: 200px" class="count_num">
+          <button type="button" class="less" id="appliances-minus">
+            -
+          </button>
+          <input
+            type="text"
+            id="number-small-appliances"
+            value="0"
+            readonly
+          />
+          <button type="button" class="plus" id="appliances-plus">
+            +
+          </button>
+        </div>
+      </div>
+    `);
+    appliancesPopup.popupDiv.style.maxHeight = "280px";
+    appliancesPopup.confirm(() => {
+      const appliancesInput = appliancesPopup.main.querySelector("#number-small-appliances");
+      const value = parseInt(appliancesInput.value);
+      if (value > 0) {
+        this.formData.additionalServices[extra.name] = {
+          ...extra,
+          currentValue: value * 10,
+        };
+        this.additionalFees += value * 10;
+        div.classList.add("active");
+        this.renderQuoteSummary();
+      }
+    });
+    appliancesPopup.show();
+
+    const appliancesInput = appliancesPopup.main.querySelector("#number-small-appliances");
+    appliancesPopup.main.querySelector("#appliances-minus").onclick = () => this.changeValue(-1, appliancesInput, 999);
+    appliancesPopup.main.querySelector("#appliances-plus").onclick = () => this.changeValue(1, appliancesInput, 999);
+  },
+
   renderExtras() {
     const recommendedContainer = document.querySelector("#recommended-container");
     const additionalContainer = document.querySelector("#additional-container");
@@ -573,7 +653,7 @@ const page = {
       div.dataset.additionalservice = extra.name;
       div.className = "card_select3";
       div.innerHTML = `
-    ${extra.recommended ? `<img class="recommended-star" width="16" height="16" src="/img/recommended-star.png">` : ""}
+    ${extra.recommended ? `<svg class="recommended-star" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>` : ""}
 
       <input
         type="radio"
@@ -598,6 +678,11 @@ const page = {
           this.handleExtraRoom(extra, div);
           return;
         }
+        if (extra.name === "Handwash Small Appliances") {
+          this.handleSmallAppliances(extra, div);
+          return;
+        }
+
         if (Object.keys(this.formData.additionalServices).includes(extra.name)) {
           delete this.formData.additionalServices[extra.name];
 
@@ -610,7 +695,6 @@ const page = {
           div.classList.remove("active");
         } else {
           this.formData.additionalServices[extra.name] = extra;
-          console.log(this.formData.additionalServices)
 
           if (typeof extra.currentValue === "number") {
             this.additionalFees += extra.currentValue;
@@ -635,12 +719,12 @@ const page = {
     const allFields = document.querySelectorAll(".field");
     allFields.forEach((item, idx) => {
       item.onchange = (e) => {
-        console.log(e);
         if (e.target.type === "checkbox") {
           this.formData[item.dataset.key] = e.target.checked;
         } else {
           this.formData[item.dataset.key] = e.target.value;
         }
+        this.validateStepInformations();
         this.renderQuoteSummary();
       };
     });
@@ -651,8 +735,9 @@ const page = {
     let totalRecurringValue = 0;
     let initialDeepCleaningValue = 150;
     let otcValue = 150;
+    let isFixedPrices = this.formData.bedrooms == 1 && this.formData.bathrooms <= 1
 
-    if (this.formData.bedrooms == 1 && this.formData.bathrooms == 1) {
+    if (isFixedPrices) {
       switch (this.formData.frequency) {
         case "Weekly":
           totalRecurringValue = 150;
@@ -683,7 +768,6 @@ const page = {
           break;
       }
     }
-    console.log(totalRecurringValue)
     if (this.formData.bedrooms >= 6 || this.formData.bathrooms >= 6) {
       totalValue = (this.formData.bedrooms * 12) + (this.formData.bathrooms * 16) + totalRecurringValue;
       initialDeepCleaningValue += (this.formData.bedrooms * 12) + (this.formData.bathrooms * 16);
@@ -701,18 +785,23 @@ const page = {
       return { totalValue, totalRecurringValue, initialDeepCleaning: initialDeepCleaningValue }
     }
 
-    totalRecurringValue = totalValue;
+    if (!isFixedPrices && this.formData.frequency !== "One Time") {
+      totalRecurringValue = totalValue;
+    }
 
     const multiplier = servicesData[this.formData?.service]?.multiplier;
+    let multiplierValue = 2.5;
 
     if (!!multiplier) {
       if (typeof multiplier === "number") {
         initialDeepCleaningValue *= multiplier;
         otcValue *= multiplier;
+        multiplierValue = multiplier;
       } else {
         const isOccupied = this.formData.houseIs === "empty" ? false : true;
         initialDeepCleaningValue *= multiplier(isOccupied);
         otcValue *= multiplier(isOccupied)
+        multiplierValue = multiplier(isOccupied)
       }
     }
 
@@ -721,12 +810,18 @@ const page = {
     } else {
       totalValue += initialDeepCleaningValue;
     }
-
-    return { totalValue, totalRecurringValue, initialDeepCleaning: initialDeepCleaningValue }
+    console.log(multiplierValue, otcValue)
+    return {
+      totalValue,
+      totalRecurringValue,
+      initialDeepCleaning: initialDeepCleaningValue,
+      multiplier: multiplierValue,
+      otcValue
+    }
   },
 
   getQuoteTotalValue(discount = 0) {
-    const { totalValue, totalRecurringValue, initialDeepCleaning } = this.getBaseValue();
+    const { totalValue, totalRecurringValue, initialDeepCleaning, multiplier } = this.getBaseValue();
 
     // É um plano recorrente
     if (this.formData.frequency !== "One Time" && this.formData.frequency !== "-") {
@@ -759,62 +854,39 @@ const page = {
       fakePrice.innerHTML = "";
     }
 
-
     if (this.formData.frequency !== "-")
       servicePrice.innerHTML = `$ ${totalRecurringValue.toFixed(0, 2)}`;
     if (this.formData.frequency === "One Time") {
-      servicePrice.innerHTML = `$ ${(totalRecurringValue * 2.5).toFixed(0, 2)}`
+      servicePrice.innerHTML = `$ ${Number(totalValue).toFixed(0, 2)}`
     }
 
     totalValueText.innerHTML = this.totalValue.toFixed(2);
   },
 
-  changeValue(delta) {
-    const input = document.getElementById("number-input-bed");
-    let currentValue = parseInt(input.value, 10);
+  changeValue(delta, input, max, key) {
+    let currentValue = Number(input.value);
+    console.log(input.value)
     let newValue = currentValue + delta;
-    if (newValue <= 7) {
-
-
+    console.log(currentValue, delta)
+    if (newValue <= max) {
       if (newValue < 0) {
         input.value = 0;
       } else {
         input.value = newValue;
       }
 
-      document.getElementById("bedrooms-count").innerHTML = input.value;
-      this.formData.bedrooms = input.value;
+      if (key)
+        this.formData[key] = input.value;
 
       this.getQuoteTotalValue();
-    } else {
-      toast.error("Maximum bedrooms limit.");
-    }
-  },
-
-  changeValueBathrooms(delta) {
-    const input = document.getElementById("number-input-bath");
-    let currentValue = parseFloat(input.value, 10);
-
-    let newValue = currentValue + delta;
-    if (newValue <= 6) {
-      if (newValue < 0) {
-        input.value = 0;
-      } else {
-        input.value = newValue;
-      }
-
-      document.getElementById("bathrooms-count").innerHTML = input.value;
-      this.formData.bathrooms = input.value;
-
-      this.getQuoteTotalValue();
-    } else {
-      toast.error("Maximum bathrooms limit.");
+      this.renderQuoteSummary();
+    } else if (key == "bathrooms" || key == "bedrooms") {
+      limitPopup.show();
     }
   },
 
   changeValueSquareFoot(e) {
     const select = document.getElementById("number-input-square");
-    console.log(Number(select.value));
     if (e.target.value < 0 || e.target.value === "" || isNaN(e.target.value)) {
       select.value = 0;
     }
@@ -921,7 +993,7 @@ const page = {
 
           extraDiv.className = "d-flex justify-between"
           extraDiv.innerHTML = `
-          <span class="title-one-summary"> - ${extra.name}</span>
+          <span class="title-one-summary"> - ${extra.name.replace("*", "")}</span>
           <div class="d-flex g-10">
             ${!!extra.beforePromoValue ? `<span class="weight-400 dashed-text">$${extra.beforePromoValue}</span>` : ""}
             <span class="weight-600 color-gray-4">$${value}</span>
@@ -992,7 +1064,6 @@ const page = {
 
     const frequencyDetails = document.querySelectorAll(".frequency-details");
     frequencyDetails.forEach(detail => {
-      console.log(detail)
       detail.onclick = () => {
         const detailPopup = new Popup(detail.dataset.frequency, "Okay", frequencyPopupDetails[detail.dataset.frequency])
         detailPopup.show();

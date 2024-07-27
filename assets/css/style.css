@@ -32,6 +32,9 @@
   --color-dark: #111928;
   --color-white: #ffffff;
   --color-black: #000000;
+
+  --color-error: rgb(220, 20, 60);
+  --bg-error: rgba(220, 20, 60, 0.2);
 }
 
 /* ======================== general style =============================== */
@@ -387,9 +390,11 @@ header.header {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 1;
   background-color: var(--color-white);
   border-radius: 0 0 15px 15px;
   box-shadow: 4px 4px 14px rgba(46, 105, 255, 0.3);
+  cursor: pointer;
 }
 
 .contact_header {
@@ -1390,7 +1395,7 @@ nav.menu ul {
   .form_hero {
     position: unset;
     width: calc(100% - 80px);
-    margin: 40px auto;
+    margin: -50px auto;
     border-radius: 15px;
   }
   .left_welcome {
@@ -1554,4 +1559,16 @@ nav.menu ul {
     font-size: 22px;
     line-height: 26px;
   }
+}
+
+.grid {
+  display: grid;
+}
+
+.col-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.col-span-2 {
+  grid-column: span 2;
 }

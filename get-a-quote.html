@@ -31,7 +31,7 @@
           <div class="d-flex over_contact_header">
             <div class="contact_header">
               <div class="contact">
-                <img src="./assets/img/icon/mail.png" alt="" />
+                <img src="assets/img/icon/mail.png" alt="" />
                 <p>
                   Email Us:
                   <a
@@ -43,7 +43,7 @@
               </div>
 
               <div class="contact">
-                <img src="./assets/img/icon/phone.png" alt="" />
+                <img src="assets/img/icon/phone.png" alt="" />
                 <p>
                   Call Us:
                   <a class="color-azul-destaque" href="mailto:2152536112"
@@ -55,7 +55,7 @@
 
             <div class="contact_header">
               <div class="contact">
-                <img src="./assets/img/icon/clock.png" alt="" />
+                <img src="assets/img/icon/clock.png" alt="" />
 
                 <div>
                   <p>
@@ -70,7 +70,7 @@
 
             <div class="contact_header">
               <div class="contact">
-                <img src="./assets/img/icon/location.png" alt="" />
+                <img src="assets/img/icon/location.png" alt="" />
 
                 <div>
                   <p>Areas we serve:</p>
@@ -84,23 +84,23 @@
             <ul class="list_social">
               <li>
                 <a href="https://www.facebook.com/MyDBcleaningServices/"
-                  ><img src="./assets/img/icon/facebook.png" alt=""
+                  ><img src="assets/img/icon/facebook.png" alt=""
                 /></a>
               </li>
               <li>
                 <a href="https://twitter.com/CleaningDb"
-                  ><img src="./assets/img/icon/twitter.png" alt=""
+                  ><img src="assets/img/icon/twitter.png" alt=""
                 /></a>
               </li>
               <li>
                 <a
                   href="https://www.linkedin.com/company/db-cleaning-services-inc/"
-                  ><img src="./assets/img/icon/linkedin.png" alt=""
+                  ><img src="assets/img/icon/linkedin.png" alt=""
                 /></a>
               </li>
               <li>
                 <a href="https://www.instagram.com/dbcleaning/"
-                  ><img src="./assets/img/icon/instagram.svg" alt=""
+                  ><img src="assets/img/icon/instagram.svg" alt=""
                 /></a>
               </li>
             </ul>
@@ -127,7 +127,7 @@
           <nav class="menu">
             <div class="head_menu">
               <a href="" class="logo_head_menu">
-                <img src=".././assets/img/logo.png" alt="" />
+                <img src="assets/img/logo.png" alt="" />
               </a>
 
               <span class="close_menu_mobile">
@@ -147,19 +147,20 @@
             </div>
 
             <ul>
-              <li><a href="../index.html">Home</a></li>
-              <li><a href="../about-us.html">About Us</a></li>
-              <li><a href="../services.html">Services</a></li>
-              <li><a href="../reviews.html">Reviews</a></li>
-              <li><a href="../contact.html">Contact</a></li>
-              <li><a href="../blog.html">Blog</a></li>
-              <li><a href="../portfolio.html">Portfolio</a></li>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about-us.html">About Us</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="reviews.html">Reviews</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="portfolio.html">Portfolio</a></li>
             </ul>
 
             <div class="right_bottom_header">
               <a href="help-center.html">Help center</a>
 
               <a
+                href="get-a-quote.html"
                 class="btn-default btn-gray text-uppercase btn-hover btn-gray-hover"
                 >Get A Quote</a
               >
@@ -168,7 +169,7 @@
             <div class="d-flex over_contact_header_mobile">
               <div class="contact_header">
                 <div class="contact">
-                  <img src="./assets/img/icon/mail.png" alt="" />
+                  <img src="assets/img/icon/mail.png" alt="" />
                   <p>
                     Email Us:
                     <a
@@ -180,7 +181,7 @@
                 </div>
 
                 <div class="contact">
-                  <img src="./assets/img/icon/phone.png" alt="" />
+                  <img src="assets/img/icon/phone.png" alt="" />
                   <p>
                     Call Us:
                     <a class="color-azul-destaque" href="mailto:2152536112"
@@ -192,7 +193,7 @@
 
               <div class="contact_header">
                 <div class="contact">
-                  <img src="./assets/img/icon/clock.png" alt="" />
+                  <img src="assets/img/icon/clock.png" alt="" />
 
                   <div>
                     <p>
@@ -208,7 +209,7 @@
 
               <div class="contact_header">
                 <div class="contact">
-                  <img src="./assets/img/icon/location.png" alt="" />
+                  <img src="assets/img/icon/location.png" alt="" />
 
                   <div>
                     <p>Areas we serve:</p>
@@ -300,6 +301,7 @@
                         data-key="bathrooms"
                         class="field"
                         max="6"
+                        min="0.5"
                         id="number-input-bath"
                         value="0"
                         readonly
@@ -525,27 +527,41 @@
 
                     <div class="fields_form_quote_row contact_row">
                       <div class="form_group_field_33">
-                        <label for="">Name*</label>
+                        <label for="">First name*</label>
                         <input
                           type="text"
-                          data-key="name"
-                          id="name"
+                          data-key="firstName"
+                          id="first-name"
+                          class="field validation-field"
+                          placeholder=""
+                          required
+                        />
+                        <div class="form_error">First name are required.</div>
+                      </div>
+                      <div class="form_group_field_33">
+                        <label for="">Last name*</label>
+                        <input
+                          type="text"
+                          data-key="lastName"
+                          id="last-name"
                           class="field"
                           placeholder=""
                           required
                         />
+                        <div class="form_error">Last name are required.</div>
                       </div>
 
                       <div class="form_group_field_33">
-                        <label for="">Phone Number</label>
+                        <label for="">Phone Number*</label>
                         <input
-                          type="text"
+                          type="number"
                           data-key="phone"
                           class="field"
                           id="phone-number"
                           placeholder=""
                           required
                         />
+                        <div class="form_error">Phone number are required.</div>
                       </div>
 
                       <div class="form_group_field_33">
@@ -558,6 +574,7 @@
                           placeholder=""
                           required
                         />
+                        <div class="form_error">Email are required.</div>
                       </div>
                     </div>
                   </div>
@@ -575,11 +592,14 @@
                         <input
                           type="text"
                           id="address1"
-                          data-key="addressLine"
+                          data-key="address"
                           class="field"
                           placeholder=""
                           required
                         />
+                        <div class="form_error">
+                          Address are required.
+                        </div>
                       </div>
 
                       <div class="form_group_field_33 w-100">
@@ -604,6 +624,9 @@
                           id="city"
                           required
                         />
+                        <div class="form_error">
+                          City are required.
+                        </div>
                       </div>
 
                       <div class="form_group_field_33">
@@ -616,6 +639,9 @@
                           id="state"
                           required
                         />
+                        <div class="form_error">
+                          State/Province are required.
+                        </div>
                       </div>
                       <div class="form_group_field_33">
                         <label for="">Zip/Postal/Code*</label>
@@ -627,6 +653,9 @@
                           placeholder=""
                           required
                         />
+                        <div class="form_error">
+                          Zip/Postal/Code are required.
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -640,7 +669,8 @@
                   <div class="fields_form_quote_row">
                     <div class="form_group_field_33">
                       <label for="">How did you hear about us?</label>
-                      <select name="" id="howHearAboutUs">
+                      <select required name="" id="howHearAboutUs">
+                        <option selected value="">Please select</option>
                         <option value="google">Google</option>
                         <option value="facebook">Facebook</option>
                         <option value="instagram">Instagram</option>
@@ -653,6 +683,16 @@
                         </option>
                         <option value="other">Other</option>
                       </select>
+                    </div>
+                    <div class="checkbox_line">
+                      <input id="isAGift" type="checkbox" />
+                      <label
+                        class="pointer"
+                        for="isAGift"
+                        class="field"
+                        data-key="isGift"
+                        >This cleaning service is a gift?</label
+                      >
                     </div>
                   </div>
                 </div>
@@ -815,7 +855,7 @@
                         id="discount-row"
                         class="row_summary"
                       >
-                        <span class="title-one-summary"> - Discount Code</span>
+                        <span class="title-one-summary"> - Discount</span>
                         <span
                           id="discount-value"
                           class="title-two-summary color-gray-4"
@@ -986,7 +1026,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <script src="assets/js/script.js"></script>
+    <script type="module" src="assets/js/script.js"></script>
     <script type="module" src="assets/js/get-a-quote.js"></script>
   </body>
 </html>

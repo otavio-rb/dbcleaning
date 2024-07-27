@@ -325,6 +325,7 @@
   position: relative;
   transition: all 0.2s;
 }
+
 .second_select_quote3 .card_select3 input {
   display: none;
 }
@@ -335,9 +336,20 @@
 .second_select_quote3 .card_select3 svg {
   margin-bottom: 8px;
 }
+
+.card_select3 .recommended-star path {
+  stroke: var(--color-azul-destaque) !important;
+  fill: white !important;
+}
+
+.card_select3.active .recommended-star {
+  fill: white;
+}
+
 .second_select_quote3 .card_select3 svg path {
   fill: #9ca3af;
 }
+
 .recommended-star {
   position: absolute;
   top: 0;
@@ -382,8 +394,8 @@
 }
 .form_group_field_33 {
   width: 33%;
-  display: flex;
   flex-wrap: wrap;
+  min-height: 60px;
   padding: 10px 10px 10px 0;
 }
 
@@ -396,11 +408,37 @@
 .form_group_field_33 input {
   width: 100%;
   padding: 12px 15px;
+  height: 46px;
   background-color: var(--color-blue-light2);
   border: 1px solid var(--color-blue-light);
   border-radius: 40px;
   outline: none;
 }
+
+.form_group_field_33 input.error {
+  background-color: var(--bg-error);
+  border: 1px solid var(--color-error);
+  color: var(--color-error);
+  font-weight: 500;
+  border-radius: 40px;
+  outline: none;
+}
+
+.form_group_field_33 input.error::placeholder {
+  color: var(--color-error);
+}
+
+.form_error{
+  display: none;
+  flex-direction: column;
+  color: var(--color-error);
+  gap: 10px;
+}
+
+.form_group_field_33.error .form_error {
+  display: flex;
+}
+
 .form_group_field_33 select {
   width: 100%;
   padding: 12px 15px;
@@ -605,9 +643,9 @@
   }
 }
 
-#form-buttons{
+#form-buttons {
   display: flex;
-  justify-content: space-between !important; 
+  justify-content: space-between !important;
   position: sticky !important;
   background-color: white !important;
   width: 100%;
@@ -636,9 +674,9 @@
     width: calc(100% / 4 - 20px);
   }
 
-  #form-buttons{
+  #form-buttons {
     display: flex;
-    justify-content: space-between !important; 
+    justify-content: space-between !important;
     position: fixed !important;
     background-color: white !important;
     width: 100%;
