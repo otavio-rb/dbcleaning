@@ -16,21 +16,35 @@
     cursor: pointer;
 }
 .head_swith_page .btn_switch_page.active{
-    background-color: var(--color-azul-destaque);
-    color: var(--color-white);
+    background-color: #F5F9FB;
+    color: var(--color-black);
+    border: 1px solid var(--color-gray2);
+    border-bottom: 0;
 }
 .head_swith_page .btn_switch_page.active:hover{
-    background-color: var(--color-azul-destaque);
-    color: var(--color-white);
+    background-color: #F5F9FB;
+    color: var(--color-bllack);
 }
 .head_swith_page .btn_switch_page:hover{
-    background-color: var(--color-gray2);
+    
+}
+.head_swith_page{
+    padding: 0;
+    position: relative;
+    z-index: 1;
+    margin-bottom: -1px;
+}
+.head_swith_page .btn_switch_page{
+    margin: 0 1px 0;
+    border-radius: 6px 6px 0 0;
+    background-color: var(--color-azul-destaque);
+    color: var(--color-white);
 }
 
 .single_switch_page{
     border: 1px solid var(--color-gray2);
     border-radius: 8px;
-    background-color: #A0C0D91A;
+    background-color: #F5F9FB;
     height: 580px;
     overflow: hidden;
     display: none;

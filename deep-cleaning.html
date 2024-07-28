@@ -317,141 +317,197 @@
                         </div>
 
                         <div class="switch_default">
-                            <button class="active">All Rooms</button>
-                            <button>Kitchen</button>
-                            <button>Bathroom</button>
+                            <button class="active" id="item-all-rooms" data-item="all">All Rooms</button>
+                            <button id="item-kitchen" data-item="kitchen">Kitchen</button>
+                            <button id="item-bathroom" data-item="bathroom">Bathroom</button>
+                            <button data-item="other">Other Rooms</button>
+                            <button id="item-bathroom" data-item="additional">Additional Requests</button>
                         </div>
 
-                        <div class="big_card bord-0-9">
-                            <h3>Dining Room</h3>
+                        <div class="all_itens">
 
-                            <div class="d-flex">
-                                <div class="f-50">
-                                    <ul class="list-default">
-                                        <li>All wall hangings dusted and cleaned</li>
-                                        <li>All furniture polished and dusted</li>
-                                        <li>All glass and mirrors cleaned and sparkled</li>
-                                        <li>Floors vacuumed, swept, and mopped (if needed)</li>
-                                        <li>Dust for cobwebs</li>
-                                    </ul>
+                            <div class="big_card bord-0-9" data-item="all">
+                                <h3>All Rooms</h3>
+    
+                                <div class="d-flex">
+                                    <div class="f-50">
+                                        <ul class="list-default">
+                                            <li>All wall hangings dusted and cleaned</li>
+                                            <li>All furniture polished and dusted</li>
+                                            <li>All glass and mirrors cleaned and sparkled</li>
+                                            <li>Floors vacuumed, swept, and mopped (if needed)</li>
+                                            <li>Cobwebs removed</li>
+                                            <li>Dust open window sills and frames</li>
+                                            <li>Dust top of door frames and door knobs</li>
+                                            <li>Dust decorative accessories</li>
+                                            <li>All light fixtures and fan blades dusted</li>
+                                            <li>Dust all baseboards, switch plates, and outlet covers</li>
+                                            <li>Wash and detailed cleaning of baseboards</li>
+                                            <li>Lamp and lampshades dusted</li>
+                                        </ul>
+                                    </div>
+                                    <div class="f-50">
+                                        <ul class="list-default">
+                                            <li>Empty wastebaskets and reline</li>
+                                            <li>Wash doors</li>
+                                            <li>Hand wash or wipe ceiling fans</li>
+                                            <li>Dust window blinds, sills and frames</li>
+                                            <li>Detailed vacuuming of blinds</li>
+                                            <li>Clean interior windows</li>
+                                            <li>Moved light-weight furniture, cleaned behind (wires excluded)</li>
+                                            <li>Vacuumed furniture, cushions, and other upholstery</li>
+                                            <li>Vacuumed under furniture</li>
+                                            <li>Vacuum carpets and area rugs</li>
+                                            <li>Clean/oil woodwork</li>
+                                            <li>Vacuumed pet furniture or sleeping lounge (upon request)</li>
+                                            <li>Wash outside cabinets</li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="f-50">
-                                    <ul class="list-default">
-                                        <li>Dust open window sills and frames</li>
-                                        <li>Dust top of door frames and door knobs</li>
-                                        <li>Dust decorative accessories</li>
-                                        <li>All light fixtures and window treatments dusted</li>
-                                        <li>Dust all baseboards, switch plates, and outlet covers</li>
-                                    </ul>
-                                </div>
+    
+                                <img src="assets/img/pages/table-chair.png" alt="">
                             </div>
 
-                            <img src="assets/img/pages/table-chair.png" alt="">
-                        </div>
-
-                        <div class="big_card">
-                            <h3>Utility Room</h3>
-
-                            <div class="d-flex">
-                                <div class="f-50">
-                                    <ul class="list-default">
-                                        <li>Exterior of washer and dryer cleaned</li>
-                                        <li>Floors vacuumed, swept, and mopped (if needed)</li>
-                                        <li>Dust for cobwebs</li>
-                                        <li>Dust open window sills and frames</li>
-                                        <li>All mirrors and glass cleaned and sparkled</li>
-                                        <li>Dust decorative accessories</li>
-                                    </ul>
+                            <div class="big_card bord-0-9 d-none" data-item="kitchen">
+                                <h3>Kitchen</h3>
+    
+                                <div class="d-flex">
+                                    <div class="f-50">
+                                        <ul class="list-default">
+                                            <li>Outside cabinets and knobs dusted and spot cleaned</li>
+                                            <li>Clean/wash outside cabinets and drawers</li>
+                                            <li>Clean and vacuum tops of cabinets and items on them</li>
+                                            <li>Degrease and clean outside cabinets and drawers</li>
+                                            <li>Tabletops, countertops, and backsplash cleaned and sanitized</li>
+                                            <li>Sinks and drain scrubbed, rinsed, and buffed</li>
+                                            <li>Stainless steel and chrome fixtures cleaned and shined</li>
+                                            <li>Range hood, exhaust fan, stovetop, and drip pans cleaned and sanitized</li>
+                                        </ul>
+                                    </div>
+                                    <div class="f-50">
+                                        <ul class="list-default">
+                                            <li>Microwave oven cleaned inside and out</li>
+                                            <li>Exterior of small appliances wiped down (toaster, blender, etc.)</li>
+                                            <li>Clean inside oven</li>
+                                            <li>Clean inside freezer and refrigerator</li>
+                                            <li>Clean under stovetop</li>
+                                            <li>Clean front and top of refrigerator (where possible)</li>
+                                            <li>Garden window above sink spot cleaned</li>
+                                            <li>Place dirty dishes in dishwasher (no rinsing included)</li>
+                                            <li>Rinse big items, pots, and pans (don’t fit in dishwasher)</li>
+                                            <li>Clean sliding glass doors</li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="f-50">
-                                    <ul class="list-default">
-                                        <li>All light fixtures and window treatments dusted</li>
-                                        <li>Dust all baseboards, switch plates, and outlet covers</li>
-                                        <li>Dust all wall hangings</li>
-                                        <li>Clean and sanitize utility sink</li>
-                                        <li>Empty wastebaskets and reline</li>
-                                    </ul>
-                                </div>
+    
+                                <img src="assets/img/pages/table-chair.png" alt="">
                             </div>
 
-                            <img src="assets/img/pages/laundry.png" alt="">
-                        </div>
-
-                        <div class="big_card">
-                            <h3>Living Room</h3>
-
-                            <div class="d-flex">
-                                <div class="f-50">
-                                    <ul class="list-default">
-                                        <li>All wall hangings dusted and cleaned</li>
-                                        <li>All furniture polished and dusted</li>
-                                        <li>All glass and mirrors cleaned and sparkled</li>
-                                        <li>Floors vacuumed, swept, and mopped (if needed)</li>
-                                        <li>Dust for cobwebs</li>
-                                        <li>Dust open window sills and frames</li>
-                                    </ul>
+                            <div class="big_card bord-0-9 d-none" data-item="bathroom">
+                                <h3>Bathrooms</h3>
+    
+                                <div class="d-flex">
+                                    <div class="f-50">
+                                        <ul class="list-default">
+                                            <li>Clean/wash outside cabinets and drawers</li>
+                                            <li>All vanities, sinks, and countertops cleaned and sanitized</li>
+                                            <li>All stainless steel and chrome fixtures cleaned and sanitized</li>
+                                            <li>Toilets cleaned and sanitized, including base and rear</li>
+                                        </ul>
+                                    </div>
+                                    <div class="f-50">
+                                        <ul class="list-default">
+                                            <li>Tub and shower scrubbed, cleaned, and sanitized</li>
+                                            <li>Shower tile cleaned and sanitized</li>
+                                            <li>Clean tissue and towel holders</li>
+                                            <li>Change 1 set of towels (if provided and arranged)</li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="f-50">
-                                    <ul class="list-default">
-                                        <li>Dust top of door frames and door knobs</li>
-                                        <li>Dust decorative accessories</li>
-                                        <li>All light fixtures and window treatments dusted</li>
-                                        <li>Dust all baseboards, switch plates, and outlet covers</li>
-                                        <li>Vacuum under furniture cushions</li>
-                                    </ul>
-                                </div>
+    
+                                <img src="assets/img/pages/table-chair.png" alt="">
                             </div>
 
-                            <img src="assets/img/pages/living-room.png" alt="">
-                        </div>
-
-                        <div class="big_card">
-                            <h3>Bedrooms</h3>
-
-                            <div class="d-flex">
-                                <div class="f-50">
-                                    <ul class="list-default">
-                                        <li>All wall hangings dusted and cleaned</li>
-                                        <li>All furniture polished and dusted</li>
-                                        <li>All glass and mirrors cleaned and sparkled</li>
-                                        <li>Floors vacuumed, swept, and mopped (if needed)</li>
-                                        <li>Dust for cobwebs</li>
-                                        <li>Trash emptied</li>
-                                    </ul>
+                            <div class="big_card bord-0-9 d-none" data-item="other">
+                                <h3>Utility Room</h3>
+    
+                                <div class="d-flex">
+                                    <div class="f-50">
+                                        <ul class="list-default">
+                                            <li>Exterior of washer and dryer</li>
+                                        </ul>
+                                    </div>
+                                    <div class="f-50">
+                                        <ul class="list-default">
+                                            <li>Clean and sanitize utility sink</li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="f-50">
-                                    <ul class="list-default">
-                                        <li>Dust open window sills and frames</li>
-                                        <li>Dust top of door frames and door knobs</li>
-                                        <li>Dust decorative accessories</li>
-                                        <li>All light fixtures and window treatments dusted</li>
-                                        <li>Dust all baseboards, switch plates, and outlet covers</li>
-                                        <li>Vacuum under bed ( if accessible )</li>
-                                    </ul>
+    
+                                <img src="assets/img/pages/laundry.png" alt="">
+                            </div>
+    
+                            <div class="big_card d-none" data-item="other">
+                                <h3>Living Room</h3>
+    
+                                <div class="d-flex">
+                                    <div class="f-50">
+                                        <ul class="list-default">
+                                            <li>Vacuum under furniture cushions</li>
+                                        </ul>
+                                    </div>
+                                    <div class="f-50">
+                                        <ul class="list-default">
+                                            <li>Dust fireplace mantel</li>
+                                        </ul>
+                                    </div>
                                 </div>
+    
+                                <img src="assets/img/pages/living-room.png" alt="">
                             </div>
 
-                            <img src="assets/img/pages/bedroom.png" alt="">
-                        </div>
-
-                        <div class="big_card">
-                            <h3>Additional Requests</h3>
-
-                            <div class="d-flex">
-                                <div class="f-50">
-                                    <ul class="list-default">
-                                        <li>Carpet Cleaning</li>
-                                        <li>Upholstery Cleaning</li>
-                                        <li>Dryer Vent Cleaning</li>
-                                        <li>Air Duct Cleaning</li>
-                                    </ul>
+                            <div class="big_card d-none" data-item="other">
+                                <h3>Bedrooms</h3>
+    
+                                <div class="d-flex">
+                                    <div class="f-50">
+                                        <ul class="list-default">
+                                            <li>Vacuum under bed (if accessible)</li>
+                                            <li>Lamps and lamp shades dusted</li>
+                                        </ul>
+                                    </div>
+                                    <div class="f-50">
+                                        <ul class="list-default">
+                                            <li>All beds made only</li>
+                                            <li>Bed linens changed (if provided, 1 bed included only)</li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="f-50">
-                                    
-                                </div>
+    
+                                <img src="assets/img/pages/bedroom.png" alt="">
                             </div>
-
-                            <img src="assets/img/pages/aditional.png" alt="">
+    
+                            <div class="big_card d-none" data-item="additional">
+                                <h3>Additional Requests</h3>
+    
+                                <div class="d-flex">
+                                    <div class="f-50">
+                                        <ul class="list-default">
+                                            <li>Carpet Cleaning</li>
+                                            <li>Upholstery Cleaning</li>      
+                                        </ul>
+                                    </div>
+                                    <div class="f-50">
+                                        <ul class="list-default">
+                                            <li>Dryer Vent Cleaning</li>
+                                            <li>Air Duct Cleaning</li>      
+                                        </ul>
+                                    </div>
+                                </div>
+    
+                                <img src="assets/img/pages/aditional.png" alt="">
+                            </div>
+                            
                         </div>
 
                     </div>
