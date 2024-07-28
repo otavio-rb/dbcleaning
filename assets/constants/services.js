@@ -980,6 +980,7 @@ export const extraRooms = {
       name: "Attic",
       id: "attic",
       currentValue: (sqft) => {
+        console.log("OOIII",sqft)
         if (sqft <= 1000) {
           return 50;
         } else {

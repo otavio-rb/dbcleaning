@@ -294,7 +294,7 @@ const page = {
   },
 
   hasFormErrors() {
-    if (this.currentFormStep === 1 && this.formData.squareFootage == 0 || this.formData.bathrooms == 0 || this.formData.bedrooms == 0) {
+    if (this.currentFormStep === 1 && this.formData.squareFootage == "" || this.formData.bathrooms == 0 || this.formData.bedrooms == 0) {
       toast.error("Fill in all required fields!");
       return true;
     } else if (this.currentFormStep === 1 && this.formData.bedrooms == 5 && this.formData.bathrooms < 3) {
@@ -569,11 +569,13 @@ const page = {
   },
 
   handleExtraRoom(extra, div) {
+    const sqft = this.formData.squareFootage === 'Up to 1000' ? 1000 : this.formData.squareFootage === '6001+' ? 6001 : this.formData.squareFootage.split("-").map(n => Number(n.trim()))[1];
+
     if (div.classList.contains("active")) {
       this.extraRooms.forEach(room => {
         const roomValue = typeof room.currentValue === "number" 
           ? room.currentValue 
-          : room.currentValue(this.formData.squareFootage, this.formData.frequency !== "One Time");
+          : room.currentValue(sqft);
         this.additionalFees -= roomValue;
       });
   
@@ -610,6 +612,7 @@ const page = {
     }
   
     ExtraRoomPopup.confirm(() => {
+      const sqft = this.formData.squareFootage === 'Up to 1000' ? 1000 : this.formData.squareFootage === '6001+' ? 6001 : this.formData.squareFootage.split("-").map(n => Number(n.trim()))[1];
       const allCheckedExtraRoom = ExtraRoomPopup.main.querySelectorAll("input[name=extra-room-checkbox]:checked");
       if (allCheckedExtraRoom.length > 0) {
         this.extraRooms = Array.from(allCheckedExtraRoom).map(roomNode => 
@@ -621,7 +624,7 @@ const page = {
         this.extraRooms.forEach(room => {
           const roomValue = typeof room.currentValue === "number" 
             ? room.currentValue 
-            : room.currentValue(this.formData.squareFootage, this.formData.frequency !== "One Time");
+            : room.currentValue(sqft);
           this.additionalFees += roomValue;
         });
   
@@ -722,6 +725,8 @@ const page = {
       }
 
       div.onclick = () => {
+        const sqft = this.formData.squareFootage === 'Up to 1000' ? 1000 : this.formData.squareFootage === '6001+' ? 6001 : this.formData.squareFootage.split("-").map(n => Number(n.trim()))[1];
+
         if (extra.name === "Extra Room") {
           this.handleExtraRoom(extra, div);
           return;
@@ -737,7 +742,7 @@ const page = {
           if (typeof extra.currentValue === "number") {
             this.additionalFees -= extra.currentValue;
           } else {
-            this.additionalFees -= extra.currentValue(this.formData.squareFootage, this.formData.frequency === "One Time" ? false : true);
+            this.additionalFees -= extra.currentValue(sqft);
           }
 
           div.classList.remove("active");
@@ -747,7 +752,7 @@ const page = {
           if (typeof extra.currentValue === "number") {
             this.additionalFees += extra.currentValue;
           } else {
-            this.additionalFees += extra.currentValue(this.formData.squareFootage, this.formData.frequency === "One Time" ? false : true);
+            this.additionalFees += extra.currentValue(sqft);
           }
 
           div.classList.add("active");
@@ -1020,7 +1025,8 @@ const page = {
         toast.success("The quote request was sent successfully.");
       } else {
         const errorData = await response.json();
-        toast.error(errorData.error || "Error sending quote request.");
+        const firstError = errorData.errors && errorData.errors.length > 0 ? errorData.errors[0].msg : "Error sending quote request.";
+        toast.error(firstError);
       }
     } catch (error) {
       console.error('Error sending quote request:', error);
@@ -1051,7 +1057,8 @@ const page = {
             if (typeof extraRoom.currentValue === "number") {
               value = extraRoom.currentValue;
             } else {
-              value = extraRoom.currentValue(this.formData.squareFootage, this.formData.frequency === "One Time" ? false : true);
+              const sqft = this.formData.squareFootage === 'Up to 1000' ? 1000 : this.formData.squareFootage === '6001+' ? 6001 : this.formData.squareFootage.split("-").map(n => Number(n.trim()))[1];
+              value = extraRoom.currentValue(sqft);
             }
 
             extraDiv.className = "d-flex justify-between"
@@ -1073,7 +1080,8 @@ const page = {
           if (typeof extra.currentValue === "number") {
             value = extra.currentValue;
           } else {
-            value = extra.currentValue(this.formData.squareFootage, this.formData.frequency === "One Time" ? false : true);
+            const sqft = this.formData.squareFootage === 'Up to 1000' ? 1000 : this.formData.squareFootage === '6001+' ? 6001 : this.formData.squareFootage.split("-").map(n => Number(n.trim()))[1];
+            value = extra.currentValue(sqft);
           }
 
 
