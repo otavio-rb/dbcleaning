@@ -39,8 +39,7 @@ export default class Popup {
         this.confirmButton = document.createElement("button");
         this.confirmButton.className = "btn-default btn-blue btn-hover btn-blue-hover";
         this.confirmButton.innerHTML = this.buttonTitle;
-        this.confirmButton.onclick = () => this.hide();
-
+    
         this._header.appendChild(closeButton);
         this._footer.appendChild(this.confirmButton);
         this.popupDiv.appendChild(this._header);
@@ -62,15 +61,29 @@ export default class Popup {
         this.hide();
     }
 
-    confirm(func, skipHide) {
-        this.confirmButton.onclick = () => {
+    confirm(func, skipHide = false) {
+        this.confirmButton.onclick = (e) => {
+            e.preventDefault();
+            func();
             if (!skipHide) {
                 this.hide();
             }
-            func()
         };
     }
 
+    setConfirmCallback(callback) {
+        this.confirmButton.onclick = async (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            try {
+                await callback();
+                //this.hide();
+            } catch (error) {
+                console.error('Error in confirm callback:', error);
+            }
+        };
+    }
+    
     hide() {
         document.body.removeChild(this._overlay);
     }

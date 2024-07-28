@@ -11,9 +11,9 @@ const limitPopup = new Popup("On-Site Visit Required", "Schedule a Free Visit",
     We can't provide an instant quote for homes with more than 7 bedrooms or 6 bathrooms.
     Schedule a free-on-site visit for an accurate quote. Please fill out the form below.
   </span>
-  <form class="grid col-2">
+  <form id="schedule-visit-form" class="grid col-2">
     <div class="form_group_field_33 w-100">
-        <label for="">Name*</label>
+        <label for="name">Name*</label>
           <input
             type="text"
             data-key="name"
@@ -24,9 +24,9 @@ const limitPopup = new Popup("On-Site Visit Required", "Schedule a Free Visit",
           />
       </div>
       <div class="form_group_field_33 w-100">
-        <label for="">Email*</label>
+        <label for="email">Email*</label>
           <input
-            type="text"
+            type="email"
             data-key="email"
             id="email"
             class="field"
@@ -35,9 +35,9 @@ const limitPopup = new Popup("On-Site Visit Required", "Schedule a Free Visit",
           />
       </div>
       <div class="form_group_field_33 w-100">
-        <label for="">Phone*</label>
+        <label for="phone">Phone*</label>
           <input
-            type="text"
+            type="tel"
             data-key="phone"
             id="phone"
             class="field"
@@ -46,22 +46,22 @@ const limitPopup = new Popup("On-Site Visit Required", "Schedule a Free Visit",
           />
       </div>
       <div class="form_group_field_33 w-100">
-        <label for="">Service address*</label>
+        <label for="address">Service address*</label>
           <input
             type="text"
             data-key="address"
-            id=""
+            id="address"
             class="field"
             placeholder=""
             required
           />
       </div>
       <div class="form_group_field_33 w-100 col-span-2">
-        <label for="">Preferred Scheduling Times (optional)</label>
+        <label for="preferredTimes">Preferred Scheduling Times (optional)</label>
           <input
             type="text"
-            data-key=""
-            id="name"
+            data-key="preferredTimes"
+            id="preferredTimes"
             class="field"
             placeholder="e.g Weekdays after 3 PM"
           />
@@ -101,8 +101,8 @@ const page = {
 
   init() {
     this.form = document.querySelector("#quote-form");
-    this.form.onSubmit = (e) => onSubmit(e);
-
+    this.form.addEventListener("submit", (e) => this.onSubmit(e));
+    
     this.additionalFees = 0;
     this.totalValue = 0;
     this.extraRooms = [];
@@ -121,12 +121,23 @@ const page = {
       this.changeValueSquareFoot(e);
     document.querySelector("#apply-discout-button").onclick = () =>
       this.applyDiscount();
+    document.querySelector("#howHearAboutUs").addEventListener("change", (e) => {
+      this.formData.howHearAboutUs = e.target.value;
+    });
 
     this.nextStepButton = document.querySelector("#next-form-step");
     this.nextStepButton.onclick = () => this.nextFormStep();
 
     this.previousStepButton = document.querySelector("#previous-form-step");
     this.previousStepButton.onclick = () => this.previousFormStep();
+
+    limitPopup.setConfirmCallback(async () => {
+      try {
+          await page.scheduleVisit();
+      } catch (error) {
+          console.error('Error scheduling visit:', error);
+      }
+  });
 
     const center = { lat: 50.064192, lng: -130.605469 };
     // Create a bounding box with sides ~10km away from the center point
@@ -143,7 +154,49 @@ const page = {
     this.frequencyCardFunc();
     this.fieldObserver();
   },
+  async scheduleVisit() {
+    const form = document.getElementById('schedule-visit-form');
+    
+    if (!form) {
+        console.error('Form not found');
+        return;
+    }
 
+    const data = {};
+    form.querySelectorAll('[data-key]').forEach(element => {
+        const key = element.getAttribute('data-key');
+        data[key] = element.value;
+    });
+
+    if (Object.keys(data).length === 0) {
+        console.error('No form data collected');
+        toast.error('Please fill out the form before submitting');
+        return;
+    }
+
+    const response = await fetch(`https://wwua7dlp7liv5ck4gy7lgbbwym0fmcvw.lambda-url.us-east-1.on.aws/email/schedule-visit`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+        toast.success('Visit request made successfully');
+        limitPopup.hide();
+        return true;
+    } else {
+        if (result.errors && Array.isArray(result.errors) && result.errors.length > 0) {
+            toast.error(result.errors[0].msg);
+        } else {
+            toast.error(result.error || 'Failed to schedule visit');
+        }
+        throw new Error('Failed to schedule visit');
+    }
+  },
   getUrlValues() {
     const params = new URLSearchParams(document.location.search);
     const name = params.get("name");
@@ -292,11 +345,12 @@ const page = {
     if (this.validateStepInformations() || this.hasFormErrors()) return;
 
     if (this.currentFormStep === 8) {
-      if (this.validateStepInformations(true))
+      if (!this.validateStepInformations()) {
         await this.onSubmit();
-
+      }
       return;
     }
+  
 
     if (this.currentFormStep < 8) {
       const curElement = document.querySelector("#form-step-" + this.currentFormStep);
@@ -516,82 +570,69 @@ const page = {
 
   handleExtraRoom(extra, div) {
     if (div.classList.contains("active")) {
-      for (let room of this.extraRooms) {
-        if (typeof room.currentValue === "number") {
-          this.additionalFees -= room.currentValue;
-        } else {
-          this.additionalFees -= room.currentValue(this.formData.squareFootage, this.formData.frequency === "One Time" ? false : true);
-        }
-      }
-
+      this.extraRooms.forEach(room => {
+        const roomValue = typeof room.currentValue === "number" 
+          ? room.currentValue 
+          : room.currentValue(this.formData.squareFootage, this.formData.frequency !== "One Time");
+        this.additionalFees -= roomValue;
+      });
+  
       delete this.formData.additionalServices[extra.name];
       this.extraRooms = [];
-
       div.classList.remove("active");
-
       this.renderQuoteSummary();
-
       return;
     }
-
+  
     const ExtraRoomPopup = new Popup("Choose Extra Room", "Okay", `
-      <span class="title">Select a extra room</span>
-      <div class="d-flex f-column g-10" id="area-type-container">
-
-      </div>
+      <span class="title">Select extra rooms</span>
+      <div class="d-flex f-column g-10" id="area-type-container"></div>
     `);
-
+  
     const areaTypeContainer = ExtraRoomPopup.main.querySelector("#area-type-container");
-
-    const renderLabels = () => {
-      for (let areaType in extraRooms) {
-        const areaContainer = document.createElement("div");
-        areaContainer.innerHTML = `<span class="title">${areaType === "exterior" ? "Exterior" : "Interior"}</span>`
-        areaContainer.className = "d-flex f-column g-5";
-        for (let idx in extraRooms[areaType]) {
-          const room = extraRooms[areaType][idx];
-          const roomDiv = document.createElement("label");
-          roomDiv.className = "d-flex g-10 pointer";
-
-          roomDiv.innerHTML = `   
-            <input name="extra-room-checkbox" data-areaType='${areaType}' type="checkbox" id="${room.id}" value='${idx}' />
-            <label class="pointer" for="${room.id}">${room.name}</label>
-          `;
-
-          areaContainer.appendChild(roomDiv);
-        }
-        areaTypeContainer.appendChild(areaContainer);
+  
+    for (let areaType in extraRooms) {
+      const areaContainer = document.createElement("div");
+      areaContainer.innerHTML = `<span class="title">${areaType === "exterior" ? "Exterior" : "Interior"}</span>`;
+      areaContainer.className = "d-flex f-column g-5";
+  
+      for (let idx in extraRooms[areaType]) {
+        const room = extraRooms[areaType][idx];
+        const roomDiv = document.createElement("label");
+        roomDiv.className = "d-flex g-10 pointer";
+        roomDiv.innerHTML = `   
+          <input name="extra-room-checkbox" data-areaType='${areaType}' type="checkbox" id="${room.id}" value='${idx}' />
+          <label class="pointer" for="${room.id}">${room.name}</label>
+        `;
+        areaContainer.appendChild(roomDiv);
       }
+      areaTypeContainer.appendChild(areaContainer);
     }
-
+  
     ExtraRoomPopup.confirm(() => {
       const allCheckedExtraRoom = ExtraRoomPopup.main.querySelectorAll("input[name=extra-room-checkbox]:checked");
       if (allCheckedExtraRoom.length > 0) {
-        this.extraRooms = [];
-        allCheckedExtraRoom.forEach(roomNode => {
-          this.extraRooms.push(extraRooms[roomNode.dataset.areatype][roomNode.value]);
-        })
-
+        this.extraRooms = Array.from(allCheckedExtraRoom).map(roomNode => 
+          extraRooms[roomNode.dataset.areatype][roomNode.value]
+        );
+  
         this.formData.additionalServices[extra.name] = this.extraRooms;
-
-        for (let room of this.extraRooms) {
-          if (typeof room.currentValue === "number") {
-            this.additionalFees += room.currentValue;
-          } else {
-            this.additionalFees += room.currentValue(this.formData.squareFootage, this.formData.frequency === "One Time" ? false : true);
-          }
-        }
-
+  
+        this.extraRooms.forEach(room => {
+          const roomValue = typeof room.currentValue === "number" 
+            ? room.currentValue 
+            : room.currentValue(this.formData.squareFootage, this.formData.frequency !== "One Time");
+          this.additionalFees += roomValue;
+        });
+  
         div.classList.add("active");
-
         this.renderQuoteSummary();
       }
     });
-
-    renderLabels();
-
+  
     ExtraRoomPopup.show();
   },
+  
 
   handleSmallAppliances(extra, div) {
     if (div.classList.contains("active")) {
@@ -894,10 +935,10 @@ const page = {
 
   changeValueSquareFoot(e) {
     const select = document.getElementById("number-input-square");
-    if (e.target.value < 0 || e.target.value === "" || isNaN(e.target.value)) {
+    if (e.target.value === "") {
       select.value = 0;
     }
-    this.formData.squareFootage = Number(e.target.value);
+    this.formData.squareFootage = e.target.value;
     this.extraRoom = [];
     this.formData.additionalServices = [];
     this.getQuoteTotalValue();
@@ -935,17 +976,55 @@ const page = {
 
   async onSubmit() {
     try {
-      const response = await axios.post(
-        `${process.env.DATABASE_URL}/quote`,
-        this.formData
-      );
-
-      if (response.status === 200 || response.status === 201) {
-        toast.success("The quote was sent successfully.");
+      const addOns = Object.keys(this.formData.additionalServices)
+        .filter(key => key !== "Extra Room")
+        .map(key => key);
+  
+      const extraRooms = this.formData.additionalServices["Extra Room"] 
+        ? this.formData.additionalServices["Extra Room"].map(room => room.name) 
+        : [];
+  
+      const requestData = {
+        name: `${this.formData.firstName} ${this.formData.lastName}`,
+        email: this.formData.email,
+        phoneNumber: this.formData.phone,
+        addressLine1: this.formData.addressLine,
+        addressLine2: this.formData.addressLine2,
+        city: this.formData.city,
+        stateProvince: this.formData.state,
+        zipPostalCode: this.formData.zipCode,
+        isGift: this.formData.isGift,
+        heardAboutUs: this.formData.howHearAboutUs,
+        projectDetails: this.formData.projectDetails,
+        bedrooms: parseInt(this.formData.bedrooms),
+        bathrooms: parseFloat(this.formData.bathrooms),
+        squareFootage: this.formData.squareFootage,
+        serviceFrequency: this.formData.frequency,
+        serviceType: this.formData.service,
+        propertyStatus: this.formData.houseIs,
+        addOns: addOns,
+        extraRooms: extraRooms,
+        discountCoupon: document.querySelector("#discount-code").value,
+        totalPrice: this.totalValue
+      };
+  
+      const response = await fetch(`https://wwua7dlp7liv5ck4gy7lgbbwym0fmcvw.lambda-url.us-east-1.on.aws/email/request-quote`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData),
+      });
+  
+      if (response.ok) {
+        toast.success("The quote request was sent successfully.");
+      } else {
+        const errorData = await response.json();
+        toast.error(errorData.error || "Error sending quote request.");
       }
     } catch (error) {
-      toast.error(error?.response?.data?.error || "Error creating quote.");
-      console.error(error);
+      console.error('Error sending quote request:', error);
+      toast.error("An error occurred while sending the quote request.");
     }
   },
 
