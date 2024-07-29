@@ -3,6 +3,7 @@ import servicesData, { serviceDetails, extraRooms, frequencyPopupDetails } from 
 import Popup from "../class/Popup/Popup.js";
 import { quoteFormSchema } from "../constants/form-schema.js";
 import zipCodes from "../constants/zip-codes.js";
+import services from "../constants/services.js";
 
 const toast = new Toast(5000);
 
@@ -215,27 +216,39 @@ const page = {
   },
 
   async getUrlValues() {
-    const params = new URLSearchParams(document.location.search);
+    const params = new URLSearchParams(window.location.search);
     const name = params.get("name");
     const email = params.get("email");
     const phone = params.get("phoneNumber");
     const zipCode = params.get("zipCode");
 
-    document.querySelector("#first-name").value = name;
-    this.formData.firstName = name;
+    console.log(name, email, phone);
 
-    document.querySelector("#email").value = email;
-    this.formData.email = email;
+    if (!!name) {
+      const nameArray = name.split(" ");
+      document.querySelector("#first-name").value = nameArray[0];
+      this.formData.firstName = name[0];
+      
+      document.querySelector("#last-name").value = nameArray[1];
+      this.formData.lastName = name[1];
+    }
 
-    document.querySelector("#phone-number").value = phone;
-    this.formData.phone = phone;
+    if (!!email) {
+      document.querySelector("#email").value = email;
+      this.formData.email = email;
+    }
 
-    document.querySelector("#zipCode").value = zipCode;
-    this.formData.zipCode = zipCode;
+    if (!!phone) {
+      document.querySelector("#phone-number").value = phone;
+      this.formData.phone = phone;
+    }
+    if (!!zipCode) {
+      document.querySelector("#zipCode").value = zipCode;
+      this.formData.zipCode = zipCode;
+    }
 
     if (!!zipCode) {
       try {
-
         const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${zipCode}&key=AIzaSyDwHGD2GD27gaVCFupJl-IbjtlV6y6Ijho`);
         const json = await response.json();
         const mostSimiliar = json.results[0];
@@ -1112,6 +1125,10 @@ const page = {
 
     if (this.formData.frequency !== "-") {
       document.querySelector("#frequency").innerHTML = " - " + this.formData.frequency;
+    }
+
+    if (this.formData.frequency === "One Time" && this.formData.service !== "-") {
+      document.querySelector("#frequency").innerHTML = ` - ${this.formData.frequency}: ${services[this.formData.service].name}`;
     }
 
     const extras = this.formData.additionalServices;
