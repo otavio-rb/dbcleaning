@@ -1,6 +1,5 @@
 import zipCodes from "../constants/zip-codes.js";
 import Popup from "../class/Popup/Popup.js";
-import Toast from "../class/Toast/Toast.js";
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -115,9 +114,29 @@ document.querySelector(".right_bottom_header .btn-default").onclick = (e) =>
     verifyZipCode(e);
 
 const floatQuote = document.querySelector(".float_quote");
-if(floatQuote !== null){
+if (floatQuote !== null) {
     floatQuote.onclick = (e) => verifyZipCode(e);
 }
 
 const headerLogo = document.querySelector(".over_logo");
 headerLogo.onclick = () => window.location.href = "./index.html";
+
+const instantQuoteForm = document.querySelector(".form_contact form");
+const inputs = instantQuoteForm.querySelectorAll("input");
+inputs.forEach(input => input.required = true)
+
+instantQuoteForm.onsubmit = (e) => {
+    e.preventDefault();
+    const inputs = instantQuoteForm.querySelectorAll("input");
+
+    const name = inputs[0].value;
+    const email = inputs[1].value;
+    const phoneNumber = inputs[2].value;
+    const zipCode = inputs[3].value;
+
+    if (!zipCodes.includes(zipCode)) {
+        notCoveredPopup.show();
+    } else {
+        window.location.href = `./get-a-quote.html?name=${name}&email=${email}&phoneNumber=${phoneNumber}&zipCode=${zipCode}`;
+    }
+}

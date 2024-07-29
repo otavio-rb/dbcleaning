@@ -2,6 +2,7 @@ import Toast from "../class/Toast/Toast.js";
 import servicesData, { serviceDetails, extraRooms, frequencyPopupDetails } from "../constants/services.js";
 import Popup from "../class/Popup/Popup.js";
 import { quoteFormSchema } from "../constants/form-schema.js";
+import zipCodes from "../constants/zip-codes.js";
 
 const toast = new Toast(5000);
 
@@ -22,6 +23,9 @@ const limitPopup = new Popup("On-Site Visit Required", "Schedule a Free Visit",
             placeholder=""
             required
           />
+          <div class="form_error">
+            Name is required
+          </div>
       </div>
       <div class="form_group_field_33 w-100">
         <label for="email">Email*</label>
@@ -33,17 +37,23 @@ const limitPopup = new Popup("On-Site Visit Required", "Schedule a Free Visit",
             placeholder=""
             required
           />
+          <div class="form_error">
+            Email is required
+          </div>
       </div>
       <div class="form_group_field_33 w-100">
         <label for="phone">Phone*</label>
           <input
-            type="tel"
+            type="phone"
             data-key="phone"
             id="phone"
             class="field"
             placeholder=""
             required
           />
+          <div class="form_error">
+            Phone is required
+          </div>
       </div>
       <div class="form_group_field_33 w-100">
         <label for="address">Service address*</label>
@@ -55,12 +65,14 @@ const limitPopup = new Popup("On-Site Visit Required", "Schedule a Free Visit",
             placeholder=""
             required
           />
+          <div class="form_error">
+            Address required
+          </div>
       </div>
       <div class="form_group_field_33 w-100 col-span-2">
         <label for="preferredTimes">Preferred Scheduling Times (optional)</label>
           <input
             type="text"
-            data-key="preferredTimes"
             id="preferredTimes"
             class="field"
             placeholder="e.g Weekdays after 3 PM"
@@ -73,7 +85,7 @@ const page = {
   formData: {
     bedrooms: 0,
     bathrooms: 0,
-    squareFootage: "",
+    squareFootage: "1",
     basement: false,
     propertyType: "-",
     service: "-",
@@ -102,7 +114,7 @@ const page = {
   init() {
     this.form = document.querySelector("#quote-form");
     this.form.addEventListener("submit", (e) => this.onSubmit(e));
-    
+
     this.additionalFees = 0;
     this.totalValue = 0;
     this.extraRooms = [];
@@ -133,11 +145,13 @@ const page = {
 
     limitPopup.setConfirmCallback(async () => {
       try {
-          await page.scheduleVisit();
+        page.validateStepInformations(limitPopup.main);
+
+        await page.scheduleVisit();
       } catch (error) {
-          console.error('Error scheduling visit:', error);
+        console.error('Error scheduling visit:', error);
       }
-  });
+    });
 
     const center = { lat: 50.064192, lng: -130.605469 };
     // Create a bounding box with sides ~10km away from the center point
@@ -154,50 +168,53 @@ const page = {
     this.frequencyCardFunc();
     this.fieldObserver();
   },
+
   async scheduleVisit() {
     const form = document.getElementById('schedule-visit-form');
-    
+
     if (!form) {
-        console.error('Form not found');
-        return;
+      console.error('Form not found');
+      return;
     }
 
     const data = {};
     form.querySelectorAll('[data-key]').forEach(element => {
-        const key = element.getAttribute('data-key');
-        data[key] = element.value;
+      const key = element.getAttribute('data-key');
+      data[key] = element.value;
     });
 
     if (Object.keys(data).length === 0) {
-        console.error('No form data collected');
-        toast.error('Please fill out the form before submitting');
-        return;
+      console.error('No form data collected');
+      toast.error('Please fill out the form before submitting');
+      return;
     }
 
     const response = await fetch(`https://wwua7dlp7liv5ck4gy7lgbbwym0fmcvw.lambda-url.us-east-1.on.aws/email/schedule-visit`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
     });
 
     const result = await response.json();
 
     if (response.ok) {
-        toast.success('Visit request made successfully');
-        limitPopup.hide();
-        return true;
+      toast.success('Visit request made successfully');
+      limitPopup.hide();
+      window.location.href = "./index.html?redirect=true";
+      return true;
     } else {
-        if (result.errors && Array.isArray(result.errors) && result.errors.length > 0) {
-            toast.error(result.errors[0].msg);
-        } else {
-            toast.error(result.error || 'Failed to schedule visit');
-        }
-        throw new Error('Failed to schedule visit');
+      if (result.errors && Array.isArray(result.errors) && result.errors.length > 0) {
+        toast.error(result.errors[0].msg);
+      } else {
+        toast.error(result.error || 'Failed to schedule visit');
+      }
+      throw new Error('Failed to schedule visit');
     }
   },
-  getUrlValues() {
+
+  async getUrlValues() {
     const params = new URLSearchParams(document.location.search);
     const name = params.get("name");
     const email = params.get("email");
@@ -215,6 +232,36 @@ const page = {
 
     document.querySelector("#zipCode").value = zipCode;
     this.formData.zipCode = zipCode;
+
+    if (!!zipCode) {
+      try {
+
+        const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${zipCode}&key=AIzaSyDwHGD2GD27gaVCFupJl-IbjtlV6y6Ijho`);
+        const json = await response.json();
+        const mostSimiliar = json.results[0];
+        console.log(mostSimiliar)
+        for (const component of mostSimiliar.address_components) {
+          const componentType = component.types[0];
+          switch (componentType) {
+            case "locality":
+              (document.querySelector("#city")).value =
+                component.long_name;
+              this.formData.city = component.long_name;
+              break;
+
+            case "administrative_area_level_1": {
+              (document.querySelector("#state")).value =
+                component.long_name;
+              this.formData.state = component.long_name;
+              break;
+            }
+          }
+        }
+
+      } catch (error) {
+        console.error("Error on google geocoder request:", error);
+      }
+    }
   },
 
   googleAutocompletePlaces() {
@@ -317,15 +364,19 @@ const page = {
     return false;
   },
 
-  validateStepInformations() {
-    let currentStep; 
+  validateStepInformations(container) {
+    let currentStep;
     let allStepFields;
     const formErrors = [];
-    if (this.currentFormStep == 8) {
-      allStepFields = document.querySelectorAll(".field");
+    if (container) {
+      allStepFields = container.querySelectorAll(".field");
     } else {
-      currentStep = document.querySelector("#form-step-" + this.currentFormStep);
-      allStepFields =  currentStep.querySelectorAll(".field")
+      if (this.currentFormStep == 8) {
+        allStepFields = document.querySelectorAll(".field");
+      } else {
+        currentStep = document.querySelector("#form-step-" + this.currentFormStep);
+        allStepFields = currentStep.querySelectorAll(".field")
+      }
     }
 
     allStepFields.forEach(field => {
@@ -350,7 +401,7 @@ const page = {
       }
       return;
     }
-  
+
 
     if (this.currentFormStep < 8) {
       const curElement = document.querySelector("#form-step-" + this.currentFormStep);
@@ -368,7 +419,6 @@ const page = {
           this.renderExtras();
         }
       }
-
       this.onStepChange(curElement, nextElement);
     };
   },
@@ -410,13 +460,16 @@ const page = {
   onStepChange(curElement, nextElement, action) {
     curElement.classList.add("out");
 
-    setTimeout(() => {
-      curElement.style.display = "none";
-      curElement.classList.remove("out");
 
-      nextElement.style.display = "block";
-      nextElement.classList.add("in");
-    }, 489);
+    if (this.currentFormStep < 8) {
+      setTimeout(() => {
+        curElement.style.display = "none";
+        curElement.classList.remove("out");
+
+        nextElement.style.display = "block";
+        nextElement.classList.add("in");
+      }, 489);
+    }
 
     if (this.currentFormStep >= 1) {
       this.previousStepButton.style.display = "block";
@@ -428,11 +481,12 @@ const page = {
     document.querySelector("#final-step-cta").style.display = "none";
     if (this.currentFormStep === 8) {
       document.querySelector("#final-step-cta").style.display = "block";
-      document.querySelector("#form-buttons").style.position = "sticky";
       this.nextStepButton.innerHTML = "Submit";
 
       for (let i = 1; i <= 7; i++) {
+        console.log(i)
         document.querySelector("#form-step-" + i).style.display = "block";
+        console.log(document.querySelector("#form-step-" + i))
 
         if (this.formData.frequency !== "One Time") {
           document.querySelector("#form-step-3").style.display = "none";
@@ -573,31 +627,31 @@ const page = {
 
     if (div.classList.contains("active")) {
       this.extraRooms.forEach(room => {
-        const roomValue = typeof room.currentValue === "number" 
-          ? room.currentValue 
+        const roomValue = typeof room.currentValue === "number"
+          ? room.currentValue
           : room.currentValue(sqft);
         this.additionalFees -= roomValue;
       });
-  
+
       delete this.formData.additionalServices[extra.name];
       this.extraRooms = [];
       div.classList.remove("active");
       this.renderQuoteSummary();
       return;
     }
-  
+
     const ExtraRoomPopup = new Popup("Choose Extra Room", "Okay", `
       <span class="title">Select extra rooms</span>
       <div class="d-flex f-column g-10" id="area-type-container"></div>
     `);
-  
+
     const areaTypeContainer = ExtraRoomPopup.main.querySelector("#area-type-container");
-  
+
     for (let areaType in extraRooms) {
       const areaContainer = document.createElement("div");
       areaContainer.innerHTML = `<span class="title">${areaType === "exterior" ? "Exterior" : "Interior"}</span>`;
       areaContainer.className = "d-flex f-column g-5";
-  
+
       for (let idx in extraRooms[areaType]) {
         const room = extraRooms[areaType][idx];
         const roomDiv = document.createElement("label");
@@ -610,32 +664,32 @@ const page = {
       }
       areaTypeContainer.appendChild(areaContainer);
     }
-  
+
     ExtraRoomPopup.confirm(() => {
       const sqft = this.formData.squareFootage === 'Up to 1000' ? 1000 : this.formData.squareFootage === '6001+' ? 6001 : this.formData.squareFootage.split("-").map(n => Number(n.trim()))[1];
       const allCheckedExtraRoom = ExtraRoomPopup.main.querySelectorAll("input[name=extra-room-checkbox]:checked");
       if (allCheckedExtraRoom.length > 0) {
-        this.extraRooms = Array.from(allCheckedExtraRoom).map(roomNode => 
+        this.extraRooms = Array.from(allCheckedExtraRoom).map(roomNode =>
           extraRooms[roomNode.dataset.areatype][roomNode.value]
         );
-  
+
         this.formData.additionalServices[extra.name] = this.extraRooms;
-  
+
         this.extraRooms.forEach(room => {
-          const roomValue = typeof room.currentValue === "number" 
-            ? room.currentValue 
+          const roomValue = typeof room.currentValue === "number"
+            ? room.currentValue
             : room.currentValue(sqft);
           this.additionalFees += roomValue;
         });
-  
+
         div.classList.add("active");
         this.renderQuoteSummary();
       }
     });
-  
+
     ExtraRoomPopup.show();
   },
-  
+
 
   handleSmallAppliances(extra, div) {
     if (div.classList.contains("active")) {
@@ -890,6 +944,9 @@ const page = {
       this.totalValue = 0;
     }
 
+    this.recurringValue = totalRecurringValue;
+    this.initialDeepCleaning = initialDeepCleaning;
+
     const fakePrice = document.querySelector("#fake-price");
     const servicePrice = document.querySelector("#service-price");
     const totalValueText = document.querySelector("#total-value");
@@ -918,9 +975,7 @@ const page = {
 
   changeValue(delta, input, max, key) {
     let currentValue = Number(input.value);
-    console.log(input.value)
     let newValue = currentValue + delta;
-    console.log(currentValue, delta)
     if (newValue <= max) {
       if (newValue < 0) {
         input.value = 0;
@@ -935,6 +990,9 @@ const page = {
       this.renderQuoteSummary();
     } else if (key == "bathrooms" || key == "bedrooms") {
       limitPopup.show();
+      limitPopup.main.querySelectorAll("input").forEach(input => {
+        input.onchange = () => this.validateStepInformations(limitPopup.main);
+      })
     }
   },
 
@@ -984,11 +1042,11 @@ const page = {
       const addOns = Object.keys(this.formData.additionalServices)
         .filter(key => key !== "Extra Room")
         .map(key => key);
-  
-      const extraRooms = this.formData.additionalServices["Extra Room"] 
-        ? this.formData.additionalServices["Extra Room"].map(room => room.name) 
+
+      const extraRooms = this.formData.additionalServices["Extra Room"]
+        ? this.formData.additionalServices["Extra Room"].map(room => room.name)
         : [];
-  
+
       const requestData = {
         name: `${this.formData.firstName} ${this.formData.lastName}`,
         email: this.formData.email,
@@ -1010,9 +1068,11 @@ const page = {
         addOns: addOns,
         extraRooms: extraRooms,
         discountCoupon: document.querySelector("#discount-code").value,
-        totalPrice: this.totalValue
+        totalPrice: this.totalValue,
+        recurringValue: this.recurringValue,
+        initialDeepCleaning: this.initialDeepCleaning,
       };
-  
+
       const response = await fetch(`https://wwua7dlp7liv5ck4gy7lgbbwym0fmcvw.lambda-url.us-east-1.on.aws/email/request-quote`, {
         method: 'POST',
         headers: {
@@ -1020,9 +1080,10 @@ const page = {
         },
         body: JSON.stringify(requestData),
       });
-  
+
       if (response.ok) {
         toast.success("The quote request was sent successfully.");
+        window.location.href = "./index.html";
       } else {
         const errorData = await response.json();
         const firstError = errorData.errors && errorData.errors.length > 0 ? errorData.errors[0].msg : "Error sending quote request.";

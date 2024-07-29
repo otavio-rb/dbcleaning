@@ -39,7 +39,8 @@ export default class Popup {
         this.confirmButton = document.createElement("button");
         this.confirmButton.className = "btn-default btn-blue btn-hover btn-blue-hover";
         this.confirmButton.innerHTML = this.buttonTitle;
-    
+        this.confirmButton.onclick = () => this.hide();
+
         this._header.appendChild(closeButton);
         this._footer.appendChild(this.confirmButton);
         this.popupDiv.appendChild(this._header);
@@ -72,18 +73,30 @@ export default class Popup {
     }
 
     setConfirmCallback(callback) {
+        const loader = document.createElement('img');
+        loader.src = "assets/img/loader.svg";
+
         this.confirmButton.onclick = async (e) => {
             e.preventDefault();
             e.stopPropagation();
             try {
+                this.confirmButton.appendChild(loader);
+                this.confirmButton.disabled = true;
+                this.confirmButton.style.opacity = 0.6;
+
                 await callback();
                 //this.hide();
             } catch (error) {
+
                 console.error('Error in confirm callback:', error);
             }
+            
+            this.confirmButton.removeChild(loader);
+            this.confirmButton.disabled = false;
+            this.confirmButton.style.opacity = 1;
         };
     }
-    
+
     hide() {
         document.body.removeChild(this._overlay);
     }

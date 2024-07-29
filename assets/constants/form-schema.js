@@ -1,3 +1,5 @@
+import zipCodes from "./zip-codes.js";
+
 export const quoteFormSchema = {
     firstName(value, inputContainer) {
         if (value.length == 0) {
@@ -13,6 +15,19 @@ export const quoteFormSchema = {
     },
 
     lastName(value, inputContainer) {
+        if (value.length == 0) {
+            inputContainer.classList.add("error");
+            inputContainer.querySelector("input").classList.add("error");
+            return true;
+        } else {
+            inputContainer.classList.remove("error");
+            inputContainer.querySelector("input").classList.remove("error");
+        }
+
+        return false;
+    },
+
+    name(value, inputContainer) {
         if (value.length == 0) {
             inputContainer.classList.add("error");
             inputContainer.querySelector("input").classList.add("error");
@@ -66,9 +81,12 @@ export const quoteFormSchema = {
     },
 
     zipCode(value, inputContainer) {
-        if (value.length == 0) {
+        if (value.length == 0 || !zipCodes.includes(value)) {
             inputContainer.classList.add("error");
             inputContainer.querySelector("input").classList.add("error");
+            if(!zipCodes.includes(value)){
+                inputContainer.querySelector(".form_error").innerHTML = "We are sorry! We don't have support to this location."
+            }
             return true;
         } else {
             inputContainer.classList.remove("error");
