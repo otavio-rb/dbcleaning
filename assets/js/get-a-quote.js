@@ -239,7 +239,6 @@ const page = {
         const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${zipCode}&key=AIzaSyDwHGD2GD27gaVCFupJl-IbjtlV6y6Ijho`);
         const json = await response.json();
         const mostSimiliar = json.results[0];
-        console.log(mostSimiliar)
         for (const component of mostSimiliar.address_components) {
           const componentType = component.types[0];
           switch (componentType) {
@@ -484,9 +483,7 @@ const page = {
       this.nextStepButton.innerHTML = "Submit";
 
       for (let i = 1; i <= 7; i++) {
-        console.log(i)
         document.querySelector("#form-step-" + i).style.display = "block";
-        console.log(document.querySelector("#form-step-" + i))
 
         if (this.formData.frequency !== "One Time") {
           document.querySelector("#form-step-3").style.display = "none";
@@ -917,7 +914,6 @@ const page = {
     } else {
       totalValue += initialDeepCleaningValue;
     }
-    console.log(multiplierValue, otcValue)
     return {
       totalValue,
       totalRecurringValue,
@@ -1070,7 +1066,6 @@ const page = {
         discountCoupon: document.querySelector("#discount-code").value,
         totalPrice: this.totalValue,
         recurringValue: this.recurringValue,
-        initialDeepCleaning: this.initialDeepCleaning,
       };
 
       const response = await fetch(`https://wwua7dlp7liv5ck4gy7lgbbwym0fmcvw.lambda-url.us-east-1.on.aws/email/request-quote`, {
@@ -1083,7 +1078,7 @@ const page = {
 
       if (response.ok) {
         toast.success("The quote request was sent successfully.");
-        window.location.href = "./index.html";
+        window.location.href = "./index.html?redirect=true";
       } else {
         const errorData = await response.json();
         const firstError = errorData.errors && errorData.errors.length > 0 ? errorData.errors[0].msg : "Error sending quote request.";

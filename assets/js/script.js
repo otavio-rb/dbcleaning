@@ -42,54 +42,54 @@ document.addEventListener('DOMContentLoaded', () => {
 $(document).ready(function () {
 
     $('.carousel_testimonials').owlCarousel({
-      loop:true,
-      margin:20,
-      nav:true,
-      dots: true,
-      responsive:{
-          0:{
-              items:1,
-              nav: false
-          },
-          600:{
-              items:2
-          },
-          1000:{
-              items:3
-          }
-      }
-  });
+        loop: true,
+        margin: 20,
+        nav: true,
+        dots: true,
+        responsive: {
+            0: {
+                items: 1,
+                nav: false
+            },
+            600: {
+                items: 2
+            },
+            1000: {
+                items: 3
+            }
+        }
+    });
 
-  //service pages ==========================================
-  const all_itens = document.querySelectorAll('.all_itens .big_card');
-  const switch_default = document.querySelectorAll('.switch_default button');
+    //service pages ==========================================
+    const all_itens = document.querySelectorAll('.all_itens .big_card');
+    const switch_default = document.querySelectorAll('.switch_default button');
 
-  if(all_itens && switch_default){
-    switch_default.forEach((item, index) => {
+    if (all_itens && switch_default) {
+        switch_default.forEach((item, index) => {
 
-        item.addEventListener('click', () => {
+            item.addEventListener('click', () => {
 
-            all_itens.forEach((item2, index2) => {
-                let item_atual = item.getAttribute('data-item');
-                item2.classList.add('d-none');
+                all_itens.forEach((item2, index2) => {
+                    let item_atual = item.getAttribute('data-item');
+                    item2.classList.add('d-none');
 
 
-                console.log('item atual: '+item_atual)
-                if(item2.getAttribute('data-item') == item_atual){
-                    item2.classList.remove('d-none');
-                }
+                    console.log('item atual: ' + item_atual)
+                    if (item2.getAttribute('data-item') == item_atual) {
+                        item2.classList.remove('d-none');
+                    }
+                });
+
+                switch_default.forEach((item3) => {
+                    item3.classList.remove('active')
+                })
+
+                switch_default[index].classList.add('active')
+
             });
 
-            switch_default.forEach((item3) => {
-                item3.classList.remove('active')
-            })
-
-            switch_default[index].classList.add('active')
-
         });
-
-    });
-  }
+    }
 
 });
 
@@ -172,11 +172,12 @@ instantQuoteForm.onsubmit = (e) => {
     } else {
         window.location.href = `./get-a-quote.html?name=${name}&email=${email}&phoneNumber=${phoneNumber}&zipCode=${zipCode}`;
     }
-  
+}
+
 const loop_carroussel = document.querySelectorAll('.loop_carroussel img');
 const palco_image = document.querySelector('.principal_carroussel_item_portfolio img');
 
-if(palco_image){
+if (palco_image) {
     loop_carroussel.forEach((item, index) => {
 
         item.addEventListener('click', () => {

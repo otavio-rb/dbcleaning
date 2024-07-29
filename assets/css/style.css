@@ -33,6 +33,9 @@
     --color-dark: #111928;
     --color-white: #ffffff;
     --color-black: #000000;
+
+    --color-error: crimson;
+    --bg-error: rgba(220, 20, 60, 0.2)
 }
 
 
