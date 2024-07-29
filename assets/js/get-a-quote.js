@@ -1034,7 +1034,14 @@ const page = {
   },
 
   async onSubmit() {
+    const loader = document.createElement('img');
+    loader.src = "assets/img/loader.svg";
     try {
+
+      this.nextStepButton.appendChild(loader);
+      this.nextStepButton.disabled = true;
+      this.nextStepButton.style.opacity = 0.6;
+
       const addOns = Object.keys(this.formData.additionalServices)
         .filter(key => key !== "Extra Room")
         .map(key => key);
@@ -1088,6 +1095,10 @@ const page = {
       console.error('Error sending quote request:', error);
       toast.error("An error occurred while sending the quote request.");
     }
+
+    this.nextStepButton.removeChild(loader);
+    this.nextStepButton.disabled = false;
+    this.nextStepButton.style.opacity = 1;
   },
 
   renderQuoteSummary() {
