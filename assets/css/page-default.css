@@ -199,6 +199,9 @@
     border-radius: 50%;
     background-color: var(--color-azul-destaque)!important;
 }
+.carroussel_services .owl-nav button span{
+    color: var(--color-white);
+}
 .carroussel_services .owl-nav button.owl-next{
     left: unset;
     right: -20px;

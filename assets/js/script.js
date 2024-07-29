@@ -41,11 +41,12 @@ $(document).ready(function(){
     $('.carousel_testimonials').owlCarousel({
       loop:true,
       margin:20,
-      nav:false,
+      nav:true,
       dots: true,
       responsive:{
           0:{
-              items:1
+              items:1,
+              nav: false
           },
           600:{
               items:2
@@ -98,8 +99,24 @@ submenu_footer_li.forEach((item, index) => {
     item.addEventListener('click', (e) => {
 
         e.preventDefault();
-        submenu_footer_ul[index].classList.toggle('open_submenu')
+        item.querySelector('.arrow-down').classList.toggle('rotate-180')
+        submenu_footer_ul[index].classList.toggle('open_submenu');
 
     });
 
 });
+
+const loop_carroussel = document.querySelectorAll('.loop_carroussel img');
+const palco_image = document.querySelector('.principal_carroussel_item_portfolio img');
+
+if(palco_image){
+    loop_carroussel.forEach((item, index) => {
+
+        item.addEventListener('click', () => {
+            let img = item.getAttribute('src');
+
+            palco_image.setAttribute('src', img);
+        })
+
+    })
+}
