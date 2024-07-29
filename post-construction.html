@@ -150,7 +150,7 @@
 
     <main>
 
-        <section class="head_page" style="background-image: url(./assets/img/pages/head-move.jpg);">
+        <section class="head_page" style="background-image: url(./assets/img/pages/head-post.jpg);">
             <div class="container content_head_page">
                 <h2>Move In/Out</h2>
                 <p><a href="">Home</a> <img src="assets/img/duble-arrow.png" alt=""> <a href="">Services</a> <img src="assets/img/duble-arrow.png" alt=""> Move In/Out</p>
@@ -320,31 +320,57 @@
                         </div>
 
                         <div class="switch_default">
-                            <button class="active">Stage 1</button>
-                            <button>Stage 2</button>
+                            <button class="active" data-item="stage1">Stage 1</button>
+                            <button data-item="stage2">Stage 2</button>
                         </div>
 
-                        <div class="big_card bord-0-9">
-                            <h3>Rough Cleaning</h3>
+                        <div class="all_itens">
 
-                            <div class="d-flex">
-                                <div class="f-50">
-                                    <ul class="list-default">
-                                        <li>Full house clean: all items, all areas</li>
-                                        <li>Full detailed clean</li>
-                                        <li>Heavy broom cleaning and wipe down floors, vacuum trim throughout</li>
-                                        <li>Clean mechanical rooms, basements, egress wells, garages, rear fenced in yards and balconies or roof decks where applicable</li>
-                                    </ul>
+                            <div class="big_card bord-0-9" data-item="stage1">
+                                <h3>Rough Cleaning</h3>
+    
+                                <div class="d-flex">
+                                    <div class="f-50">
+                                        <ul class="list-default">
+                                            <li>Full house clean: all items, all areas</li>
+                                            <li>Full detailed clean</li>
+                                            <li>Heavy broom cleaning and wipe down floors, vacuum trim throughout</li>
+                                            <li>Clean mechanical rooms, basements, egress wells, garages, rear fenced in yards and balconies or roof decks where applicable</li>
+                                        </ul>
+                                    </div>
+                                    <div class="f-50">
+                                        <ul class="list-default">
+                                            <li>Maintain staging space at first floor materials</li>
+                                            <li>Removal of small debris and trash; to be disposed of off site</li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="f-50">
-                                    <ul class="list-default">
-                                        <li>Maintain staging space at first floor materials</li>
-                                        <li>Removal of small debris and trash; to be disposed of off site</li>
-                                    </ul>
-                                </div>
+    
                             </div>
 
-                            <img src="assets/img/pages/hand-cleaning.png" alt="">
+                            <div class="big_card bord-0-9 d-none" data-item="stage2">
+                                <h3>Final Cleaning</h3>
+    
+                                <div class="d-flex">
+                                    <div class="f-50">
+                                        <ul class="list-default">
+                                            <li>Full detailed clean: all dirt, dust, and debris removed</li>
+                                            <li>Home to be cleaned for move in ready condition. No dust, dirt or any construction debris to remain</li>
+                                            <li>All trim and casing to be wiped down</li>
+                                            <li>Heavy broom cleaning and wipe down floors, vacuum trim throughout</li>
+                                        </ul>
+                                    </div>
+                                    <div class="f-50">
+                                        <ul class="list-default">
+                                            <li>Clean mechanical rooms, basements, egress wells, garages, rear fenced in yards and balconies or roof decks where applicable</li>
+                                            <li>Maintain staging space at first floor for materials</li>
+                                            <li>Removal of small debris and trash - to be disposed of off side</li>
+                                        </ul>
+                                    </div>
+                                </div>
+    
+                            </div>
+
                         </div>
 
                     </div>
@@ -354,13 +380,9 @@
                             <h2 class="title-default special-title">Portfolio</h2>
                         </div>
 
-                        <div class="item_portfolio">
-                            <img src="assets/img/pages/move1.png" alt="">
-                        </div>
-
                         <div class="carroussel_item_portfolio">
                             <div class="principal_carroussel_item_portfolio">
-                                <img src="assets/img/pages/action.jpg" alt="">
+                                <img src="assets/img/pages/move1.png" alt="">
                             </div>
                             
                             <div class="loop_carroussel owl-carousel">
@@ -370,7 +392,7 @@
                                 <img src="assets/img/pages/move4.png" alt="">
                             </div>
                             <div class="d-flex justify-center">
-                                <a href="" class="btn-default btn-blue btn-hover btn-blue-hover">Check Our Portfolio</a>
+                                <a href="portfolio.html" class="btn-default btn-blue btn-hover btn-blue-hover">Check Our Portfolio</a>
                             </div>
                         </div>
                     </div>
@@ -382,43 +404,35 @@
 
                         <div class="carroussel_services owl-carousel">
                             <article class="card_hori">
-                                <div class="img_card_hori">
-                                    <div class="over_img_card_hori">
-                                        <img src="assets/img/icon/unblocker.png" alt="">
+                                <a href="deep-cleaning.html">
+                                    <div class="img_card_hori">
+                                        <div class="over_img_card_hori">
+                                            <img src="assets/img/icon/window.png" alt="">
+                                        </div>
                                     </div>
-                                </div>
-    
-                                <div class="info_card_hori">
-                                    <h4>Regular Cleaning</h4>
-    
-                                    <p>Start with a Initial deep cleaning to set our cleaning quality standard, followed by regular cleaning maintenance.</p>
-                                </div>
+        
+                                    <div class="info_card_hori">
+                                        <h4>Deep Cleaning</h4>
+        
+                                        <p>Top to bottom detailed cleaning that reaches every nook, including inside fridge, oven and windows for a home that shines anew.</p>
+                                    </div>
+                                </a>
+                               
                             </article>
                             <article class="card_hori">
-                                <div class="img_card_hori">
-                                    <div class="over_img_card_hori">
-                                        <img src="assets/img/icon/pot-clean.png" alt="">
+                                <a href="regular-cleaning.html">
+                                    <div class="img_card_hori">
+                                        <div class="over_img_card_hori">
+                                            <img src="assets/img/icon/unblocker.png" alt="">
+                                        </div>
                                     </div>
-                                </div>
-    
-                                <div class="info_card_hori">
-                                    <h4>Office & Commercial Cleaning</h4>
-    
-                                    <p>Detailed dusting, organization, and spotless floors to keep your workspace pristine and welcoming.</p>
-                                </div>
-                            </article>
-                            <article class="card_hori">
-                                <div class="img_card_hori">
-                                    <div class="over_img_card_hori">
-                                        <img src="assets/img/icon/unblocker.png" alt="">
+        
+                                    <div class="info_card_hori">
+                                        <h4>Regular Cleaning</h4>
+        
+                                        <p>Start with a Initial deep cleaning to set our cleaning quality standard, followed by regular cleaning maintenance.</p>
                                     </div>
-                                </div>
-    
-                                <div class="info_card_hori">
-                                    <h4>Regular Cleaning</h4>
-    
-                                    <p>Start with a Initial deep cleaning to set our cleaning quality standard, followed by regular cleaning maintenance.</p>
-                                </div>
+                                </a>
                             </article>
                         </div>
                     </div>
@@ -436,7 +450,7 @@
     <!-- ============================================================== footer ============================================================ -->
     <section>
         <div class="slider">
-            <div class="slide-track">
+            <div class="slide-track" id="first_marquee">
                 
                 <img src="assets/img/logo/schw.png" alt="" />
                 <img src="assets/img/logo/city-of-phila.png" alt="" />
@@ -518,37 +532,21 @@
         </div>
 
         <div class="slider">
-            <div class="slide-track slide-track2">
 
-                <img src="assets/img/logo/proud.png" alt="">
-                <img src="assets/img/logo/core.png" alt="">
-                <img src="assets/img/logo/arcsi.png" alt="">
-                <img src="assets/img/logo/issa.png" alt="">
-                <img src="assets/img/logo/top-rated.png" alt="">
-                <img src="assets/img/logo/expertise.png" alt="">
-                <img src="assets/img/logo/top-cleaner.png" alt="">
-                <img src="assets/img/logo/chamber.png" alt="">
-                <img src="assets/img/logo/super-service.png" alt="">
 
-                <img src="assets/img/logo/proud.png" alt="">
-                <img src="assets/img/logo/core.png" alt="">
-                <img src="assets/img/logo/arcsi.png" alt="">
-                <img src="assets/img/logo/issa.png" alt="">
-                <img src="assets/img/logo/top-rated.png" alt="">
-                <img src="assets/img/logo/expertise.png" alt="">
-                <img src="assets/img/logo/top-cleaner.png" alt="">
-                <img src="assets/img/logo/chamber.png" alt="">
-                <img src="assets/img/logo/super-service.png" alt="">
+            <div class="static_logo">
 
-                <img src="assets/img/logo/proud.png" alt="">
-                <img src="assets/img/logo/core.png" alt="">
-                <img src="assets/img/logo/arcsi.png" alt="">
-                <img src="assets/img/logo/issa.png" alt="">
-                <img src="assets/img/logo/top-rated.png" alt="">
-                <img src="assets/img/logo/expertise.png" alt="">
-                <img src="assets/img/logo/top-cleaner.png" alt="">
-                <img src="assets/img/logo/chamber.png" alt="">
-                <img src="assets/img/logo/super-service.png" alt="">
+                <div class="list_static_logo">
+                    <img src="assets/img/logo/proud.png" alt="">
+                    <img src="assets/img/logo/core.png" alt="">
+                    <img src="assets/img/logo/arcsi.png" alt="">
+                    <img src="assets/img/logo/issa.png" alt="">
+                    <img src="assets/img/logo/top-rated.png" alt="">
+                    <img src="assets/img/logo/expertise.png" alt="">
+                    <img src="assets/img/logo/top-cleaner.png" alt="">
+                    <img src="assets/img/logo/chamber.png" alt="">
+                    <img src="assets/img/logo/super-service.png" alt="">
+                </div>
 
             </div>
         </div>
@@ -561,10 +559,10 @@
 
                 <ul>
                     <li class="has-children">
-                        <a href="">About Us</a>
+                        <a href="about-us.html">About Us</a>
                         <ul class="submenu">
                             <li class="min-has-children">
-                                <a href="">Services</a>
+                                <a href=""><span class="text-menu-item-has-children">Services</span> <span class="arrow-down"></span></a>
                                 <ul class="min-submenu">
                                     <li><a href="deep-cleaning.html">Deep Cleaning</a></li>
                                     <li><a href="regular-cleaning.html">Regular Cleaning</a></li>
@@ -576,10 +574,10 @@
                             </li>
                         </ul>
                     </li>
-                    <li><a href="">Blog</a></li>
-                    <li><a href="">Portfolio</a></li>
-                    <li><a href="">Help Center</a></li>
-                    <li><a href="">Terms and Conditions</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="help-center.html">Help Center</a></li>
+                    <li><a href="terms.html">Terms and Conditions</a></li>
                 </ul>
             </div>
 
@@ -614,15 +612,17 @@
             </div>
 
             <div class="col_footer">
-                <h4></h4>
-
-                <ul>
-                    <li><span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=QihdGPbOJ14O9Frrk0YXvgw5KnAIgtxk9EDvgFKzQyKZS2OS018cBMJSbkAJ"></script></span></li>
-                    <li><a href="#" onclick="window.open('https://www.sitelock.com/verify.php?site=mydbcleaning.com','SiteLock','width=600,height=600,left=160,top=170');" ><img class="img-fluid" alt="SiteLock" title="SiteLock" src="https://shield.sitelock.com/shield/mydbcleaning.com" /></a></li>
-                    <li>
+                <div class="d-flex securty_footer">
+                    <div class="s_70">
+                        <span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=QihdGPbOJ14O9Frrk0YXvgw5KnAIgtxk9EDvgFKzQyKZS2OS018cBMJSbkAJ"></script></span>
+                    </div>
+                    <div class="s_30">
+                        <a href="#" onclick="window.open('https://www.sitelock.com/verify.php?site=mydbcleaning.com','SiteLock','width=600,height=600,left=160,top=170');" ><img class="img-fluid" alt="SiteLock" title="SiteLock" src="https://shield.sitelock.com/shield/mydbcleaning.com" /></a>
+                    </div>
+                    <div class="s_100">
                         <img src="assets/img/sq.png" alt="">
-                    </li>
-                </ul>
+                    </div>
+                </div>
             </div>
             
         </div>
