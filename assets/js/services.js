@@ -49,8 +49,6 @@ const initMap = async () => {
         center: { lat: 39.952583, lng: -75.165222 },
         zoom: 10,
         zoomControl: false,
-        minZoom: 10,
-        maxZoom: 14,
         mapId: "31e547c798d4d6aa",
     });
 
@@ -65,7 +63,7 @@ const placeMarkers = async (map) => {
     for (const state in json) {
         const currentState = json[state];
         for (const city of currentState) {
-            if (!alreadyPlaced.includes(city.primary_city)) {
+            if (!alreadyPlaced.includes(city.county)) {
                 const { AdvancedMarkerElement } = await google.maps.importLibrary("marker")
                 const marker = new AdvancedMarkerElement({
                     map: map,
@@ -75,7 +73,7 @@ const placeMarkers = async (map) => {
                     },
                     title: city.couty,
                 });
-                alreadyPlaced.push(city.primary_city);
+                alreadyPlaced.push(city.county);
             }
         }
     }
