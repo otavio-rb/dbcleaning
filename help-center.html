@@ -154,7 +154,7 @@
         <section class="head_page" style="background-image: url(./assets/img/pages/head-help-center.jpg);">
             <div class="container content_head_page">
                 <h2>Help Center</h2>
-                <p><a href="">Home</a> <img src="assets/img/duble-arrow.png" alt=""> Help Center</p>
+                <p><a href="index.html">Home</a> <img src="assets/img/duble-arrow.png" alt=""> Help Center</p>
             </div>
             
         </section>      
@@ -185,16 +185,19 @@
 
                 <div class="d-flex">
                     <article class="card_help">
-                        <div class="img_card_help">
-                            <img src="assets/img/pages/icons/inc.png" alt="">
-                        </div>
-
-                        <h3>Most Asked Questions</h3>
-                        <hr>
-                        <p>Check out our Frequently Asked Questions for quick answers to common queries about our cleaning services</p>
+                        <a href="faq.html">
+                            <div class="img_card_help">
+                                <img src="assets/img/pages/icons/inc.png" alt="">
+                            </div>
+    
+                            <h3>Most Asked Questions</h3>
+                            <hr>
+                            <p>Check out our Frequently Asked Questions for quick answers to common queries about our cleaning services</p>
+                        </a>
+                        
                     </article>
 
-                    <article class="card_help">
+                    <article class="card_help" id="btn_open_resources">
                         <div class="img_card_help">
                             <img src="assets/img/pages/icons/eng.png" alt="">
                         </div>
@@ -214,13 +217,12 @@
                 </div>
 
                 <div class="d-flex justify-center">
-                    <a href="" class="btn-default btn-blue btn-hover btn-blue-hover btn-m"><img src="assets/img/pages/icons/phone.png" alt=""> Give us a call</a>
-                    <a href="" class="btn-default btn-blue btn-hover btn-blue-hover btn-m"><img src="assets/img/pages/icons/doc.png" alt=""> Fill Out Our Form</a>
+                    <a href="tel:+12152536112" class="btn-default btn-blue btn-hover btn-blue-hover btn-m"><img src="assets/img/pages/icons/phone.png" alt=""> Give us a call</a>
+                    <a href="contact.html" class="btn-default btn-blue btn-hover btn-blue-hover btn-m"><img src="assets/img/pages/icons/doc.png" alt=""> Fill Out Our Form</a>
                 </div>
             </div>
         </section>
  
-
     </main>
 
     <!-- ======================================================= body ==================================================================== -->
@@ -332,6 +334,21 @@
         </div>
     </section>
 
+    <div class="over_popup">
+        <div class="popup">
+            <div class="header_popup">
+                <h3>Resources</h3>
+                <span class="btn_close_popup">
+                    <img src="assets/img/close.svg" alt="">
+                </span>
+            </div>
+
+            <a href="DB Company Profile.pdf" target="_blank">Company Profile</a>
+            <a href="DB Terms of Service.pdf" target="_blank">Terms of Service</a>
+            <a href="Liability Waiver.pdf" target="_blank">Liability Walver</a>
+        </div>
+    </div>
+
     <footer class="footer bg-azul-destaque">
         <div class="container footer_content">
             <div class="col_footer">
@@ -413,7 +430,7 @@
     </footer>
 
     <div class="float_quote">
-        <a href="">Get a Quote</a>
+        <a href="get-a-quote.html">Get a Quote</a>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -421,5 +438,18 @@
     <script type="module" src="assets/js/script.js"></script>
     <script src="assets/js/cleaning-for-reason.js"></script>
     <script src="assets/js/page-default.js"></script>
+    <script>
+        const btn_open_resources = document.getElementById('btn_open_resources');
+        const over_popup = document.querySelector('.over_popup');
+        const btn_close_popup = document.querySelector('.btn_close_popup')
+
+        btn_open_resources.addEventListener('click', () => {
+            over_popup.classList.add('open_over_popup')
+        })
+
+        btn_close_popup.addEventListener('click', () => {
+            over_popup.classList.remove('open_over_popup')
+        })
+    </script>
 </body>
 </html>
