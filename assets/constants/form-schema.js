@@ -121,4 +121,17 @@ export const quoteFormSchema = {
 
         return false;
     },
+
+    howHearAboutUs(value, inputContainer) {
+        if (value.length == 0) {
+            inputContainer.classList.add("error");
+            inputContainer.querySelector("select").classList.add("error");
+            return true;
+        } else {
+            inputContainer.classList.remove("error");
+            inputContainer.querySelector("select").classList.remove("error");
+        }
+
+        return false;
+    },
 }

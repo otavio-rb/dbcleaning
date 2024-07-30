@@ -303,13 +303,13 @@ const page = {
       document.querySelector("#city").value = "";
       document.querySelector("#state").value = "";
       document.querySelector("#zipCode").value = "";
-
+      console.log(autocomplete1.getFields())
       this.formData.city = "";
       this.formData.state = "";
       this.formData.zipCode = "";
       this.formData.addressLine = "";
       this.formData.addressLine2 = "";
-
+      console.log(place)
       for (const component of place.address_components) {
         const componentType = component.types[0];
         switch (componentType) {
@@ -355,15 +355,6 @@ const page = {
   hasFormErrors() {
     if (this.currentFormStep === 1 && this.formData.squareFootage == "" || this.formData.bathrooms == 0 || this.formData.bedrooms == 0) {
       toast.error("Fill in all required fields!");
-      return true;
-    } else if (this.currentFormStep === 1 && this.formData.bedrooms == 5 && this.formData.bathrooms < 3) {
-      toast.error("For a house with 5 bedrooms, a minimum value of 3 bathrooms is required.");
-      return true;
-    } else if (this.currentFormStep === 1 && this.formData.bedrooms == 6 && this.formData.bathrooms < 4) {
-      toast.error("For a house with 6 bedrooms, a minimum value of 4 bathrooms is required.");
-      return true;
-    } else if (this.currentFormStep === 1 && this.formData.bedrooms == 7 && this.formData.bathrooms < 5) {
-      toast.error("For a house with 7 bedrooms, a minimum value of 5 bathrooms is required.");
       return true;
     } else if (this.currentFormStep === 2 && this.formData.frequency == "-") {
       toast.error("Choose a frequency for the service!")
@@ -841,6 +832,7 @@ const page = {
         } else {
           this.formData[item.dataset.key] = e.target.value;
         }
+        console.log(this.formData[item.dataset.key]);
         this.validateStepInformations();
         this.renderQuoteSummary();
       };
@@ -884,15 +876,31 @@ const page = {
           totalRecurringValue = 150;
           break;
       }
+    } 
+
+    let fakeBedrooms = this.formData.bedrooms;
+    let fakeBathrooms = this.formData.bathrooms;
+    
+    if(this.formData.bedrooms == 5 && this.formData.bathrooms < 3){
+      fakeBedrooms = 5;
+      fakeBathrooms = 3;
+    } else if(this.formData.bedrooms == 6 && this.formData.bathrooms < 4) {
+      fakeBedrooms = 6;
+      fakeBathrooms = 4;
+    } else if (this.formData.bedrooms == 7 && this.formData.bathrooms < 5) {
+      fakeBedrooms = 7;
+      fakeBathrooms = 5
     }
+
     if (this.formData.bedrooms >= 6 || this.formData.bathrooms >= 6) {
-      totalValue = (this.formData.bedrooms * 12) + (this.formData.bathrooms * 16) + totalRecurringValue;
-      initialDeepCleaningValue += (this.formData.bedrooms * 12) + (this.formData.bathrooms * 16);
-      otcValue += (this.formData.bedrooms * 12) + (this.formData.bathrooms * 16);
-    } else if (this.formData.bedrooms < 6 || this.formData.bedrooms < 6) {
-      totalValue = (this.formData.bedrooms * 10) + (this.formData.bathrooms * 15) + totalRecurringValue;
-      initialDeepCleaningValue += (this.formData.bedrooms * 10) + (this.formData.bathrooms * 15);
-      otcValue += (this.formData.bedrooms * 10) + (this.formData.bathrooms * 15);
+      totalValue = (fakeBedrooms * 12) + (fakeBathrooms * 16) + totalRecurringValue;
+      initialDeepCleaningValue += (fakeBedrooms * 12) + (fakeBathrooms * 16);
+      otcValue += (fakeBedrooms * 12) + (fakeBathrooms * 16);
+    } 
+    if (this.formData.bedrooms < 6 && this.formData.bathrooms < 6) {
+      totalValue = (fakeBedrooms * 10) + (fakeBathrooms * 15) + totalRecurringValue;
+      initialDeepCleaningValue += (fakeBedrooms * 10) + (fakeBathrooms * 15);
+      otcValue += (fakeBedrooms * 10) + (fakeBathrooms * 15);
     }
 
     if (this.formData.frequency === "-" && this.formData.service === "-") {
@@ -974,9 +982,9 @@ const page = {
     }
 
     if (this.formData.frequency !== "-")
-      servicePrice.innerHTML = `$ ${totalRecurringValue.toFixed(0, 2)}`;
+      servicePrice.innerHTML = `$ ${totalRecurringValue.toFixed(2)}`;
     if (this.formData.frequency === "One Time") {
-      servicePrice.innerHTML = `$ ${Number(totalValue).toFixed(0, 2)}`
+      servicePrice.innerHTML = `$ ${totalValue.toFixed(2)}`
     }
 
     totalValueText.innerHTML = this.totalValue.toFixed(2);
@@ -1014,6 +1022,7 @@ const page = {
     this.extraRoom = [];
     this.formData.additionalServices = [];
     this.getQuoteTotalValue();
+    this.renderExtras();
     this.renderQuoteSummary();
   },
 
