@@ -1,3 +1,7 @@
+@import url(./popup.css);
+@import url(./toast.css);
+
+
 :root{
     --color-azul-escuro: #001039;
     --color-azul-destaque: #2c76ce;
@@ -29,6 +33,9 @@
     --color-dark: #111928;
     --color-white: #ffffff;
     --color-black: #000000;
+
+    --color-error: crimson;
+    --bg-error: rgba(220, 20, 60, 0.2)
 }
 
 
@@ -1894,9 +1901,14 @@ nav.menu ul{
     }
 }
 
+.grid {
+  display: grid;
+}
 
+.col-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
 
-
-
-
-
+.col-span-2 {
+  grid-column: span 2;
+}
