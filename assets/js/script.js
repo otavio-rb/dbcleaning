@@ -9,8 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let height_img = img_center_card_hori.getBoundingClientRect().height;
 
-        console.log('height: ' + height_img);
-
         const card_hori = document.querySelectorAll('.card_hori');
 
         let height_terco = height_img / 3;
@@ -74,7 +72,6 @@ $(document).ready(function () {
                     item2.classList.add('d-none');
 
 
-                    console.log('item atual: ' + item_atual)
                     if (item2.getAttribute('data-item') == item_atual) {
                         item2.classList.remove('d-none');
                     }

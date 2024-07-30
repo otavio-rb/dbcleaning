@@ -289,7 +289,6 @@ const page = {
     input.onchange = (e) => {
       
       this.formData.addressLine = e.target.value;
-      console.log(this.formData.addressLine);
     };
 
     const options = {
@@ -307,13 +306,11 @@ const page = {
       document.querySelector("#city").value = "";
       document.querySelector("#state").value = "";
       document.querySelector("#zipCode").value = "";
-      console.log(autocomplete1.getFields())
       this.formData.city = "";
       this.formData.state = "";
       this.formData.zipCode = "";
       this.formData.addressLine = "";
       this.formData.addressLine2 = "";
-      console.log(place)
       for (const component of place.address_components) {
         const componentType = component.types[0];
         switch (componentType) {
@@ -836,7 +833,6 @@ const page = {
         } else {
           this.formData[item.dataset.key] = e.target.value;
         }
-        console.log(this.formData[item.dataset.key]);
         this.validateStepInformations();
         this.renderQuoteSummary();
       };
@@ -1064,7 +1060,7 @@ const page = {
     loader.src = "assets/img/loader.svg";
     try {
       this.formData.addressLine = document.querySelector("#address1").value;
-      
+
       this.nextStepButton.appendChild(loader);
       this.nextStepButton.disabled = true;
       this.nextStepButton.style.opacity = 0.6;
