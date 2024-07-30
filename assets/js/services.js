@@ -44,13 +44,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
 })
 
-const initMap = () => {
+const initMap = async () => {
     const map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: 41.203323, lng: -77.194527 },
-        zoom: 8,
+        zoom: 10,
+        zoomControl: false,
+        minZoom: 10,
+        maxZoom: 14,
         mapId: "31e547c798d4d6aa",
     });
 
+    await placeMarkers(map);
 };
+
+const placeMarkers = async (map) => {
+    const response = await fetch("assets/constants/zip-code.json");
+    const json = await response.json();
+    console.log(json);
+    const alreadyPlaced = [];
+    for (const state in json) {
+        const currentState = json[state];
+        for (const city of currentState) {
+            if (!alreadyPlaced.includes(city.primary_city)) {
+                const { AdvancedMarkerElement } = await google.maps.importLibrary("marker")
+                const marker = new AdvancedMarkerElement({
+                    map: map,
+                    position: {
+                        lat: city.latitude,
+                        lng: city.longitude
+                    },
+                    title: city.couty,
+                });
+                alreadyPlaced.push(city.primary_city);
+            }
+        }
+    }
+}
 
 window.onload = () => initMap(); 
