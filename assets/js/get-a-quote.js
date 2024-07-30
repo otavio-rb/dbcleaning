@@ -222,13 +222,11 @@ const page = {
     const phone = params.get("phoneNumber");
     const zipCode = params.get("zipCode");
 
-    console.log(name, email, phone);
-
     if (!!name) {
       const nameArray = name.split(" ");
       document.querySelector("#first-name").value = nameArray[0];
       this.formData.firstName = nameArray[0];
-      
+
       document.querySelector("#last-name").value = nameArray[1];
       this.formData.lastName = nameArray[1];
     }
@@ -287,6 +285,12 @@ const page = {
 
     const input = document.querySelector("#address1");
     const input2 = document.querySelector("#address2");
+
+    input.onchange = (e) => {
+      
+      this.formData.addressLine = e.target.value;
+      console.log(this.formData.addressLine);
+    };
 
     const options = {
       bounds: defaultBounds,
@@ -876,15 +880,15 @@ const page = {
           totalRecurringValue = 150;
           break;
       }
-    } 
+    }
 
     let fakeBedrooms = this.formData.bedrooms;
     let fakeBathrooms = this.formData.bathrooms;
-    
-    if(this.formData.bedrooms == 5 && this.formData.bathrooms < 3){
+
+    if (this.formData.bedrooms == 5 && this.formData.bathrooms < 3) {
       fakeBedrooms = 5;
       fakeBathrooms = 3;
-    } else if(this.formData.bedrooms == 6 && this.formData.bathrooms < 4) {
+    } else if (this.formData.bedrooms == 6 && this.formData.bathrooms < 4) {
       fakeBedrooms = 6;
       fakeBathrooms = 4;
     } else if (this.formData.bedrooms == 7 && this.formData.bathrooms < 5) {
@@ -896,7 +900,7 @@ const page = {
       totalValue = (fakeBedrooms * 12) + (fakeBathrooms * 16) + totalRecurringValue;
       initialDeepCleaningValue += (fakeBedrooms * 12) + (fakeBathrooms * 16);
       otcValue += (fakeBedrooms * 12) + (fakeBathrooms * 16);
-    } 
+    }
     if (this.formData.bedrooms < 6 && this.formData.bathrooms < 6) {
       totalValue = (fakeBedrooms * 10) + (fakeBathrooms * 15) + totalRecurringValue;
       initialDeepCleaningValue += (fakeBedrooms * 10) + (fakeBathrooms * 15);
@@ -1059,7 +1063,8 @@ const page = {
     const loader = document.createElement('img');
     loader.src = "assets/img/loader.svg";
     try {
-
+      this.formData.addressLine = document.querySelector("#address1").value;
+      
       this.nextStepButton.appendChild(loader);
       this.nextStepButton.disabled = true;
       this.nextStepButton.style.opacity = 0.6;
