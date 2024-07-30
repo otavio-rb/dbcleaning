@@ -134,6 +134,7 @@
     height: 4px;
     background-color: #007CFB;
     margin: 18px 0;
+    border: none;
 }
 .info_card_blue p{
     font-size: 16px;
