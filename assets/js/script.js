@@ -120,15 +120,16 @@ const verifyZipCode = (e) => {
     const zipCodePopup = new Popup("Enter your zip code", "Okay", `
         <div class="form_group">
             <input type="text" placeholder="Insert your zip code" id="popup-zipCode" />    
-            <div class="form_error">
-                <h3>We are sorry!</h3>
-                <span>We don't have support to your location.</span> 
+            <div style="color: var(--color-error)" class="form_error">
+                <h3>Sorry, we don't serve your area yet.</h3>
+                <span>We're expanding our services and hope to be there soon!
+For updates, please contact us.</span> 
             </div>
         </div>
     `);
 
 
-    zipCodePopup.popupDiv.style.maxHeight = "280px";
+    zipCodePopup.popupDiv.style.maxHeight = "300px";
     zipCodePopup.confirm(() => {
         const zipCode = zipCodePopup.main.querySelector("#popup-zipCode");
         if (zipCode.value.length > 0) {

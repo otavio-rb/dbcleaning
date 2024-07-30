@@ -227,10 +227,10 @@ const page = {
     if (!!name) {
       const nameArray = name.split(" ");
       document.querySelector("#first-name").value = nameArray[0];
-      this.formData.firstName = name[0];
+      this.formData.firstName = nameArray[0];
       
       document.querySelector("#last-name").value = nameArray[1];
-      this.formData.lastName = name[1];
+      this.formData.lastName = nameArray[1];
     }
 
     if (!!email) {
