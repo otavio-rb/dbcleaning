@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const initMap = async () => {
     const map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: 41.203323, lng: -77.194527 },
+        center: { lat: 39.952583, lng: -75.165222 },
         zoom: 10,
         zoomControl: false,
         minZoom: 10,
