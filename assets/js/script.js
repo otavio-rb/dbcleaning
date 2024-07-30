@@ -9,8 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let height_img = img_center_card_hori.getBoundingClientRect().height;
 
-        console.log('height: ' + height_img);
-
         const card_hori = document.querySelectorAll('.card_hori');
 
         let height_terco = height_img / 3;
@@ -44,11 +42,12 @@ $(document).ready(function () {
     $('.carousel_testimonials').owlCarousel({
         loop: true,
         margin: 20,
-        nav: false,
+        nav: true,
         dots: true,
         responsive: {
             0: {
-                items: 1
+                items: 1,
+                nav: false
             },
             600: {
                 items: 2
@@ -57,7 +56,37 @@ $(document).ready(function () {
                 items: 3
             }
         }
-    })
+    });
+
+    //service pages ==========================================
+    const all_itens = document.querySelectorAll('.all_itens .big_card');
+    const switch_default = document.querySelectorAll('.switch_default button');
+
+    if (all_itens && switch_default) {
+        switch_default.forEach((item, index) => {
+
+            item.addEventListener('click', () => {
+
+                all_itens.forEach((item2, index2) => {
+                    let item_atual = item.getAttribute('data-item');
+                    item2.classList.add('d-none');
+
+
+                    if (item2.getAttribute('data-item') == item_atual) {
+                        item2.classList.remove('d-none');
+                    }
+                });
+
+                switch_default.forEach((item3) => {
+                    item3.classList.remove('active')
+                })
+
+                switch_default[index].classList.add('active')
+
+            });
+
+        });
+    }
 
 });
 
@@ -70,7 +99,8 @@ submenu_footer_li.forEach((item, index) => {
     item.addEventListener('click', (e) => {
 
         e.preventDefault();
-        submenu_footer_ul[index].classList.toggle('open_submenu')
+        item.querySelector('.arrow-down').classList.toggle('rotate-180')
+        submenu_footer_ul[index].classList.toggle('open_submenu');
 
     });
 
@@ -87,15 +117,16 @@ const verifyZipCode = (e) => {
     const zipCodePopup = new Popup("Enter your zip code", "Okay", `
         <div class="form_group">
             <input type="text" placeholder="Insert your zip code" id="popup-zipCode" />    
-            <div class="form_error">
-                <h3>We are sorry!</h3>
-                <span>We don't have support to your location.</span> 
+            <div style="color: var(--color-error)" class="form_error">
+                <h3>Sorry, we don't serve your area yet.</h3>
+                <span>We're expanding our services and hope to be there soon!
+For updates, please contact us.</span> 
             </div>
         </div>
     `);
 
 
-    zipCodePopup.popupDiv.style.maxHeight = "280px";
+    zipCodePopup.popupDiv.style.maxHeight = "300px";
     zipCodePopup.confirm(() => {
         const zipCode = zipCodePopup.main.querySelector("#popup-zipCode");
         if (zipCode.value.length > 0) {
@@ -139,4 +170,19 @@ instantQuoteForm.onsubmit = (e) => {
     } else {
         window.location.href = `./get-a-quote.html?name=${name}&email=${email}&phoneNumber=${phoneNumber}&zipCode=${zipCode}`;
     }
+}
+
+const loop_carroussel = document.querySelectorAll('.loop_carroussel img');
+const palco_image = document.querySelector('.principal_carroussel_item_portfolio img');
+
+if (palco_image) {
+    loop_carroussel.forEach((item, index) => {
+
+        item.addEventListener('click', () => {
+            let img = item.getAttribute('src');
+
+            palco_image.setAttribute('src', img);
+        })
+
+    })
 }

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/cleaning-for-reason.css">
     <link rel="stylesheet" href="assets/css/page-default.css">
+    <link rel="stylesheet" href="assets/css/comparison-image/style.css">
     <title>Deep Cleaning - DB Cleaning Services</title>
 </head>
 <body>
@@ -79,7 +80,7 @@
                 <nav class="menu">
 
                     <div class="head_menu">
-                        <a href="" class="logo_head_menu">
+                        <a href="index.html" class="logo_head_menu">
                             <img src="assets/img/logo.png" alt="">
                         </a>
 
@@ -153,7 +154,7 @@
         <section class="head_page" style="background-image: url(./assets/img/pages/head-deep-cleaning.jpg);">
             <div class="container content_head_page">
                 <h2>Deep Cleaning</h2>
-                <p><a href="">Home</a> <img src="assets/img/duble-arrow.png" alt=""> <a href="">Services</a> <img src="assets/img/duble-arrow.png" alt=""> Deep Cleaning</p>
+                <p><a href="index.html">Home</a> <img src="assets/img/duble-arrow.png" alt=""> <a href="services.html">Services</a> <img src="assets/img/duble-arrow.png" alt=""> Deep Cleaning</p>
             </div>
         </section>
 
@@ -284,7 +285,10 @@
                                 <div class="img_card_min_simple">
                                     <img src="assets/img/pages/icons/pot-clean.png" alt="">
                                 </div>
+                                
                                 <h4>Cleaning Supplies</h4>
+
+                                <p>We bring vacuums, mops, and all the necessary products to leave your space spotless.</p>
                             </article>
     
                             <article- class="card_min_simple">
@@ -292,6 +296,8 @@
                                     <img src="assets/img/pages/icons/star.png" alt="">
                                 </div>
                                 <h4>100% Satisfaction Guaranteed</h4>
+
+                                <p>Not fully happy? we'll reclean for free whithin 24 hours.</p>
                             </article->
     
                             <article class="card_min_simple">
@@ -299,6 +305,8 @@
                                     <img src="assets/img/pages/icons/clock.png" alt="">
                                 </div>
                                 <h4>Real Time Text Updates</h4>
+
+                                <p>Stay informed with prompt text replies during your service.</p>
                             </article>
     
                             <article class="card_min_simple">
@@ -306,6 +314,8 @@
                                     <img src="assets/img/pages/icons/team.png" alt="">
                                 </div>
                                 <h4>Screened & Trained Technicians</h4>
+
+                                <p>Only the best in your space. Our team is thoroughly vetted and expertly trained.</p>
                             </article>
                         </div>
                     </div>
@@ -317,141 +327,193 @@
                         </div>
 
                         <div class="switch_default">
-                            <button class="active">All Rooms</button>
-                            <button>Kitchen</button>
-                            <button>Bathroom</button>
-                        </div>
-
-                        <div class="big_card bord-0-9">
-                            <h3>Dining Room</h3>
-
-                            <div class="d-flex">
-                                <div class="f-50">
-                                    <ul class="list-default">
-                                        <li>All wall hangings dusted and cleaned</li>
-                                        <li>All furniture polished and dusted</li>
-                                        <li>All glass and mirrors cleaned and sparkled</li>
-                                        <li>Floors vacuumed, swept, and mopped (if needed)</li>
-                                        <li>Dust for cobwebs</li>
-                                    </ul>
-                                </div>
-                                <div class="f-50">
-                                    <ul class="list-default">
-                                        <li>Dust open window sills and frames</li>
-                                        <li>Dust top of door frames and door knobs</li>
-                                        <li>Dust decorative accessories</li>
-                                        <li>All light fixtures and window treatments dusted</li>
-                                        <li>Dust all baseboards, switch plates, and outlet covers</li>
-                                    </ul>
-                                </div>
+                            <div class="list_switch_default">
+                                <button class="active" id="item-all-rooms" data-item="all">All Rooms</button>
+                                <button id="item-kitchen" data-item="kitchen">Kitchen</button>
+                                <button id="item-bathroom" data-item="bathroom">Bathroom</button>
+                                <button data-item="other">Other Rooms</button>
+                                <button id="item-bathroom" data-item="additional">Additional Requests</button>
                             </div>
 
-                            <img src="assets/img/pages/table-chair.png" alt="">
                         </div>
 
-                        <div class="big_card">
-                            <h3>Utility Room</h3>
+                        <div class="all_itens">
 
-                            <div class="d-flex">
-                                <div class="f-50">
-                                    <ul class="list-default">
-                                        <li>Exterior of washer and dryer cleaned</li>
-                                        <li>Floors vacuumed, swept, and mopped (if needed)</li>
-                                        <li>Dust for cobwebs</li>
-                                        <li>Dust open window sills and frames</li>
-                                        <li>All mirrors and glass cleaned and sparkled</li>
-                                        <li>Dust decorative accessories</li>
-                                    </ul>
+                            <div class="big_card bord-0-9" data-item="all">
+                                <h3>All Rooms</h3>
+    
+                                <div class="d-flex">
+                                    <div class="f-50">
+                                        <ul class="list-default">
+                                            <li>All wall hangings dusted and cleaned</li>
+                                            <li>All furniture polished and dusted</li>
+                                            <li>All glass and mirrors cleaned and sparkled</li>
+                                            <li>Floors vacuumed, swept, and mopped (if needed)</li>
+                                            <li>Cobwebs removed</li>
+                                            <li>Dust open window sills and frames</li>
+                                            <li>Dust top of door frames and door knobs</li>
+                                            <li>Dust decorative accessories</li>
+                                            <li>All light fixtures and fan blades dusted</li>
+                                            <li>Dust all baseboards, switch plates, and outlet covers</li>
+                                            <li>Wash and detailed cleaning of baseboards</li>
+                                            <li>Lamp and lampshades dusted</li>
+                                        </ul>
+                                    </div>
+                                    <div class="f-50">
+                                        <ul class="list-default">
+                                            <li>Empty wastebaskets and reline</li>
+                                            <li>Wash doors</li>
+                                            <li>Hand wash or wipe ceiling fans</li>
+                                            <li>Dust window blinds, sills and frames</li>
+                                            <li>Detailed vacuuming of blinds</li>
+                                            <li>Clean interior windows</li>
+                                            <li>Moved light-weight furniture, cleaned behind (wires excluded)</li>
+                                            <li>Vacuumed furniture, cushions, and other upholstery</li>
+                                            <li>Vacuumed under furniture</li>
+                                            <li>Vacuum carpets and area rugs</li>
+                                            <li>Clean/oil woodwork</li>
+                                            <li>Vacuumed pet furniture or sleeping lounge (upon request)</li>
+                                            <li>Wash outside cabinets</li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="f-50">
-                                    <ul class="list-default">
-                                        <li>All light fixtures and window treatments dusted</li>
-                                        <li>Dust all baseboards, switch plates, and outlet covers</li>
-                                        <li>Dust all wall hangings</li>
-                                        <li>Clean and sanitize utility sink</li>
-                                        <li>Empty wastebaskets and reline</li>
-                                    </ul>
-                                </div>
+    
                             </div>
 
-                            <img src="assets/img/pages/laundry.png" alt="">
-                        </div>
-
-                        <div class="big_card">
-                            <h3>Living Room</h3>
-
-                            <div class="d-flex">
-                                <div class="f-50">
-                                    <ul class="list-default">
-                                        <li>All wall hangings dusted and cleaned</li>
-                                        <li>All furniture polished and dusted</li>
-                                        <li>All glass and mirrors cleaned and sparkled</li>
-                                        <li>Floors vacuumed, swept, and mopped (if needed)</li>
-                                        <li>Dust for cobwebs</li>
-                                        <li>Dust open window sills and frames</li>
-                                    </ul>
+                            <div class="big_card bord-0-9 d-none" data-item="kitchen">
+                                <h3>Kitchen</h3>
+    
+                                <div class="d-flex">
+                                    <div class="f-50">
+                                        <ul class="list-default">
+                                            <li>Outside cabinets and knobs dusted and spot cleaned</li>
+                                            <li>Clean/wash outside cabinets and drawers</li>
+                                            <li>Clean and vacuum tops of cabinets and items on them</li>
+                                            <li>Degrease and clean outside cabinets and drawers</li>
+                                            <li>Tabletops, countertops, and backsplash cleaned and sanitized</li>
+                                            <li>Sinks and drain scrubbed, rinsed, and buffed</li>
+                                            <li>Stainless steel and chrome fixtures cleaned and shined</li>
+                                            <li>Range hood, exhaust fan, stovetop, and drip pans cleaned and sanitized</li>
+                                        </ul>
+                                    </div>
+                                    <div class="f-50">
+                                        <ul class="list-default">
+                                            <li>Microwave oven cleaned inside and out</li>
+                                            <li>Exterior of small appliances wiped down (toaster, blender, etc.)</li>
+                                            <li>Clean inside oven</li>
+                                            <li>Clean inside freezer and refrigerator</li>
+                                            <li>Clean under stovetop</li>
+                                            <li>Clean front and top of refrigerator (where possible)</li>
+                                            <li>Garden window above sink spot cleaned</li>
+                                            <li>Place dirty dishes in dishwasher (no rinsing included)</li>
+                                            <li>Rinse big items, pots, and pans (don’t fit in dishwasher)</li>
+                                            <li>Clean sliding glass doors</li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="f-50">
-                                    <ul class="list-default">
-                                        <li>Dust top of door frames and door knobs</li>
-                                        <li>Dust decorative accessories</li>
-                                        <li>All light fixtures and window treatments dusted</li>
-                                        <li>Dust all baseboards, switch plates, and outlet covers</li>
-                                        <li>Vacuum under furniture cushions</li>
-                                    </ul>
-                                </div>
+    
                             </div>
 
-                            <img src="assets/img/pages/living-room.png" alt="">
-                        </div>
-
-                        <div class="big_card">
-                            <h3>Bedrooms</h3>
-
-                            <div class="d-flex">
-                                <div class="f-50">
-                                    <ul class="list-default">
-                                        <li>All wall hangings dusted and cleaned</li>
-                                        <li>All furniture polished and dusted</li>
-                                        <li>All glass and mirrors cleaned and sparkled</li>
-                                        <li>Floors vacuumed, swept, and mopped (if needed)</li>
-                                        <li>Dust for cobwebs</li>
-                                        <li>Trash emptied</li>
-                                    </ul>
+                            <div class="big_card bord-0-9 d-none" data-item="bathroom">
+                                <h3>Bathrooms</h3>
+    
+                                <div class="d-flex">
+                                    <div class="f-50">
+                                        <ul class="list-default">
+                                            <li>Clean/wash outside cabinets and drawers</li>
+                                            <li>All vanities, sinks, and countertops cleaned and sanitized</li>
+                                            <li>All stainless steel and chrome fixtures cleaned and sanitized</li>
+                                            <li>Toilets cleaned and sanitized, including base and rear</li>
+                                        </ul>
+                                    </div>
+                                    <div class="f-50">
+                                        <ul class="list-default">
+                                            <li>Tub and shower scrubbed, cleaned, and sanitized</li>
+                                            <li>Shower tile cleaned and sanitized</li>
+                                            <li>Clean tissue and towel holders</li>
+                                            <li>Change 1 set of towels (if provided and arranged)</li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="f-50">
-                                    <ul class="list-default">
-                                        <li>Dust open window sills and frames</li>
-                                        <li>Dust top of door frames and door knobs</li>
-                                        <li>Dust decorative accessories</li>
-                                        <li>All light fixtures and window treatments dusted</li>
-                                        <li>Dust all baseboards, switch plates, and outlet covers</li>
-                                        <li>Vacuum under bed ( if accessible )</li>
-                                    </ul>
-                                </div>
+    
                             </div>
 
-                            <img src="assets/img/pages/bedroom.png" alt="">
-                        </div>
-
-                        <div class="big_card">
-                            <h3>Additional Requests</h3>
-
-                            <div class="d-flex">
-                                <div class="f-50">
-                                    <ul class="list-default">
-                                        <li>Carpet Cleaning</li>
-                                        <li>Upholstery Cleaning</li>
-                                        <li>Dryer Vent Cleaning</li>
-                                        <li>Air Duct Cleaning</li>
-                                    </ul>
+                            <div class="big_card bord-0-9 d-none" data-item="other">
+                                <h3>Utility Room</h3>
+    
+                                <div class="d-flex">
+                                    <div class="f-50">
+                                        <ul class="list-default">
+                                            <li>Exterior of washer and dryer</li>
+                                        </ul>
+                                    </div>
+                                    <div class="f-50">
+                                        <ul class="list-default">
+                                            <li>Clean and sanitize utility sink</li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="f-50">
-                                    
+    
+                            </div>
+    
+                            <div class="big_card d-none" data-item="other">
+                                <h3>Living Room</h3>
+    
+                                <div class="d-flex">
+                                    <div class="f-50">
+                                        <ul class="list-default">
+                                            <li>Vacuum under furniture cushions</li>
+                                        </ul>
+                                    </div>
+                                    <div class="f-50">
+                                        <ul class="list-default">
+                                            <li>Dust fireplace mantel</li>
+                                        </ul>
+                                    </div>
                                 </div>
+    
                             </div>
 
-                            <img src="assets/img/pages/aditional.png" alt="">
+                            <div class="big_card d-none" data-item="other">
+                                <h3>Bedrooms</h3>
+    
+                                <div class="d-flex">
+                                    <div class="f-50">
+                                        <ul class="list-default">
+                                            <li>Vacuum under bed (if accessible)</li>
+                                            <li>Lamps and lamp shades dusted</li>
+                                        </ul>
+                                    </div>
+                                    <div class="f-50">
+                                        <ul class="list-default">
+                                            <li>All beds made only</li>
+                                            <li>Bed linens changed (if provided, 1 bed included only)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+    
+                            </div>
+    
+                            <div class="big_card d-none bord-0-9" data-item="additional">
+                                <h3>Additional Requests</h3>
+    
+                                <div class="d-flex">
+                                    <div class="f-50">
+                                        <ul class="list-default">
+                                            <li>Carpet Cleaning</li>
+                                            <li>Upholstery Cleaning</li>      
+                                        </ul>
+                                    </div>
+                                    <div class="f-50">
+                                        <ul class="list-default">
+                                            <li>Dryer Vent Cleaning</li>
+                                            <li>Air Duct Cleaning</li>      
+                                        </ul>
+                                    </div>
+                                </div>
+    
+                            </div>
+                            
                         </div>
 
                     </div>
@@ -460,14 +522,26 @@
                         <div class="head_section d-flex justify-center">
                             <h2 class="title-default special-title">Portfolio</h2>
                         </div>
+                        
 
                         <div class="item_portfolio">
-                            <img src="assets/img/pages/service-before.png" alt="">
+                            
+                            <figure class="cd-image-container">
+                                <img src="assets/img/bed-clean.jpg" alt="Original Image">
+                                <span class="cd-image-label" data-type="original">After</span>
+                        
+                                <div class="cd-resize-img"><!-- the resizable image on top -->
+                                    <img src="assets/img/bed-dirty.jpg" alt="Modified Image">
+                                    <span class="cd-image-label" data-type="modified">Before</span>
+                                </div>
+                        
+                                <span class="cd-handle"></span>
+                            </figure> <!-- cd-image-container -->
                         </div>
 
                         <div class="carroussel_item_portfolio">
                             <div class="principal_carroussel_item_portfolio">
-                                <img src="assets/img/pages/service-before2.png" alt="">
+                                <img src="assets/img/pages/service-before2.png" alt="" id="palco_image">
                             </div>
                             
                             <div class="loop_carroussel owl-carousel">
@@ -479,7 +553,7 @@
                                 <img src="assets/img/pages/carroussel4.jpg" alt="">
                             </div>
                             <div class="d-flex justify-center">
-                                <a href="" class="btn-default btn-blue btn-hover btn-blue-hover">Check Our Portfolio</a>
+                                <a href="portfolio.html" class="btn-default btn-blue btn-hover btn-blue-hover">Check Our Portfolio</a>
                             </div>
                         </div>
                     </div>
@@ -491,43 +565,50 @@
 
                         <div class="carroussel_services owl-carousel">
                             <article class="card_hori">
-                                <div class="img_card_hori">
-                                    <div class="over_img_card_hori">
-                                        <img src="assets/img/icon/unblocker.png" alt="">
+                                <a href="regular-cleaning.html">
+                                    <div class="img_card_hori">
+                                        <div class="over_img_card_hori">
+                                            <img src="assets/img/icon/unblocker.png" alt="">
+                                        </div>
                                     </div>
-                                </div>
-    
-                                <div class="info_card_hori">
-                                    <h4>Regular Cleaning</h4>
-    
-                                    <p>Start with a Initial deep cleaning to set our cleaning quality standard, followed by regular cleaning maintenance.</p>
-                                </div>
+        
+                                    <div class="info_card_hori">
+                                        <h4>Regular Cleaning</h4>
+        
+                                        <p>Start with a Initial deep cleaning to set our cleaning quality standard, followed by regular cleaning maintenance.</p>
+                                    </div>
+                                </a>
+                                
                             </article>
                             <article class="card_hori">
-                                <div class="img_card_hori">
-                                    <div class="over_img_card_hori">
-                                        <img src="assets/img/icon/pot-clean.png" alt="">
+                                <a href="">
+                                    <div class="img_card_hori">
+                                        <div class="over_img_card_hori">
+                                            <img src="assets/img/icon/pot-clean.png" alt="">
+                                        </div>
                                     </div>
-                                </div>
-    
-                                <div class="info_card_hori">
-                                    <h4>Office & Commercial Cleaning</h4>
-    
-                                    <p>Detailed dusting, organization, and spotless floors to keep your workspace pristine and welcoming.</p>
-                                </div>
+        
+                                    <div class="info_card_hori">
+                                        <h4>Office & Commercial Cleaning</h4>
+        
+                                        <p>Detailed dusting, organization, and spotless floors to keep your workspace pristine and welcoming.</p>
+                                    </div>
+                                </a>
                             </article>
                             <article class="card_hori">
-                                <div class="img_card_hori">
-                                    <div class="over_img_card_hori">
-                                        <img src="assets/img/icon/unblocker.png" alt="">
+                                <a href="">
+                                    <div class="img_card_hori">
+                                        <div class="over_img_card_hori">
+                                            <img src="assets/img/icon/pot-clean.png" alt="">
+                                        </div>
                                     </div>
-                                </div>
-    
-                                <div class="info_card_hori">
-                                    <h4>Regular Cleaning</h4>
-    
-                                    <p>Start with a Initial deep cleaning to set our cleaning quality standard, followed by regular cleaning maintenance.</p>
-                                </div>
+        
+                                    <div class="info_card_hori">
+                                        <h4>Office & Commercial Cleaning</h4>
+        
+                                        <p>Detailed dusting, organization, and spotless floors to keep your workspace pristine and welcoming.</p>
+                                    </div>
+                                </a>
                             </article>
                         </div>
                     </div>
@@ -545,7 +626,7 @@
     <!-- ============================================================== footer ============================================================ -->
     <section>
         <div class="slider">
-            <div class="slide-track">
+            <div class="slide-track" id="first_marquee">
                 
                 <img src="assets/img/logo/schw.png" alt="" />
                 <img src="assets/img/logo/city-of-phila.png" alt="" />
@@ -627,37 +708,21 @@
         </div>
 
         <div class="slider">
-            <div class="slide-track slide-track2">
 
-                <img src="assets/img/logo/proud.png" alt="">
-                <img src="assets/img/logo/core.png" alt="">
-                <img src="assets/img/logo/arcsi.png" alt="">
-                <img src="assets/img/logo/issa.png" alt="">
-                <img src="assets/img/logo/top-rated.png" alt="">
-                <img src="assets/img/logo/expertise.png" alt="">
-                <img src="assets/img/logo/top-cleaner.png" alt="">
-                <img src="assets/img/logo/chamber.png" alt="">
-                <img src="assets/img/logo/super-service.png" alt="">
 
-                <img src="assets/img/logo/proud.png" alt="">
-                <img src="assets/img/logo/core.png" alt="">
-                <img src="assets/img/logo/arcsi.png" alt="">
-                <img src="assets/img/logo/issa.png" alt="">
-                <img src="assets/img/logo/top-rated.png" alt="">
-                <img src="assets/img/logo/expertise.png" alt="">
-                <img src="assets/img/logo/top-cleaner.png" alt="">
-                <img src="assets/img/logo/chamber.png" alt="">
-                <img src="assets/img/logo/super-service.png" alt="">
+            <div class="static_logo">
 
-                <img src="assets/img/logo/proud.png" alt="">
-                <img src="assets/img/logo/core.png" alt="">
-                <img src="assets/img/logo/arcsi.png" alt="">
-                <img src="assets/img/logo/issa.png" alt="">
-                <img src="assets/img/logo/top-rated.png" alt="">
-                <img src="assets/img/logo/expertise.png" alt="">
-                <img src="assets/img/logo/top-cleaner.png" alt="">
-                <img src="assets/img/logo/chamber.png" alt="">
-                <img src="assets/img/logo/super-service.png" alt="">
+                <div class="list_static_logo">
+                    <img src="assets/img/logo/proud.png" alt="">
+                    <img src="assets/img/logo/core.png" alt="">
+                    <img src="assets/img/logo/arcsi.png" alt="">
+                    <img src="assets/img/logo/issa.png" alt="">
+                    <img src="assets/img/logo/top-rated.png" alt="">
+                    <img src="assets/img/logo/expertise.png" alt="">
+                    <img src="assets/img/logo/top-cleaner.png" alt="">
+                    <img src="assets/img/logo/chamber.png" alt="">
+                    <img src="assets/img/logo/super-service.png" alt="">
+                </div>
 
             </div>
         </div>
@@ -670,10 +735,10 @@
 
                 <ul>
                     <li class="has-children">
-                        <a href="">About Us</a>
+                        <a href="about-us.html">About Us</a>
                         <ul class="submenu">
                             <li class="min-has-children">
-                                <a href="">Services</a>
+                                <a href=""><span class="text-menu-item-has-children">Services</span> <span class="arrow-down"></span></a>
                                 <ul class="min-submenu">
                                     <li><a href="deep-cleaning.html">Deep Cleaning</a></li>
                                     <li><a href="regular-cleaning.html">Regular Cleaning</a></li>
@@ -685,10 +750,10 @@
                             </li>
                         </ul>
                     </li>
-                    <li><a href="">Blog</a></li>
-                    <li><a href="">Portfolio</a></li>
-                    <li><a href="">Help Center</a></li>
-                    <li><a href="">Terms and Conditions</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="help-center.html">Help Center</a></li>
+                    <li><a href="terms.html">Terms and Conditions</a></li>
                 </ul>
             </div>
 
@@ -723,15 +788,17 @@
             </div>
 
             <div class="col_footer">
-                <h4></h4>
-
-                <ul>
-                    <li><span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=QihdGPbOJ14O9Frrk0YXvgw5KnAIgtxk9EDvgFKzQyKZS2OS018cBMJSbkAJ"></script></span></li>
-                    <li><a href="#" onclick="window.open('https://www.sitelock.com/verify.php?site=mydbcleaning.com','SiteLock','width=600,height=600,left=160,top=170');" ><img class="img-fluid" alt="SiteLock" title="SiteLock" src="https://shield.sitelock.com/shield/mydbcleaning.com" /></a></li>
-                    <li>
+                <div class="d-flex securty_footer">
+                    <div class="s_70">
+                        <span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=QihdGPbOJ14O9Frrk0YXvgw5KnAIgtxk9EDvgFKzQyKZS2OS018cBMJSbkAJ"></script></span>
+                    </div>
+                    <div class="s_30">
+                        <a href="#" onclick="window.open('https://www.sitelock.com/verify.php?site=mydbcleaning.com','SiteLock','width=600,height=600,left=160,top=170');" ><img class="img-fluid" alt="SiteLock" title="SiteLock" src="https://shield.sitelock.com/shield/mydbcleaning.com" /></a>
+                    </div>
+                    <div class="s_100">
                         <img src="assets/img/sq.png" alt="">
-                    </li>
-                </ul>
+                    </div>
+                </div>
             </div>
             
         </div>
@@ -742,7 +809,7 @@
     </footer>
 
     <div class="float_quote">
-        <a href="">Get a Quote</a>
+        <a href="get-a-quote.html">Get a Quote</a>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -750,5 +817,7 @@
     <script type="module" src="assets/js/script.js"></script>
     <script src="assets/js/cleaning-for-reason.js"></script>
     <script src="assets/js/page-default.js"></script>
+    <script src="assets/js/comparison-image/main.js"></script>
+    <script src="assets/js/comparison-image/main-mobile.js"></script>
 </body>
 </html>

@@ -3,6 +3,7 @@ import servicesData, { serviceDetails, extraRooms, frequencyPopupDetails } from 
 import Popup from "../class/Popup/Popup.js";
 import { quoteFormSchema } from "../constants/form-schema.js";
 import zipCodes from "../constants/zip-codes.js";
+import services from "../constants/services.js";
 
 const toast = new Toast(5000);
 
@@ -215,31 +216,40 @@ const page = {
   },
 
   async getUrlValues() {
-    const params = new URLSearchParams(document.location.search);
+    const params = new URLSearchParams(window.location.search);
     const name = params.get("name");
     const email = params.get("email");
     const phone = params.get("phoneNumber");
     const zipCode = params.get("zipCode");
 
-    document.querySelector("#first-name").value = name;
-    this.formData.firstName = name;
+    if (!!name) {
+      const nameArray = name.split(" ");
+      document.querySelector("#first-name").value = nameArray[0];
+      this.formData.firstName = nameArray[0];
 
-    document.querySelector("#email").value = email;
-    this.formData.email = email;
+      document.querySelector("#last-name").value = nameArray[1];
+      this.formData.lastName = nameArray[1];
+    }
 
-    document.querySelector("#phone-number").value = phone;
-    this.formData.phone = phone;
+    if (!!email) {
+      document.querySelector("#email").value = email;
+      this.formData.email = email;
+    }
 
-    document.querySelector("#zipCode").value = zipCode;
-    this.formData.zipCode = zipCode;
+    if (!!phone) {
+      document.querySelector("#phone-number").value = phone;
+      this.formData.phone = phone;
+    }
+    if (!!zipCode) {
+      document.querySelector("#zipCode").value = zipCode;
+      this.formData.zipCode = zipCode;
+    }
 
     if (!!zipCode) {
       try {
-
         const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${zipCode}&key=AIzaSyDwHGD2GD27gaVCFupJl-IbjtlV6y6Ijho`);
         const json = await response.json();
         const mostSimiliar = json.results[0];
-        console.log(mostSimiliar)
         for (const component of mostSimiliar.address_components) {
           const componentType = component.types[0];
           switch (componentType) {
@@ -276,6 +286,11 @@ const page = {
     const input = document.querySelector("#address1");
     const input2 = document.querySelector("#address2");
 
+    input.onchange = (e) => {
+      
+      this.formData.addressLine = e.target.value;
+    };
+
     const options = {
       bounds: defaultBounds,
       componentRestrictions: { country: "us" },
@@ -291,13 +306,11 @@ const page = {
       document.querySelector("#city").value = "";
       document.querySelector("#state").value = "";
       document.querySelector("#zipCode").value = "";
-
       this.formData.city = "";
       this.formData.state = "";
       this.formData.zipCode = "";
       this.formData.addressLine = "";
       this.formData.addressLine2 = "";
-
       for (const component of place.address_components) {
         const componentType = component.types[0];
         switch (componentType) {
@@ -343,15 +356,6 @@ const page = {
   hasFormErrors() {
     if (this.currentFormStep === 1 && this.formData.squareFootage == "" || this.formData.bathrooms == 0 || this.formData.bedrooms == 0) {
       toast.error("Fill in all required fields!");
-      return true;
-    } else if (this.currentFormStep === 1 && this.formData.bedrooms == 5 && this.formData.bathrooms < 3) {
-      toast.error("For a house with 5 bedrooms, a minimum value of 3 bathrooms is required.");
-      return true;
-    } else if (this.currentFormStep === 1 && this.formData.bedrooms == 6 && this.formData.bathrooms < 4) {
-      toast.error("For a house with 6 bedrooms, a minimum value of 4 bathrooms is required.");
-      return true;
-    } else if (this.currentFormStep === 1 && this.formData.bedrooms == 7 && this.formData.bathrooms < 5) {
-      toast.error("For a house with 7 bedrooms, a minimum value of 5 bathrooms is required.");
       return true;
     } else if (this.currentFormStep === 2 && this.formData.frequency == "-") {
       toast.error("Choose a frequency for the service!")
@@ -484,9 +488,7 @@ const page = {
       this.nextStepButton.innerHTML = "Submit";
 
       for (let i = 1; i <= 7; i++) {
-        console.log(i)
         document.querySelector("#form-step-" + i).style.display = "block";
-        console.log(document.querySelector("#form-step-" + i))
 
         if (this.formData.frequency !== "One Time") {
           document.querySelector("#form-step-3").style.display = "none";
@@ -875,14 +877,30 @@ const page = {
           break;
       }
     }
+
+    let fakeBedrooms = this.formData.bedrooms;
+    let fakeBathrooms = this.formData.bathrooms;
+
+    if (this.formData.bedrooms == 5 && this.formData.bathrooms < 3) {
+      fakeBedrooms = 5;
+      fakeBathrooms = 3;
+    } else if (this.formData.bedrooms == 6 && this.formData.bathrooms < 4) {
+      fakeBedrooms = 6;
+      fakeBathrooms = 4;
+    } else if (this.formData.bedrooms == 7 && this.formData.bathrooms < 5) {
+      fakeBedrooms = 7;
+      fakeBathrooms = 5
+    }
+
     if (this.formData.bedrooms >= 6 || this.formData.bathrooms >= 6) {
-      totalValue = (this.formData.bedrooms * 12) + (this.formData.bathrooms * 16) + totalRecurringValue;
-      initialDeepCleaningValue += (this.formData.bedrooms * 12) + (this.formData.bathrooms * 16);
-      otcValue += (this.formData.bedrooms * 12) + (this.formData.bathrooms * 16);
-    } else if (this.formData.bedrooms < 6 || this.formData.bedrooms < 6) {
-      totalValue = (this.formData.bedrooms * 10) + (this.formData.bathrooms * 15) + totalRecurringValue;
-      initialDeepCleaningValue += (this.formData.bedrooms * 10) + (this.formData.bathrooms * 15);
-      otcValue += (this.formData.bedrooms * 10) + (this.formData.bathrooms * 15);
+      totalValue = (fakeBedrooms * 12) + (fakeBathrooms * 16) + totalRecurringValue;
+      initialDeepCleaningValue += (fakeBedrooms * 12) + (fakeBathrooms * 16);
+      otcValue += (fakeBedrooms * 12) + (fakeBathrooms * 16);
+    }
+    if (this.formData.bedrooms < 6 && this.formData.bathrooms < 6) {
+      totalValue = (fakeBedrooms * 10) + (fakeBathrooms * 15) + totalRecurringValue;
+      initialDeepCleaningValue += (fakeBedrooms * 10) + (fakeBathrooms * 15);
+      otcValue += (fakeBedrooms * 10) + (fakeBathrooms * 15);
     }
 
     if (this.formData.frequency === "-" && this.formData.service === "-") {
@@ -917,7 +935,6 @@ const page = {
     } else {
       totalValue += initialDeepCleaningValue;
     }
-    console.log(multiplierValue, otcValue)
     return {
       totalValue,
       totalRecurringValue,
@@ -965,9 +982,9 @@ const page = {
     }
 
     if (this.formData.frequency !== "-")
-      servicePrice.innerHTML = `$ ${totalRecurringValue.toFixed(0, 2)}`;
+      servicePrice.innerHTML = `$ ${totalRecurringValue.toFixed(2)}`;
     if (this.formData.frequency === "One Time") {
-      servicePrice.innerHTML = `$ ${Number(totalValue).toFixed(0, 2)}`
+      servicePrice.innerHTML = `$ ${totalValue.toFixed(2)}`
     }
 
     totalValueText.innerHTML = this.totalValue.toFixed(2);
@@ -1005,6 +1022,7 @@ const page = {
     this.extraRoom = [];
     this.formData.additionalServices = [];
     this.getQuoteTotalValue();
+    this.renderExtras();
     this.renderQuoteSummary();
   },
 
@@ -1038,7 +1056,15 @@ const page = {
   },
 
   async onSubmit() {
+    const loader = document.createElement('img');
+    loader.src = "assets/img/loader.svg";
     try {
+      this.formData.addressLine = document.querySelector("#address1").value;
+
+      this.nextStepButton.appendChild(loader);
+      this.nextStepButton.disabled = true;
+      this.nextStepButton.style.opacity = 0.6;
+
       const addOns = Object.keys(this.formData.additionalServices)
         .filter(key => key !== "Extra Room")
         .map(key => key);
@@ -1070,7 +1096,6 @@ const page = {
         discountCoupon: document.querySelector("#discount-code").value,
         totalPrice: this.totalValue,
         recurringValue: this.recurringValue,
-        initialDeepCleaning: this.initialDeepCleaning,
       };
 
       const response = await fetch(`https://wwua7dlp7liv5ck4gy7lgbbwym0fmcvw.lambda-url.us-east-1.on.aws/email/request-quote`, {
@@ -1083,7 +1108,7 @@ const page = {
 
       if (response.ok) {
         toast.success("The quote request was sent successfully.");
-        window.location.href = "./index.html";
+        window.location.href = "./index.html?redirect=true";
       } else {
         const errorData = await response.json();
         const firstError = errorData.errors && errorData.errors.length > 0 ? errorData.errors[0].msg : "Error sending quote request.";
@@ -1093,6 +1118,10 @@ const page = {
       console.error('Error sending quote request:', error);
       toast.error("An error occurred while sending the quote request.");
     }
+
+    this.nextStepButton.removeChild(loader);
+    this.nextStepButton.disabled = false;
+    this.nextStepButton.style.opacity = 1;
   },
 
   renderQuoteSummary() {
@@ -1106,6 +1135,10 @@ const page = {
 
     if (this.formData.frequency !== "-") {
       document.querySelector("#frequency").innerHTML = " - " + this.formData.frequency;
+    }
+
+    if (this.formData.frequency === "One Time" && this.formData.service !== "-") {
+      document.querySelector("#frequency").innerHTML = ` - ${this.formData.frequency}: ${services[this.formData.service].name}`;
     }
 
     const extras = this.formData.additionalServices;

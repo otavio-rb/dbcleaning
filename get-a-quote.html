@@ -321,7 +321,6 @@
 
                       <h4>Square Footage</h4>
                     </div>
-
                     <div id="input-square-container" class="count_num">
                       <select
                         style="min-width: 160px"
@@ -669,8 +668,8 @@
                   <div class="fields_form_quote_row">
                     <div class="form_group_field_33">
                       <label for="">How did you hear about us?</label>
-                      <select required name="" id="howHearAboutUs">
-                        <option selected value="">Please select</option>
+                      <select required data-key="howHearAboutUs" class="field" id="howHearAboutUs">
+                        <option selected disabled value="">Please select</option>
                         <option value="Google">Google</option>
                         <option value="Facebook">Facebook</option>
                         <option value="Instagram">Instagram</option>
@@ -683,9 +682,12 @@
                         </option>
                         <option value="Other">Other</option>
                       </select>
+                      <div class="form_error">
+                        This field is required
+                      </div>
                     </div>
                     <div class="checkbox_line">
-                      <input id="isAGift" type="checkbox" />
+                      <input id="isAGift" class="field" data-key="isGift" type="checkbox" />
                       <label
                         class="pointer"
                         for="isAGift"
@@ -975,9 +977,34 @@
           </ul>
         </div>
 
-        <div class="col_footer">
-          <h4>Contact</h4>
+    <footer class="footer bg-azul-destaque">
+        <div class="container footer_content">
+            <div class="col_footer">
+                <h4>Useful Links</h4>
 
+                <ul>
+                    <li class="has-children">
+                        <a href="about-us.html">About Us</a>
+                        <ul class="submenu">
+                            <li class="min-has-children">
+                                <a href=""><span class="text-menu-item-has-children">Services</span> <span class="arrow-down"></span></a>
+                                <ul class="min-submenu">
+                                    <li><a href="deep-cleaning.html">Deep Cleaning</a></li>
+                                    <li><a href="regular-cleaning.html">Regular Cleaning</a></li>
+                                    <li><a href="post-construction.html">Post Construction Cleaning</a></li>
+                                    <li><a href="move-in-out.html">Move In/Out Cleaning</a></li>
+                                    <li><a href="green-cleaning.html">Green Cleaning</a></li>
+                                    <li><a href="services.html#specialty-services"><strong>Others Services</strong></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="help-center.html">Help Center</a></li>
+                    <li><a href="terms.html">Terms and Conditions</a></li>
+                </ul>
+            </div>
           <ul>
             <li><a href="">Get In Touch</a></li>
           </ul>
@@ -988,11 +1015,20 @@
             <li><a href="">Our Blog</a></li>
           </ul>
 
-          <h4>Portfolio</h4>
-
-          <ul>
-            <li><a href="">Portfolio</a></li>
-          </ul>
+            <div class="col_footer">
+                <div class="d-flex securty_footer">
+                    <div class="s_70">
+                        <span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=QihdGPbOJ14O9Frrk0YXvgw5KnAIgtxk9EDvgFKzQyKZS2OS018cBMJSbkAJ"></script></span>
+                    </div>
+                    <div class="s_30">
+                        <a href="#" onclick="window.open('https://www.sitelock.com/verify.php?site=mydbcleaning.com','SiteLock','width=600,height=600,left=160,top=170');" ><img class="img-fluid" alt="SiteLock" title="SiteLock" src="https://shield.sitelock.com/shield/mydbcleaning.com" /></a>
+                    </div>
+                    <div class="s_100">
+                        <img src="assets/img/sq.png" alt="">
+                    </div>
+                </div>
+            </div>
+            
         </div>
 
         <div class="col_footer">
@@ -1023,6 +1059,7 @@
         <p>Copyright © 2024 DB Cleaning Services</p>
       </div>
     </footer>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
