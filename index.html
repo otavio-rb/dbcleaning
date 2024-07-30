@@ -149,13 +149,14 @@
     <main>
 
         <section class="hero">
-            <!-- 
-            <img class="img_temp_hero" src="assets/img/banner1.jpg" alt="">
-             -->
 
-            <video class="img_temp_hero" autoplay muted loop>
+            <img class="img_temp_hero_over" src="assets/img/banner1.jpg" alt="">
+
+            <video class="img_temp_hero" loop id="myVideo">
                 <source src="assets/video/DB Promo Video.mp4" type="video/mp4">
             </video>
+
+            <button id="playPauseButton"><img src="assets/img/play.png" alt=""></button>
 
             <img class="float_img_hero" src="assets/img/wave2.png" alt="">
 
@@ -896,5 +897,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script type="module" src="assets/js/script.js"></script>
     <script type="module" src="assets/js/home.js"></script>
+    <script>
+
+        document.getElementById('playPauseButton').addEventListener('click', function() {
+            var video = document.getElementById('myVideo');
+            if (video.paused) {
+                video.play();
+                document.querySelector('.img_temp_hero_over').classList.add('hide_img');
+                this.querySelector('img').setAttribute('src', 'assets/img/pause.png');
+                this.querySelector('img').style.opacity = ".4";
+                document.querySelector('.form_hero').classList.add('hide-desktop');
+            } else {
+                video.pause();
+                document.querySelector('.img_temp_hero_over').classList.remove('hide_img');
+                this.querySelector('img').setAttribute('src', 'assets/img/play.png');
+                this.querySelector('img').style.opacity = "1";
+                document.querySelector('.form_hero').classList.remove('hide-desktop');
+            }
+        });
+    </script>
 </body>
 </html>
