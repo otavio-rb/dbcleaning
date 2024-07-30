@@ -915,7 +915,7 @@ input[type=radio]:disabled, input[type="checkbox"]:disabled {
   flex-wrap: wrap;
 }
 .col_footer {
-  width: calc(100% / 7);
+  width: calc(100% / 4);
   padding: 0 10px 0 0;
 }
 .col_footer h4 {
