@@ -39,6 +39,17 @@
     color: #001C8F;
     line-height: 30px;
     text-align: center;
+    margin-bottom: 10px;
+}
+.cards_min_simple p{
+    color: var(--color-gray4);
+    line-height: 1.2em;
+    text-align: center;
+    height: 0;
+    overflow: hidden;
+}
+.cards_min_simple:hover .card_min_simple p{
+    height: auto;
 }
 .section-inner{
     padding: 30px 0;
