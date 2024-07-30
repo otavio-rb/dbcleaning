@@ -728,13 +728,10 @@
             let imgs_length = imgs.length;
             let img_index = 0;
 
-            console.log(img_pop.length)
-
             btn_next.addEventListener('click', () => {
 
                 if(img_index < imgs_length){
                     img_index++;
-                    console.log(img_index)
                     
                     if(img_index == (imgs_length)){
                         console.log('é igual')
@@ -754,17 +751,13 @@
                     imgs[img_index].classList.add('active');
                     
                     if(img_pop[img_index].classList.contains('flag') || img_pop[img_index].classList.contains('flag_after')){
-                        console.log('if')
-                        console.log(img_pop[index])
 
                         if(img_pop[img_index].classList.contains('flag')){
                             left_popup_port.classList.remove('flag_after');
                             left_popup_port.classList.add('flag');
-                            console.log('segundo if');
                         }else{
                             left_popup_port.classList.remove('flag');
                             left_popup_port.classList.add('flag_after');
-                            console.log('segundo else');
                         }
                         
                     }else{
@@ -800,17 +793,13 @@
                     imgs[img_index].classList.add('active');
 
                     if(img_pop[img_index].classList.contains('flag') || img_pop[img_index].classList.contains('flag_after')){
-                        console.log('if')
-                        console.log(img_pop[index])
 
                         if(img_pop[img_index].classList.contains('flag')){
                             left_popup_port.classList.remove('flag_after');
                             left_popup_port.classList.add('flag');
-                            console.log('segundo if');
                         }else{
                             left_popup_port.classList.remove('flag');
                             left_popup_port.classList.add('flag_after');
-                            console.log('segundo else');
                         }
                         
                     }else{
@@ -838,17 +827,13 @@
                     imgs[index].classList.add('active');
 
                     if(img_pop[img_index].classList.contains('flag') || img_pop[img_index].classList.contains('flag_after')){
-                        console.log('if')
-                        console.log(img_pop[index])
 
                         if(img_pop[img_index].classList.contains('flag')){
                             left_popup_port.classList.remove('flag_after');
                             left_popup_port.classList.add('flag');
-                            console.log('segundo if');
                         }else{
                             left_popup_port.classList.remove('flag');
                             left_popup_port.classList.add('flag_after');
-                            console.log('segundo else');
                         }
                         
                     }else{
