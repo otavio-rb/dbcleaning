@@ -52,6 +52,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    cursor: pointer;
 }
 .row_faq_over .head_row_faq_over h4{
     font-size: 14px;

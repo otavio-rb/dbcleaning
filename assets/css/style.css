@@ -523,6 +523,7 @@ nav.menu ul{
     width: 360px;
     height: 600px;
     display: flex;
+    transition: all .23s;
 }
 .form_hero form{
     color: var(--color-white);
@@ -1302,6 +1303,12 @@ nav.menu ul{
     border: none;
     cursor: pointer;
 }
+.left_popup_port button.btn_port_next::before{
+    content: "\203A";
+}
+.left_popup_port button.btn_port_prev::before{
+    content: "\2039";
+}
 .left_popup_port button.btn_port_next{
     right: 10px;
 }
@@ -1320,18 +1327,40 @@ nav.menu ul{
     flex-wrap: wrap;
     margin: 10px 0;
 }
-.gallery_popup_port img{
+.gallery_popup_port .img_pop{
     width: calc(50% - 10px);
     margin: 5px;
     height: 70px;
     object-fit: cover;
     border-radius: 4px;
-    opacity: .5;
     cursor: pointer;
+    position: relative;
 }
-.gallery_popup_port img.active{
+.gallery_popup_port .img_pop img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: .5;
+}
+.gallery_popup_port .img_pop img.active{
     opacity: 1;
     border: 1px solid var(--color-black);
+}
+.gallery_popup_port img.flag{
+    position: relative;
+}
+.gallery_popup_port .img_pop.flag::before{
+    content: "Before";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background-color: var(--color-gray4);
+    border-radius: 3px;
+    color: var(--color-white);
+    text-transform: uppercase;
+    padding: 2px 6px;
+    z-index: 100;
+    font-size: .9em;
 }
 .right_popup_port_top h4{
     padding: 5px;
@@ -1416,6 +1445,32 @@ nav.menu ul{
 }
 .open_over_popup{
     display: flex;
+}
+#playPauseButton{
+    position: absolute;
+    top: calc(50% - 20px);
+    left: calc(50% - 20px);
+    width: 64px;
+    height: 64px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.img_temp_hero_over{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    object-fit: cover;
+    transition: all .23s;
+}
+.hide_img{
+    opacity: 0;
+}
+.hide-desktop{
+    opacity: 0;
 }
 
 
@@ -1705,7 +1760,7 @@ nav.menu ul{
         height: 100px;
     }
     .content_welcome{
-        padding-top: 680px;
+        padding-top: 620px;
         flex-direction: column-reverse;
     }
     .f-50{
@@ -1762,11 +1817,15 @@ nav.menu ul{
         background-color: var(--color-blue-light);
         border-radius: 10px;
     }
+    .hide-desktop{
+        opacity: 1;
+    }
 }
 
 @media(max-width: 580px){
     .form_hero{
         width: calc(100% - 30px);
+        margin-top: -36px;
     }
     .left_welcome img{
         width: calc(100% - 20px);
