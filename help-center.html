@@ -185,16 +185,19 @@
 
                 <div class="d-flex">
                     <article class="card_help">
-                        <div class="img_card_help">
-                            <img src="assets/img/pages/icons/inc.png" alt="">
-                        </div>
-
-                        <h3>Most Asked Questions</h3>
-                        <hr>
-                        <p>Check out our Frequently Asked Questions for quick answers to common queries about our cleaning services</p>
+                        <a href="faq.html">
+                            <div class="img_card_help">
+                                <img src="assets/img/pages/icons/inc.png" alt="">
+                            </div>
+    
+                            <h3>Most Asked Questions</h3>
+                            <hr>
+                            <p>Check out our Frequently Asked Questions for quick answers to common queries about our cleaning services</p>
+                        </a>
+                        
                     </article>
 
-                    <article class="card_help">
+                    <article class="card_help" id="btn_open_resources">
                         <div class="img_card_help">
                             <img src="assets/img/pages/icons/eng.png" alt="">
                         </div>
@@ -332,6 +335,21 @@
         </div>
     </section>
 
+    <div class="over_popup">
+        <div class="popup">
+            <div class="header_popup">
+                <h3>Resources</h3>
+                <span class="btn_close_popup">
+                    <img src="assets/img/close.svg" alt="">
+                </span>
+            </div>
+
+            <a href="DB Company Profile.pdf" target="_blank">Company Profile</a>
+            <a href="DB Terms of Service.pdf" target="_blank">Terms of Service</a>
+            <a href="Liability Waiver.pdf" target="_blank">Liability Walver</a>
+        </div>
+    </div>
+
     <footer class="footer bg-azul-destaque">
         <div class="container footer_content">
             <div class="col_footer">
@@ -421,5 +439,18 @@
     <script src="assets/js/script.js"></script>
     <script src="assets/js/cleaning-for-reason.js"></script>
     <script src="assets/js/page-default.js"></script>
+    <script>
+        const btn_open_resources = document.getElementById('btn_open_resources');
+        const over_popup = document.querySelector('.over_popup');
+        const btn_close_popup = document.querySelector('.btn_close_popup')
+
+        btn_open_resources.addEventListener('click', () => {
+            over_popup.classList.add('open_over_popup')
+        })
+
+        btn_close_popup.addEventListener('click', () => {
+            over_popup.classList.remove('open_over_popup')
+        })
+    </script>
 </body>
 </html>

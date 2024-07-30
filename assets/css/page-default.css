@@ -442,6 +442,7 @@
     box-shadow: 4px 4px 14px rgba(46, 105, 255, .3);
     padding: 16px;
     border-radius: 8px;
+    cursor: pointer;
 }
 .img_card_help{
     width: 72px;
