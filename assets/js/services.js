@@ -63,7 +63,7 @@ const placeMarkers = async (map) => {
     for (const state in json) {
         const currentState = json[state];
         for (const city of currentState) {
-            if (!alreadyPlaced.includes(city.county)) {
+            if (!alreadyPlaced.includes(city.zip)) {
                 const { AdvancedMarkerElement } = await google.maps.importLibrary("marker")
                 const marker = new AdvancedMarkerElement({
                     map: map,
@@ -73,7 +73,7 @@ const placeMarkers = async (map) => {
                     },
                     title: city.couty,
                 });
-                alreadyPlaced.push(city.county);
+                alreadyPlaced.push(city.zip);
             }
         }
     }
