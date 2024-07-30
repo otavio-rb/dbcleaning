@@ -123,6 +123,7 @@
     width: 100%;
     height: 200px;
     object-fit: cover;
+    opacity: 1;
 }
 .info_card_blue h4{
     color: var(--color-azul5);

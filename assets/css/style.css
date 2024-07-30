@@ -1346,15 +1346,28 @@ nav.menu ul{
     opacity: 1;
     border: 1px solid var(--color-black);
 }
-.gallery_popup_port img.flag{
+.flag{
     position: relative;
 }
-.gallery_popup_port .img_pop.flag::before{
+.flag::before{
     content: "Before";
     position: absolute;
     top: 5px;
     left: 5px;
     background-color: var(--color-gray4);
+    border-radius: 3px;
+    color: var(--color-white);
+    text-transform: uppercase;
+    padding: 2px 6px;
+    z-index: 100;
+    font-size: .9em;
+}
+.flag_after::before{
+    content: "After";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background-color: green;
     border-radius: 3px;
     color: var(--color-white);
     text-transform: uppercase;
