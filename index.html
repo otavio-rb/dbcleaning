@@ -149,13 +149,14 @@
     <main>
 
         <section class="hero">
-            <!-- 
-            <img class="img_temp_hero" src="assets/img/banner1.jpg" alt="">
-             -->
 
-            <video class="img_temp_hero" autoplay muted loop>
+            <img class="img_temp_hero_over" src="assets/img/banner1.jpg" alt="">
+
+            <video class="img_temp_hero" loop id="myVideo">
                 <source src="assets/video/DB Promo Video.mp4" type="video/mp4">
             </video>
+
+            <button id="playPauseButton"><img src="assets/img/play.png" alt=""></button>
 
             <img class="float_img_hero" src="assets/img/wave2.png" alt="">
 
@@ -232,11 +233,11 @@
                 <section class="d-flex cards">
                     <article class="card">
                         <a href="deep-cleaning.html">
-                            <img src="assets/img/card1.png" alt="">
+                            <img src="assets/img/min-deep-clean.png" alt="">
 
                             <div class="info_card">
                                 <div class="over_img_info_card">
-                                    <img src="assets/img/icon/window.png" alt="">
+                                    <img src="assets/img/icon/bucket-clean.png" alt="">
                                 </div>
 
                                 <p>Deep Cleaning</p>
@@ -250,11 +251,11 @@
 
                     <article class="card">
                         <a href="regular-cleaning.html">
-                            <img src="assets/img/card2.png" alt="">
+                            <img src="assets/img/min-regular.png" alt="">
 
                             <div class="info_card">
                                 <div class="over_img_info_card">
-                                    <img src="assets/img/icon/unblocker.png" alt="">
+                                    <img src="assets/img/icon/bucket.png" alt="">
                                 </div>
                                 <p>Regular Cleaning</p>
 
@@ -267,7 +268,7 @@
 
                     <article class="card">
                         <a href="move-in-out.html">
-                            <img src="assets/img/card3.png" alt="">
+                            <img src="assets/img/min-move.png" alt="">
 
                             <div class="info_card">
                                 <div class="over_img_info_card">
@@ -285,11 +286,11 @@
 
                     <article class="card">
                         <a href="green-cleaning.html">
-                            <img src="assets/img/card4.png" alt="">
+                            <img src="assets/img/min-green.png" alt="">
 
                             <div class="info_card">
                                 <div class="over_img_info_card">
-                                    <img src="assets/img/icon/bucket.png" alt="">
+                                    <img src="assets/img/icon/leave.png" alt="">
                                 </div>
 
                                 <p>Green Cleaning</p>
@@ -549,7 +550,8 @@
                             
                             <svg class="float_testi" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="113" zoomAndPan="magnify" viewBox="0 0 84.75 62.249996" height="83" preserveAspectRatio="xMidYMid meet" version="1.0"><defs><clipPath id="48ac859026"><path d="M 44 0 L 82.710938 0 L 82.710938 61.507812 L 44 61.507812 Z M 44 0 " clip-rule="nonzero"/></clipPath><clipPath id="ee6c87991b"><path d="M 1.9375 0 L 41 0 L 41 61.507812 L 1.9375 61.507812 Z M 1.9375 0 " clip-rule="nonzero"/></clipPath></defs><g clip-path="url(#48ac859026)"><path fill="#6b7280" d="M 61.769531 35.183594 C 65.597656 35.183594 69.121094 33.90625 71.96875 31.78125 C 71.6875 40.648438 64.832031 49.519531 51.308594 58.394531 L 53.316406 61.507812 C 72.914062 49.332031 82.710938 35.96875 82.710938 21.421875 C 82.710938 14.742188 80.894531 9.503906 77.257812 5.722656 C 73.621094 1.933594 69.015625 0.046875 63.449219 0.046875 C 57.878906 0.046875 53.390625 1.566406 49.976562 4.609375 C 46.5625 7.648438 44.851562 11.328125 44.851562 15.628906 C 44.851562 15.679688 44.859375 15.714844 44.859375 15.765625 C 44.757812 16.53125 44.683594 17.300781 44.683594 18.097656 C 44.683594 27.53125 52.335938 35.183594 61.769531 35.183594 Z M 61.769531 35.183594 " fill-opacity="1" fill-rule="nonzero"/></g><g clip-path="url(#ee6c87991b)"><path fill="#6b7280" d="M 6.523438 6.300781 C 6.300781 6.558594 6.035156 6.800781 5.832031 7.066406 C 3.3125 10.046875 1.785156 13.886719 1.785156 18.097656 C 1.785156 27.53125 9.4375 35.183594 18.871094 35.183594 C 23.191406 35.183594 27.125 33.566406 30.136719 30.917969 C 30.136719 31.023438 30.152344 31.113281 30.152344 31.222656 C 30.152344 40.277344 23.25 49.335938 9.441406 58.394531 L 11.445312 61.507812 C 31.046875 49.332031 40.84375 35.96875 40.84375 21.417969 C 40.84375 14.738281 39.027344 9.503906 35.386719 5.722656 C 31.753906 1.933594 27.148438 0.0390625 21.582031 0.0390625 C 16.015625 0.0390625 11.519531 1.5625 8.109375 4.609375 C 7.625 5.035156 7.25 5.511719 6.835938 5.964844 C 6.726562 6.074219 6.628906 6.1875 6.523438 6.300781 Z M 6.523438 6.300781 " fill-opacity="1" fill-rule="nonzero"/></g></svg>
 
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <p>We had them for almost a year. They used caustic chemicals that removed silver finish from chrome stove knobs and the bathtub..
+                            </p>
 
                             <div class="bottom_testi">
                                 <div class="over_img_testi">
@@ -564,13 +566,13 @@
                                         
 
                                     <div class="inner_over_testi">
-                                        <img src="assets/img/Joe-V-.png" alt="" class="img_user">
+                                        <img src="https://lh3.googleusercontent.com/a-/ALV-UjVyX7NILN7Rz0WmJnoY3_9CUWSLRMu9uTWvkmGCTcWSspeyFFE=w36-h36-p-rp-mo-ba4-br100" alt="" class="img_user">
                                     </div>
                                 </div>
 
                                 <div class="bottom_info_name_testi">
 
-                                    <h4><strong>Lorem ipsum</strong> <br> <small>Lorem ipsum</small></h4>
+                                    <h4><strong>Barb S</strong> <br> <small>3 days ago</small></h4>
 
                                     <div class="stars_testi">
                                         <img src="assets/img/icon/yellow-star.png" alt="">
@@ -586,7 +588,7 @@
                         <div class="card_carousel">
                             <svg class="float_testi" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="113" zoomAndPan="magnify" viewBox="0 0 84.75 62.249996" height="83" preserveAspectRatio="xMidYMid meet" version="1.0"><defs><clipPath id="48ac859026"><path d="M 44 0 L 82.710938 0 L 82.710938 61.507812 L 44 61.507812 Z M 44 0 " clip-rule="nonzero"/></clipPath><clipPath id="ee6c87991b"><path d="M 1.9375 0 L 41 0 L 41 61.507812 L 1.9375 61.507812 Z M 1.9375 0 " clip-rule="nonzero"/></clipPath></defs><g clip-path="url(#48ac859026)"><path fill="#6b7280" d="M 61.769531 35.183594 C 65.597656 35.183594 69.121094 33.90625 71.96875 31.78125 C 71.6875 40.648438 64.832031 49.519531 51.308594 58.394531 L 53.316406 61.507812 C 72.914062 49.332031 82.710938 35.96875 82.710938 21.421875 C 82.710938 14.742188 80.894531 9.503906 77.257812 5.722656 C 73.621094 1.933594 69.015625 0.046875 63.449219 0.046875 C 57.878906 0.046875 53.390625 1.566406 49.976562 4.609375 C 46.5625 7.648438 44.851562 11.328125 44.851562 15.628906 C 44.851562 15.679688 44.859375 15.714844 44.859375 15.765625 C 44.757812 16.53125 44.683594 17.300781 44.683594 18.097656 C 44.683594 27.53125 52.335938 35.183594 61.769531 35.183594 Z M 61.769531 35.183594 " fill-opacity="1" fill-rule="nonzero"/></g><g clip-path="url(#ee6c87991b)"><path fill="#6b7280" d="M 6.523438 6.300781 C 6.300781 6.558594 6.035156 6.800781 5.832031 7.066406 C 3.3125 10.046875 1.785156 13.886719 1.785156 18.097656 C 1.785156 27.53125 9.4375 35.183594 18.871094 35.183594 C 23.191406 35.183594 27.125 33.566406 30.136719 30.917969 C 30.136719 31.023438 30.152344 31.113281 30.152344 31.222656 C 30.152344 40.277344 23.25 49.335938 9.441406 58.394531 L 11.445312 61.507812 C 31.046875 49.332031 40.84375 35.96875 40.84375 21.417969 C 40.84375 14.738281 39.027344 9.503906 35.386719 5.722656 C 31.753906 1.933594 27.148438 0.0390625 21.582031 0.0390625 C 16.015625 0.0390625 11.519531 1.5625 8.109375 4.609375 C 7.625 5.035156 7.25 5.511719 6.835938 5.964844 C 6.726562 6.074219 6.628906 6.1875 6.523438 6.300781 Z M 6.523438 6.300781 " fill-opacity="1" fill-rule="nonzero"/></g></svg>
 
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <p>We have been customers of DB cleaning for over 10 years and have been very happy with their services. They are always prompt..</p>
 
                             <div class="bottom_testi">
                                 <div class="over_img_testi">
@@ -599,13 +601,13 @@
                                     </svg>
 
                                     <div class="inner_over_testi">
-                                        <img src="assets/img/Joe-V-.png" alt="" class="img_user">
+                                        <img src="https://lh3.googleusercontent.com/a/ACg8ocIaHLjP0CB42TYgRZTW2r7drVNSqCSWRLP51yGEysy3IVpXtrY=w36-h36-p-rp-mo-br100" alt="" class="img_user">
                                     </div>
                                 </div>
 
                                 <div class="bottom_info_name_testi">
 
-                                    <h4><strong>Lorem ipsum</strong> <br> <small>Lorem ipsum</small></h4>
+                                    <h4><strong>Sonia Martin</strong> <br> <small>4 months ago</small></h4>
 
                                     <div class="stars_testi">
                                         <img src="assets/img/icon/yellow-star.png" alt="">
@@ -621,7 +623,7 @@
                         <div class="card_carousel">
                             <svg class="float_testi" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="113" zoomAndPan="magnify" viewBox="0 0 84.75 62.249996" height="83" preserveAspectRatio="xMidYMid meet" version="1.0"><defs><clipPath id="48ac859026"><path d="M 44 0 L 82.710938 0 L 82.710938 61.507812 L 44 61.507812 Z M 44 0 " clip-rule="nonzero"/></clipPath><clipPath id="ee6c87991b"><path d="M 1.9375 0 L 41 0 L 41 61.507812 L 1.9375 61.507812 Z M 1.9375 0 " clip-rule="nonzero"/></clipPath></defs><g clip-path="url(#48ac859026)"><path fill="#6b7280" d="M 61.769531 35.183594 C 65.597656 35.183594 69.121094 33.90625 71.96875 31.78125 C 71.6875 40.648438 64.832031 49.519531 51.308594 58.394531 L 53.316406 61.507812 C 72.914062 49.332031 82.710938 35.96875 82.710938 21.421875 C 82.710938 14.742188 80.894531 9.503906 77.257812 5.722656 C 73.621094 1.933594 69.015625 0.046875 63.449219 0.046875 C 57.878906 0.046875 53.390625 1.566406 49.976562 4.609375 C 46.5625 7.648438 44.851562 11.328125 44.851562 15.628906 C 44.851562 15.679688 44.859375 15.714844 44.859375 15.765625 C 44.757812 16.53125 44.683594 17.300781 44.683594 18.097656 C 44.683594 27.53125 52.335938 35.183594 61.769531 35.183594 Z M 61.769531 35.183594 " fill-opacity="1" fill-rule="nonzero"/></g><g clip-path="url(#ee6c87991b)"><path fill="#6b7280" d="M 6.523438 6.300781 C 6.300781 6.558594 6.035156 6.800781 5.832031 7.066406 C 3.3125 10.046875 1.785156 13.886719 1.785156 18.097656 C 1.785156 27.53125 9.4375 35.183594 18.871094 35.183594 C 23.191406 35.183594 27.125 33.566406 30.136719 30.917969 C 30.136719 31.023438 30.152344 31.113281 30.152344 31.222656 C 30.152344 40.277344 23.25 49.335938 9.441406 58.394531 L 11.445312 61.507812 C 31.046875 49.332031 40.84375 35.96875 40.84375 21.417969 C 40.84375 14.738281 39.027344 9.503906 35.386719 5.722656 C 31.753906 1.933594 27.148438 0.0390625 21.582031 0.0390625 C 16.015625 0.0390625 11.519531 1.5625 8.109375 4.609375 C 7.625 5.035156 7.25 5.511719 6.835938 5.964844 C 6.726562 6.074219 6.628906 6.1875 6.523438 6.300781 Z M 6.523438 6.300781 " fill-opacity="1" fill-rule="nonzero"/></g></svg>
 
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <p>WOW!!!! I scheduled a deep clean yesterday and it far exceeded my expectations! The girls went ABOVE and BEYOND, and I could not ..</p>
 
                             <div class="bottom_testi">
                                 <div class="over_img_testi">
@@ -634,13 +636,13 @@
                                     </svg>
 
                                     <div class="inner_over_testi">
-                                        <img src="assets/img/Joe-V-.png" alt="" class="img_user">
+                                        <img src="https://lh3.googleusercontent.com/a-/ALV-UjXRxa4RQFL1l2xP2u6SWJiwGtlNHquBEm3o_fHYlw81QpiCTqGW=w36-h36-p-rp-mo-br100" alt="" class="img_user">
                                     </div>
                                 </div>
 
                                 <div class="bottom_info_name_testi">
 
-                                    <h4><strong>Lorem ipsum</strong> <br> <small>Lorem ipsum</small></h4>
+                                    <h4><strong>Catherine Jones</strong> <br> <small>2 weeks ago</small></h4>
 
                                     <div class="stars_testi">
                                         <img src="assets/img/icon/yellow-star.png" alt="">
@@ -656,7 +658,7 @@
                         <div class="card_carousel">
                              <svg class="float_testi" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="113" zoomAndPan="magnify" viewBox="0 0 84.75 62.249996" height="83" preserveAspectRatio="xMidYMid meet" version="1.0"><defs><clipPath id="48ac859026"><path d="M 44 0 L 82.710938 0 L 82.710938 61.507812 L 44 61.507812 Z M 44 0 " clip-rule="nonzero"/></clipPath><clipPath id="ee6c87991b"><path d="M 1.9375 0 L 41 0 L 41 61.507812 L 1.9375 61.507812 Z M 1.9375 0 " clip-rule="nonzero"/></clipPath></defs><g clip-path="url(#48ac859026)"><path fill="#6b7280" d="M 61.769531 35.183594 C 65.597656 35.183594 69.121094 33.90625 71.96875 31.78125 C 71.6875 40.648438 64.832031 49.519531 51.308594 58.394531 L 53.316406 61.507812 C 72.914062 49.332031 82.710938 35.96875 82.710938 21.421875 C 82.710938 14.742188 80.894531 9.503906 77.257812 5.722656 C 73.621094 1.933594 69.015625 0.046875 63.449219 0.046875 C 57.878906 0.046875 53.390625 1.566406 49.976562 4.609375 C 46.5625 7.648438 44.851562 11.328125 44.851562 15.628906 C 44.851562 15.679688 44.859375 15.714844 44.859375 15.765625 C 44.757812 16.53125 44.683594 17.300781 44.683594 18.097656 C 44.683594 27.53125 52.335938 35.183594 61.769531 35.183594 Z M 61.769531 35.183594 " fill-opacity="1" fill-rule="nonzero"/></g><g clip-path="url(#ee6c87991b)"><path fill="#6b7280" d="M 6.523438 6.300781 C 6.300781 6.558594 6.035156 6.800781 5.832031 7.066406 C 3.3125 10.046875 1.785156 13.886719 1.785156 18.097656 C 1.785156 27.53125 9.4375 35.183594 18.871094 35.183594 C 23.191406 35.183594 27.125 33.566406 30.136719 30.917969 C 30.136719 31.023438 30.152344 31.113281 30.152344 31.222656 C 30.152344 40.277344 23.25 49.335938 9.441406 58.394531 L 11.445312 61.507812 C 31.046875 49.332031 40.84375 35.96875 40.84375 21.417969 C 40.84375 14.738281 39.027344 9.503906 35.386719 5.722656 C 31.753906 1.933594 27.148438 0.0390625 21.582031 0.0390625 C 16.015625 0.0390625 11.519531 1.5625 8.109375 4.609375 C 7.625 5.035156 7.25 5.511719 6.835938 5.964844 C 6.726562 6.074219 6.628906 6.1875 6.523438 6.300781 Z M 6.523438 6.300781 " fill-opacity="1" fill-rule="nonzero"/></g></svg>
 
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <p>Amazing cleaning service. Used them for a move in deep clean and I couldn't believe the level of detail and attention that the..</p>
 
                             <div class="bottom_testi">
                                 <div class="over_img_testi">
@@ -669,13 +671,13 @@
                                     </svg>
 
                                     <div class="inner_over_testi">
-                                        <img src="assets/img/Joe-V-.png" alt="" class="img_user">
+                                        <img src="https://lh3.googleusercontent.com/a/ACg8ocIV9_Gn-iNKMrsTb8ibVnylJoN88SEpWJgnG_D3nww-3v1dhw=w36-h36-p-rp-mo-br100" alt="" class="img_user">
                                     </div>
                                 </div>
 
                                 <div class="bottom_info_name_testi">
 
-                                    <h4><strong>Lorem ipsum</strong> <br> <small>Lorem ipsum</small></h4>
+                                    <h4><strong>Ahmed Abdalla</strong> <br> <small>2 weeks ago</small></h4>
 
                                     <div class="stars_testi">
                                         <img src="assets/img/icon/yellow-star.png" alt="">
@@ -896,5 +898,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script type="module" src="assets/js/script.js"></script>
     <script type="module" src="assets/js/home.js"></script>
+    <script>
+
+        document.getElementById('playPauseButton').addEventListener('click', function() {
+            var video = document.getElementById('myVideo');
+            if (video.paused) {
+                video.play();
+                document.querySelector('.img_temp_hero_over').classList.add('hide_img');
+                this.querySelector('img').setAttribute('src', 'assets/img/pause.png');
+                this.querySelector('img').style.opacity = ".4";
+                document.querySelector('.form_hero').classList.add('hide-desktop');
+            } else {
+                video.pause();
+                document.querySelector('.img_temp_hero_over').classList.remove('hide_img');
+                this.querySelector('img').setAttribute('src', 'assets/img/play.png');
+                this.querySelector('img').style.opacity = "1";
+                document.querySelector('.form_hero').classList.remove('hide-desktop');
+            }
+        });
+    </script>
 </body>
 </html>

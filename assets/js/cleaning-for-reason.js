@@ -5,7 +5,7 @@ row_faq_over.forEach((item, index) => {
     let height_row = item.querySelector('p').getBoundingClientRect().height;
     console.log(height_row);
 
-    item.querySelector('.control_row_faq').addEventListener('click', () => {
+    item.addEventListener('click', () => {
 
         if(row_faq_over[index].querySelector('p').classList.contains('open_row_faq')){
             row_faq_over[index].querySelector('p').classList.remove('open_row_faq');
