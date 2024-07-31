@@ -405,7 +405,9 @@
   font-size: 14px;
   color: var(--color-dark);
 }
-.form_group_field_33 input {
+.form_group_field_33 input[type="text"],
+.form_group_field_33 input[type="number"],
+.form_group_field_33 input[type="email"] {
   width: 100%;
   padding: 12px 15px;
   height: 46px;
@@ -428,7 +430,7 @@
   color: var(--color-error);
 }
 
-.form_error{
+.form_error {
   display: none;
   flex-direction: column;
   color: var(--color-error);

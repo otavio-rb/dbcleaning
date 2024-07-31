@@ -2,16 +2,15 @@ import Toast from "../class/Toast/Toast.js";
 import servicesData, { serviceDetails, extraRooms, frequencyPopupDetails } from "../constants/services.js";
 import Popup from "../class/Popup/Popup.js";
 import { quoteFormSchema } from "../constants/form-schema.js";
-import zipCodes from "../constants/zip-codes.js";
+import zipCodes, { DE, NJ, PA, Philadelphia } from "../constants/zip-codes.js";
 import services from "../constants/services.js";
 
 const toast = new Toast(5000);
 
-const limitPopup = new Popup("On-Site Visit Required", "Schedule a Free Visit",
+const limitPopup = new Popup("Let’s Schedule Your Free On-Site Visit!", "Schedule a Free Visit",
   `
   <span>
-    We can't provide an instant quote for homes with more than 7 bedrooms or 6 bathrooms.
-    Schedule a free-on-site visit for an accurate quote. Please fill out the form below.
+   For larger homes, we offer personalized on-site visits to give you the most accurate quote. Please complete the form below, and we'll arrange a convenient time to visit.
   </span>
   <form id="schedule-visit-form" class="grid col-2">
     <div class="form_group_field_33 w-100">
@@ -45,7 +44,7 @@ const limitPopup = new Popup("On-Site Visit Required", "Schedule a Free Visit",
       <div class="form_group_field_33 w-100">
         <label for="phone">Phone*</label>
           <input
-            type="phone"
+            type="text"
             data-key="phone"
             id="phone"
             class="field"
@@ -61,7 +60,7 @@ const limitPopup = new Popup("On-Site Visit Required", "Schedule a Free Visit",
           <input
             type="text"
             data-key="address"
-            id="address"
+            id="address-schedule"
             class="field"
             placeholder=""
             required
@@ -70,17 +69,98 @@ const limitPopup = new Popup("On-Site Visit Required", "Schedule a Free Visit",
             Address required
           </div>
       </div>
-      <div class="form_group_field_33 w-100 col-span-2">
-        <label for="preferredTimes">Preferred Scheduling Times (optional)</label>
-          <input
-            type="text"
-            id="preferredTimes"
-            class="field"
-            placeholder="e.g Weekdays after 3 PM"
-          />
+      <div class="form_group_field_33 w-100 d-flex f-column">
+        <span>Day</span>
+        <div class="d-flex g-10 w-100">
+          <label class="d-flex align-center pointer" for="monday">
+              <input
+                type="checkbox"
+                name="availability-day"
+                value="monday"
+                required
+                id="monday"
+              />
+              <span>Monday</span>
+            </label>
+        </div>
+        <div class="d-flex g-10">
+          <label class="d-flex align-center pointer" for="tuesday">
+            <input
+              type="checkbox"
+              name="availability-day"
+              value="tuesday"
+              required
+              id="tuesday"
+            />
+            <span>Tuesday</span>
+          </label>
+        </div>
+
+        <div class="d-flex g-10">
+          <label class="d-flex align-center pointer" for="wednesday">
+            <input
+              type="checkbox"
+              name="availability-day"
+              value="wednesday"
+              required
+              id="wednesday"
+            />
+            <span>Wednesday</span>
+          </label>
+        </div>
+
+        <div class="d-flex g-10">
+          <label class="d-flex align-center pointer" for="thursday">
+            <input
+              type="checkbox"
+              name="availability-day"
+              value="thursday"
+              required
+              id="thursday"
+            />
+            <span>Thursday</span>
+          </label>
+        </div>
+
+        <div class="d-flex g-10">
+          <label class="d-flex align-center pointer" for="friday">
+            <input
+              type="checkbox"
+              name="availability-day"
+              value="friday"
+              required
+              id="friday"
+            />
+            <span>Friday</span>
+          </label>
+        </div>
       </div>
-    </form>
-`);
+      <div class="form_group_field_33 w-100 f-column d-flex">
+        <span>Time frame</span>
+        <label class="d-flex align-center pointer" for="morning">
+            <input
+              type="checkbox"
+              name="availability-time"
+              value="morning"
+              required
+              id="morning"
+            />
+            <span>Morning</span>
+          </label>
+          <label class="d-flex align-center pointer" for="afternoon">
+            <input
+              type="checkbox"
+              name="availability-time"
+              value="afternoon"
+              required
+              id="afternoon"
+            />
+            <span>Afternoon</span>
+          </label>
+      </div>
+     
+    </form >
+  `);
 
 const page = {
   formData: {
@@ -178,6 +258,32 @@ const page = {
       return;
     }
 
+    const checkedDays = limitPopup.main.querySelectorAll("input[name=availability-day]:checked");
+    const checkedTimes = limitPopup.main.querySelectorAll("input[name=availability-time]:checked");
+
+    if (checkedTimes.length === 0 && checkedDays.length > 0) {
+      toast.error("Please, select a availability time.");
+      return;
+    } else {
+      let availabityTime = "";
+
+      checkedDays.forEach((day, idx) => {
+        let value = day.value;
+        console.log(idx)
+        availabityTime += `${value}${(parseInt(idx) == checkedDays.length - 2 ? " and " : (parseInt(idx) == checkedDays.length - 1 ? " " : ", "))}`
+        console.log(value)
+      })
+
+      if (checkedTimes.length == 1) {
+        availabityTime += `in the ${checkedTimes[0].value}`
+      }
+      if (checkedTimes.length > 1) {
+        availabityTime += `in the ${checkedTimes[0].value} and ${checkedTimes[1].value}`;
+      }
+
+      console.log(availabityTime);
+    }
+
     const data = {};
     form.querySelectorAll('[data-key]').forEach(element => {
       const key = element.getAttribute('data-key');
@@ -243,6 +349,8 @@ const page = {
     if (!!zipCode) {
       document.querySelector("#zipCode").value = zipCode;
       this.formData.zipCode = zipCode;
+
+      this.getStateTaxes();
     }
 
     if (!!zipCode) {
@@ -287,7 +395,6 @@ const page = {
     const input2 = document.querySelector("#address2");
 
     input.onchange = (e) => {
-      
       this.formData.addressLine = e.target.value;
     };
 
@@ -351,6 +458,35 @@ const page = {
       this.validateStepInformations();
       input2.focus();
     });
+  },
+
+  getStateTaxes() {
+    const isDE = DE.includes(this.formData.zipCode);
+    const isNJ = NJ.includes(this.formData.zipCode);
+    const isPA = PA.includes(this.formData.zipCode);
+    const isPhiladelphia = Philadelphia.includes(this.formData.zipCode);
+    let taxValue = 0;
+    let label = "Taxes";
+
+    if (isPhiladelphia) {
+      taxValue = 8;
+      label = "Philadelphia Sale Tax"
+    } else if (isNJ) {
+      taxValue = 6.625
+      label = "NJ Sale Tax"
+    } else if (isPA && !isPhiladelphia) {
+      taxValue = 6;
+      label = "PA Sale Tax"
+    } else if (isDE) {
+      taxValue = 0;
+      label = "DE Sale Tax - Exempt"
+    }
+
+    document.querySelector("#taxes-summary").style.display = "flex";
+    document.querySelector("#taxes-label").innerHTML = " - " + label;
+    document.querySelector("#taxes").innerHTML = taxValue + "%";
+
+    return taxValue;
   },
 
   hasFormErrors() {
@@ -833,6 +969,11 @@ const page = {
         } else {
           this.formData[item.dataset.key] = e.target.value;
         }
+
+        if (item.dataset.key === "zipCode") {
+          this.getStateTaxes();
+        }
+
         this.validateStepInformations();
         this.renderQuoteSummary();
       };
@@ -1007,6 +1148,27 @@ const page = {
       this.renderQuoteSummary();
     } else if (key == "bathrooms" || key == "bedrooms") {
       limitPopup.show();
+
+      const addressInput = limitPopup.main.querySelector("#address-schedule");
+
+      const center = { lat: 50.064192, lng: -130.605469 };
+      const defaultBounds = {
+        north: center.lat + 0.1,
+        south: center.lat - 0.1,
+        east: center.lng + 0.1,
+        west: center.lng - 0.1,
+      };
+
+      const options = {
+        bounds: defaultBounds,
+        componentRestrictions: { country: "us" },
+        fields: ["address_components", "geometry", "icon", "name"],
+        strictBounds: false,
+      };
+
+      const autocomplete = new google.maps.places.Autocomplete(addressInput, options);
+      autocomplete.setFields(["place_id", "geometry", "name"]);
+
       limitPopup.main.querySelectorAll("input").forEach(input => {
         input.onchange = () => this.validateStepInformations(limitPopup.main);
       })
@@ -1020,6 +1182,7 @@ const page = {
     }
     this.formData.squareFootage = e.target.value;
     this.extraRoom = [];
+    this.additionalFees = 0;
     this.formData.additionalServices = [];
     this.getQuoteTotalValue();
     this.renderExtras();

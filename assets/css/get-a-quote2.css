@@ -909,47 +909,6 @@ input[type=radio]:disabled, input[type="checkbox"]:disabled {
 .form_row_buttom {
   padding: 20px 10px;
 }
-.footer_content {
-  padding: 40px 10px;
-  display: flex;
-  flex-wrap: wrap;
-}
-.col_footer {
-  width: calc(100% / 7);
-  padding: 0 10px 0 0;
-}
-.col_footer h4 {
-  color: var(--color-white);
-  margin-bottom: 16px;
-}
-.col_footer ul {
-  margin-bottom: 20px;
-}
-.col_footer ul li a {
-  color: var(--color-white);
-  padding: 8px 0;
-  font-size: 16px;
-  font-weight: 300;
-  display: flex;
-  line-height: 24px;
-}
-.col_footer ul li a:hover {
-  font-weight: 400;
-}
-.col_footer_img {
-  display: flex;
-  flex-wrap: wrap;
-  align-content: space-between;
-}
-.buttom_footer {
-  padding: 20px;
-  text-align: center;
-  background-color: var(--color-azul-escuro);
-  color: var(--color-white);
-}
-.buttom_footer p {
-  color: var(--color-azul-destaque);
-}
 
 .float_quote {
   position: fixed;

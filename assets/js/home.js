@@ -7,10 +7,13 @@ const notCoveredPopup = new Popup("Location not covered", "Okay", `
 `);
 notCoveredPopup.popupDiv.style.maxHeight = "260px";
 
-const redirectPopup = new Popup("Your quote was sent successfully", "Okay", `
-    <h3>Your quote was sent successfully</h3>
-    <span>Please wait while we analyze it, and we will get back to you soon with more details.</span>    
+const redirectPopup = new Popup("Quote sent successfully", "Okay", `
+    <h4>Thanks for Your Request!</h4>
+    <span>We’ve got your details! One of our team members will be in touch shortly to discuss the next steps.</span>    
 `);
+redirectPopup.confirm(() => {
+    window.location.href = "./index.html"
+})
 redirectPopup.popupDiv.style.maxHeight = "270px";
 
 const form = document.querySelector("#instant-quote-form");
