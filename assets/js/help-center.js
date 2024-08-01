@@ -1,51 +1,19 @@
-const row_faq_over = document.querySelectorAll('.row_faq_over');
-
-row_faq_over.forEach((item, index) => {
-
-    let height_row = item.querySelector('p').getBoundingClientRect().height;
-    console.log(height_row);
-
-    item.addEventListener('click', () => {
-
-        if (row_faq_over[index].querySelector('p').classList.contains('open_row_faq')) {
-            row_faq_over[index].querySelector('p').classList.remove('open_row_faq');
-            row_faq_over[index].querySelector('.control_row_faq img.open').classList.remove('d-none');
-            row_faq_over[index].querySelector('.control_row_faq img.close').classList.add('d-none');
-            item.classList.remove('active')
-        } else {
-            row_faq_over.forEach((item2) => {
-
-                item2.querySelector('p').classList.remove('open_row_faq');
-                item2.querySelector('.control_row_faq img.open').classList.remove('d-none');
-                item2.querySelector('.control_row_faq img.close').classList.add('d-none');
-
-            });
-            row_faq_over[index].querySelector('.control_row_faq img.open').classList.add('d-none');
-            row_faq_over[index].querySelector('.control_row_faq img.close').classList.remove('d-none');
-            row_faq_over[index].querySelector('p').classList.add('open_row_faq')
-            item.classList.add('active')
-        }
-
-    })
-
-});
-
 const autoCompleteJS = new autoComplete({
     data: {
         src: async () => {
             try {
                 // Loading placeholder text
                 document
-                    .getElementById("autoComplete")
+                    .getElementById("auto-complete")
                     .setAttribute("placeholder", "Loading...");
                 // Fetch External Data Source
                 const source = await fetch(
-                    "assets/constants/faq-options.json"
+                    "https://tarekraafat.github.io/autoComplete.js/demo/db/generic.json"
                 );
                 const data = await source.json();
                 // Post Loading placeholder text
                 document
-                    .getElementById("autoComplete")
+                    .getElementById("auto-complete")
                     .setAttribute("placeholder", autoCompleteJS.placeHolder);
                 // Returns Fetched data
                 return data;
@@ -53,7 +21,7 @@ const autoCompleteJS = new autoComplete({
                 return error;
             }
         },
-        keys: ["label"],
+        keys: ["food", "cities", "animals"],
         cache: true,
         filter: (list) => {
             // Filter duplicates
@@ -67,7 +35,7 @@ const autoCompleteJS = new autoComplete({
             return filteredResults;
         }
     },
-    placeHolder: "Type keywords to find answers",
+    placeHolder: "Search for Food & Drinks!",
     resultsList: {
         element: (list, data) => {
             const info = document.createElement("p");

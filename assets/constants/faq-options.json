@@ -1,0 +1,118 @@
+[
+    {
+      "label": "Can I schedule just one session of Regular Cleaning?",
+      "value": "regular_cleaning_1"
+    },
+    {
+      "label": "Is it possible to bypass the Initial Deep Cleaning and start with Regular Cleanings?",
+      "value": "regular_cleaning_2"
+    },
+    {
+      "label": "Will the same team clean my house each visit?",
+      "value": "team_consistency"
+    },
+    {
+      "label": "What is the best cleaning plan for me?",
+      "value": "best_plan"
+    },
+    {
+      "label": "Does the cost remain the same if I opt for a recurring service?",
+      "value": "recurring_cost"
+    },
+    {
+      "label": "Why does the Initial Cleaning cost more than the Regular Cleaning?",
+      "value": "initial_cost"
+    },
+    {
+      "label": "How many cleaners will you send to my home?",
+      "value": "number_of_cleaners"
+    },
+    {
+      "label": "How long will it take to clean my house?",
+      "value": "cleaning_duration"
+    },
+    {
+      "label": "Are you pet-friendly?",
+      "value": "pet_friendly"
+    },
+    {
+      "label": "Do you provide your own cleaning supplies and equipment?",
+      "value": "supplies_equipment"
+    },
+    {
+      "label": "How often do you invoice and what are the payment options?",
+      "value": "payment_options"
+    },
+    {
+      "label": "What time can I expect the cleaners to arrive?",
+      "value": "arrival_time"
+    },
+    {
+      "label": "What happens if my scheduled cleaning falls on a holiday?",
+      "value": "holiday_cleaning"
+    },
+    {
+      "label": "Will DB Cleaning still clean during heavy snow or other severe weather conditions?",
+      "value": "severe_weather"
+    },
+    {
+      "label": "Do you provide cleaning services in my area?",
+      "value": "service_area"
+    },
+    {
+      "label": "Can I get a cleaning service estimate over the phone?",
+      "value": "phone_estimate"
+    },
+    {
+      "label": "Do you offer free in-home estimates?",
+      "value": "in_home_estimate"
+    },
+    {
+      "label": "Do I need to sign a contract?",
+      "value": "contract"
+    },
+    {
+      "label": "Do I need to be home during the cleaning appointment?",
+      "value": "home_presence"
+    },
+    {
+      "label": "What should I do before the cleaning team arrives?",
+      "value": "preparation"
+    },
+    {
+      "label": "What happens if the cleaning team can't access my home because I forgot to leave a key?",
+      "value": "access_issue"
+    },
+    {
+      "label": "Can I provide a key for the cleaners to keep, so I don’t miss my cleaning appointments?",
+      "value": "key_provision"
+    },
+    {
+      "label": "What if something gets damaged during cleaning?",
+      "value": "damage"
+    },
+    {
+      "label": "What if I need extra services or have a special request?",
+      "value": "extra_services"
+    },
+    {
+      "label": "What is your cancellation policy?",
+      "value": "cancellation_policy"
+    },
+    {
+      "label": "How can I tip the cleaners?",
+      "value": "tipping"
+    },
+    {
+      "label": "Can I trust DB Cleaning Services?",
+      "value": "trustworthiness"
+    },
+    {
+      "label": "Does DB Cleaning Services use a cleaning system to ensure quality?",
+      "value": "cleaning_system"
+    },
+    {
+      "label": "What training do your cleaning technicians undergo?",
+      "value": "training"
+    }
+]  
