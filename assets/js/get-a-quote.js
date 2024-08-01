@@ -1191,8 +1191,9 @@ const page = {
 
   async applyDiscount() {
     const couponCode = document.querySelector("#discount-code");
+    const coupons = ["TEST", "DB20", "PROMO", "DISCOUNT"];
     if (this.totalValue > 0) {
-      if (couponCode.value.length > 0) {
+      if (couponCode.value.length > 0 && coupons.includes(couponCode.value)) {
         document.querySelector("#subtotal").style.display = "block";
         this.getQuoteTotalValue(20);
         const div = document.querySelector("#discount-row");
