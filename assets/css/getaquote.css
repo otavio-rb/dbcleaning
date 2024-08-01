@@ -822,3 +822,17 @@
 #final-step-cta {
   display: none;
 }
+
+.img_user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-color: gray;
+  color: white;
+  font-weight: 600;
+  font-size: 1.3em;
+}

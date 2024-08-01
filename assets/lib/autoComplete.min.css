@@ -102,7 +102,7 @@
 }
 .autoComplete_wrapper > ul > li mark {
   background-color: transparent;
-  color: var(--color-azul2);
+  color: var(--color-azul-destaque);
   font-weight: 700;
 }
 .autoComplete_wrapper > ul > li:hover {

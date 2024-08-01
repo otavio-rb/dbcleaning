@@ -1,35 +1,3 @@
-const row_faq_over = document.querySelectorAll('.row_faq_over');
-
-row_faq_over.forEach((item, index) => {
-
-    let height_row = item.querySelector('p').getBoundingClientRect().height;
-    console.log(height_row);
-
-    item.addEventListener('click', () => {
-
-        if (row_faq_over[index].querySelector('p').classList.contains('open_row_faq')) {
-            row_faq_over[index].querySelector('p').classList.remove('open_row_faq');
-            row_faq_over[index].querySelector('.control_row_faq img.open').classList.remove('d-none');
-            row_faq_over[index].querySelector('.control_row_faq img.close').classList.add('d-none');
-            item.classList.remove('active')
-        } else {
-            row_faq_over.forEach((item2) => {
-
-                item2.querySelector('p').classList.remove('open_row_faq');
-                item2.querySelector('.control_row_faq img.open').classList.remove('d-none');
-                item2.querySelector('.control_row_faq img.close').classList.add('d-none');
-
-            });
-            row_faq_over[index].querySelector('.control_row_faq img.open').classList.add('d-none');
-            row_faq_over[index].querySelector('.control_row_faq img.close').classList.remove('d-none');
-            row_faq_over[index].querySelector('p').classList.add('open_row_faq')
-            item.classList.add('active')
-        }
-
-    })
-
-});
-
 const autoCompleteJS = new autoComplete({
     data: {
         src: async () => {
@@ -72,7 +40,6 @@ const autoCompleteJS = new autoComplete({
         element: (list, data) => {
             const info = document.createElement("p");
             if (data.results.length > 0) {
-                info.innerHTML = `Displaying <strong>${data.results.length}</strong> out of <strong>${data.matches.length}</strong> results`;
             } else {
                 info.innerHTML = `Found <strong>${data.matches.length}</strong> matching results for <strong>"${data.query}"</strong>`;
             }
@@ -84,16 +51,16 @@ const autoCompleteJS = new autoComplete({
     },
     resultItem: {
         element: (item, data) => {
-            // Modify Results Item Style
             item.style = "display: flex; justify-content: space-between;";
-            // Modify Results Item Content
             item.innerHTML = `
-      <span style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
+        <span style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
         ${data.match}
-      </span>
-      <span style="display: flex; align-items: center; font-size: 13px; font-weight: 100; text-transform: uppercase; color: rgba(0,0,0,.2);">
-        ${data.key}
-      </span>`;
+        </span>`;
+
+            item.onclick = () => {
+                autoCompleteJS.input.value = data.value.label;
+                window.location.href = "./faq.html?q=" + data.value.value;
+            }
         },
         highlight: true
     },
@@ -105,5 +72,3 @@ const autoCompleteJS = new autoComplete({
         }
     }
 });
-
-console.log(autoCompleteJS)
