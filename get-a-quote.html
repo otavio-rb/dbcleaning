@@ -227,16 +227,6 @@
 
     <!-- ======================================================= body ==================================================================== -->
 
-    <section
-      class="head_page"
-      style="background-image: url(assets/img/get-a-quote/head-img.jpg)"
-    >
-      <div class="container content_head_page">
-        <h2>Sit back, Relax and Enjoy</h2>
-        <p>Home <img src="/img/duble-arrow.png" alt="" /> Get a Quote</p>
-      </div>
-    </section>
-
     <section>
       <div class="container content-default">
         <div class="head_section d-flex justify-center">
@@ -250,503 +240,559 @@
                 <div class="filled"></div>
                 <div class="empty"></div>
               </div>
-              <div id="final-step-cta" class="form_quote_row">
-                <h2 class="color-azul-destaque">Review Your Details</h2>
-                <span>Make sure all your information is correct before submitting.</span>
-              </div>
-              <div id="form-step-1" class="form_quote_row">
-                <h3 class="title-quote">Tell Us About Your Home</h3>
-
-                <div class="first_select_quote">
-                  <div class="card_first_select">
-                    <div class="head_card_first_select">
-                      <img src="assets/img/get-a-quote/icons/bed.png" alt="" />
-
-                      <h4>Bedrooms</h4>
-                    </div>
-
-                    <div class="count_num">
-                      <button type="button" class="less" id="bed-minus">
-                        -
-                      </button>
-                      <input
-                        type="text"
-                        id="number-input-bed"
-                        value="0"
-                        class="field"
-                        max="7"
-                        data-key="bedrooms"
-                        readonly
-                      />
-                      <button type="button" class="plus" id="bed-plus">
-                        +
-                      </button>
+                <div id="form-step-0" class="form_quote_row d-flex justify-center">
+                  <h1>Start by typing your zip code and receive a personalizer quote.</h1>
+                  <div class="form_group_field_33">
+                    <input class="field" data-key="zipCode" id="zip-code-input" type="text" placeholder="Zip Code">
+                    <div class="form_error">
                     </div>
                   </div>
+                  <button id="zip-code-button" class="btn-default btn-blue btn-blue-hover">Next</button> 
+                </div>
+                <div id="form-step-1" class="form_quote_row">
+                  <h3 class="title-quote">Tell Us About Your Home</h3>
 
-                  <div class="card_first_select">
-                    <div class="head_card_first_select">
-                      <img src="assets/img/get-a-quote/icons/sink.png" alt="" />
+                  <div class="first_select_quote">
+                    <div class="card_first_select">
+                      <div class="head_card_first_select">
+                        <img src="assets/img/get-a-quote/icons/bed.png" alt="" />
 
-                      <h4>Bathrooms</h4>
+                        <h4>Bedrooms</h4>
+                      </div>
+
+                      <div class="count_num">
+                        <button type="button" class="less" id="bed-minus">
+                          -
+                        </button>
+                        <input
+                          type="text"
+                          id="number-input-bed"
+                          value="0"
+                          class="field"
+                          max="7"
+                          data-key="bedrooms"
+                          readonly
+                        />
+                        <button type="button" class="plus" id="bed-plus">
+                          +
+                        </button>
+                      </div>
                     </div>
-                    <div class="count_num">
-                      <button type="button" class="less" id="bath-minus">
-                        -
-                      </button>
-                      <input
-                        type="text"
-                        data-key="bathrooms"
-                        class="field"
-                        max="6"
-                        min="0.5"
-                        id="number-input-bath"
-                        value="0"
-                        readonly
-                      />
-                      <button type="button" class="plus" id="bath-plus">
-                        +
-                      </button>
-                    </div>
-                  </div>
 
-                  <div class="card_first_select">
-                    <div class="head_card_first_select">
-                      <img
-                        src="assets/img/get-a-quote/icons/house-scale.png"
-                        alt=""
-                      />
+                    <div class="card_first_select">
+                      <div class="head_card_first_select">
+                        <img src="assets/img/get-a-quote/icons/sink.png" alt="" />
 
-                      <h4>Square Footage</h4>
+                        <h4>Bathrooms</h4>
+                      </div>
+                      <div class="count_num">
+                        <button type="button" class="less" id="bath-minus">
+                          -
+                        </button>
+                        <input
+                          type="text"
+                          data-key="bathrooms"
+                          class="field"
+                          max="6"
+                          min="0.5"
+                          id="number-input-bath"
+                          value="0"
+                          readonly
+                        />
+                        <button type="button" class="plus" id="bath-plus">
+                          +
+                        </button>
+                      </div>
                     </div>
-                    <div id="input-square-container" class="count_num">
-                      <select
-                        style="min-width: 160px"
-                        name=""
-                        id="number-input-square"
-                      >
-                        <option selected disabled value="">Please select</option>
-                        <option value="Up to 1000">Up to 1000</option>
-                        <option value="1001 - 2000">1001-2000</option>
-                        <option value="2001 - 3000">2001-3000</option>
-                        <option value="3001 - 4000">3001-4000</option>
-                        <option value="4001 - 5000">4001-5000</option>
-                        <option value="5001 - 6000">5001-6000</option>
-                        <option value="6001+">6001+</option>
-                      </select>
+
+                    <div class="card_first_select">
+                      <div class="head_card_first_select">
+                        <img
+                          src="assets/img/get-a-quote/icons/house-scale.png"
+                          alt=""
+                        />
+
+                        <h4>Square Footage</h4>
+                      </div>
+                      <div id="input-square-container" class="count_num">
+                        <select
+                          style="min-width: 160px"
+                          name=""
+                          id="number-input-square"
+                        >
+                          <option selected disabled value="">Please select</option>
+                          <option value="Up to 1000">Up to 1000</option>
+                          <option value="1001 - 2000">1001-2000</option>
+                          <option value="2001 - 3000">2001-3000</option>
+                          <option value="3001 - 4000">3001-4000</option>
+                          <option value="4001 - 5000">4001-5000</option>
+                          <option value="5001 - 6000">5001-6000</option>
+                          <option value="6001+">6001+</option>
+                        </select>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+                <div id="form-step-2" class="form_quote_row">
+                  <h3 class="title-quote">Type of Service</h3>
 
-              <div id="form-step-2" class="form_quote_row">
-                <h3 class="title-quote">Type of Service</h3>
-
-                <div id="frequency-container" class="second_select_quote">
-                  <div
-                    data-frequency="Weekly"
-                    class="over_card_select quote--four-columns promo-20"
-                  >
-                    <label class="card_select" for="regular">
-                      <input type="radio" name="type_service" id="regular" />
-                      <svg
-                        width="33"
-                        height="37"
-                        viewBox="0 0 33 37"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M24.0741 6.13358C23.5472 5.83501 22.8776 6.02162 22.579 6.54851C22.2804 7.0754 22.4671 7.745 22.9939 8.04357C27.3189 10.4914 30.006 15.0974 30.006 20.0611C30.006 27.6725 23.8128 33.8657 16.2014 33.8657C8.59 33.8657 2.3968 27.6725 2.3968 20.0611C2.3968 12.8976 7.95333 6.88001 15.0686 6.30263L15.2596 6.33775L13.3408 7.91843C12.8732 8.30482 12.8051 8.99637 13.1915 9.46399C13.4089 9.72743 13.7228 9.86355 14.039 9.86355C14.2848 9.86355 14.5307 9.78232 14.7371 9.61327L18.8227 6.24774C19.0752 6.03918 19.2223 5.72743 19.2223 5.40032C19.2223 5.07321 19.0752 4.76146 18.8227 4.5529L14.7371 1.18737C14.2695 0.803175 13.5779 0.869037 13.1915 1.33665C12.8051 1.80427 12.8732 2.49582 13.3408 2.88221L14.8469 4.1226C6.61634 4.81635 0.199219 11.7757 0.199219 20.0633C0.199219 28.8866 7.37814 36.0633 16.1992 36.0633C25.0203 36.0633 32.1992 28.8844 32.1992 20.0633C32.1992 14.3092 29.0862 8.97222 24.0741 6.13578V6.13358Z"
-                          fill="#9CA3AF"
-                        />
-                      </svg>
-                      <p>Weekly</p>
-                      <span data-frequency="Weekly" class="frequency-details"
-                        >Details</span
-                      >
-                    </label>
-                  </div>
-
-                  <div
-                    data-frequency="Every 2 Weeks"
-                    class="over_card_select quote--four-columns promo-15"
-                  >
-                    <label class="card_select" for="deep">
-                      <input type="radio" name="type_service" id="deep" />
-                      <svg
-                        width="33"
-                        height="37"
-                        viewBox="0 0 33 37"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M24.0741 6.13358C23.5472 5.83501 22.8776 6.02162 22.579 6.54851C22.2804 7.0754 22.4671 7.745 22.9939 8.04357C27.3189 10.4914 30.006 15.0974 30.006 20.0611C30.006 27.6725 23.8128 33.8657 16.2014 33.8657C8.59 33.8657 2.3968 27.6725 2.3968 20.0611C2.3968 12.8976 7.95333 6.88001 15.0686 6.30263L15.2596 6.33775L13.3408 7.91843C12.8732 8.30482 12.8051 8.99637 13.1915 9.46399C13.4089 9.72743 13.7228 9.86355 14.039 9.86355C14.2848 9.86355 14.5307 9.78232 14.7371 9.61327L18.8227 6.24774C19.0752 6.03918 19.2223 5.72743 19.2223 5.40032C19.2223 5.07321 19.0752 4.76146 18.8227 4.5529L14.7371 1.18737C14.2695 0.803175 13.5779 0.869037 13.1915 1.33665C12.8051 1.80427 12.8732 2.49582 13.3408 2.88221L14.8469 4.1226C6.61634 4.81635 0.199219 11.7757 0.199219 20.0633C0.199219 28.8866 7.37814 36.0633 16.1992 36.0633C25.0203 36.0633 32.1992 28.8844 32.1992 20.0633C32.1992 14.3092 29.0862 8.97222 24.0741 6.13578V6.13358Z"
-                          fill="#9CA3AF"
-                        />
-                      </svg>
-
-                      <p>Every 2 Weeks</p>
-                      <span
-                        data-frequency="Every 2 Weeks"
-                        class="frequency-details"
-                        >Details</span
-                      >
-                    </label>
-                  </div>
-
-                  <div
-                    data-frequency="Every 4 Weeks"
-                    class="over_card_select quote--four-columns"
-                  >
-                    <label class="card_select" for="move">
-                      <input type="radio" name="type_service" id="move" />
-                      <svg
-                        width="33"
-                        height="37"
-                        viewBox="0 0 33 37"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M24.0741 6.13358C23.5472 5.83501 22.8776 6.02162 22.579 6.54851C22.2804 7.0754 22.4671 7.745 22.9939 8.04357C27.3189 10.4914 30.006 15.0974 30.006 20.0611C30.006 27.6725 23.8128 33.8657 16.2014 33.8657C8.59 33.8657 2.3968 27.6725 2.3968 20.0611C2.3968 12.8976 7.95333 6.88001 15.0686 6.30263L15.2596 6.33775L13.3408 7.91843C12.8732 8.30482 12.8051 8.99637 13.1915 9.46399C13.4089 9.72743 13.7228 9.86355 14.039 9.86355C14.2848 9.86355 14.5307 9.78232 14.7371 9.61327L18.8227 6.24774C19.0752 6.03918 19.2223 5.72743 19.2223 5.40032C19.2223 5.07321 19.0752 4.76146 18.8227 4.5529L14.7371 1.18737C14.2695 0.803175 13.5779 0.869037 13.1915 1.33665C12.8051 1.80427 12.8732 2.49582 13.3408 2.88221L14.8469 4.1226C6.61634 4.81635 0.199219 11.7757 0.199219 20.0633C0.199219 28.8866 7.37814 36.0633 16.1992 36.0633C25.0203 36.0633 32.1992 28.8844 32.1992 20.0633C32.1992 14.3092 29.0862 8.97222 24.0741 6.13578V6.13358Z"
-                          fill="#9CA3AF"
-                        />
-                      </svg>
-
-                      <p>Every 4 Weeks</p>
-                      <span
-                        data-frequency="Every 4 Weeks"
-                        class="frequency-details"
-                        >Details</span
-                      >
-                    </label>
-                  </div>
-
-                  <div
-                    data-frequency="One Time"
-                    class="over_card_select quote--four-columns"
-                  >
-                    <label class="card_select" for="after_party">
-                      <input
-                        type="radio"
-                        name="type_service"
-                        id="after_party"
-                      />
-                      <svg
-                        width="40"
-                        height="42"
-                        viewBox="0 0 61 62"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M30.0781 51.9488C41.7881 51.9488 51.3181 42.4188 51.3181 30.7088C51.3181 18.9988 41.7881 9.46875 30.0781 9.46875C18.3681 9.46875 8.83813 18.9988 8.83813 30.7088C8.83813 42.4188 18.3681 51.9488 30.0781 51.9488ZM30.0781 11.4688C40.6881 11.4688 49.3181 20.0988 49.3181 30.7088C49.3181 41.3188 40.6881 49.9488 30.0781 49.9488C19.4681 49.9488 10.8381 41.3188 10.8381 30.7088C10.8381 20.0988 19.4681 11.4688 30.0781 11.4688Z"
-                          fill="#9CA3AF"
-                        />
-                        <path
-                          d="M40.4681 30.7087C40.4681 30.1587 40.0181 29.7087 39.4681 29.7087H31.0781V15.6387C31.0781 15.0887 30.6281 14.6387 30.0781 14.6387C29.5281 14.6387 29.0781 15.0887 29.0781 15.6387V31.7087H39.4681C40.0181 31.7087 40.4681 31.2587 40.4681 30.7087Z"
-                          fill="#9CA3AF"
-                        />
-                        <path
-                          d="M40.6482 1.86715C38.1382 0.907153 35.4482 0.337152 32.7682 0.0771524C31.8782 0.167152 30.9582 -0.522847 30.0682 1.02715C29.7982 1.48715 29.7882 2.10715 30.0682 2.59715C30.8682 4.22715 31.6382 3.62715 32.4382 3.79715C33.2282 3.83715 34.0082 4.01715 34.7882 4.10715C62.3582 9.44715 65.1782 46.7772 38.8982 56.4772C9.78819 65.7772 -10.1318 30.1772 11.3482 9.83715V11.7072C11.3482 12.2572 11.7982 12.7072 12.3482 12.7072C12.8982 12.7072 13.3482 12.2572 13.3482 11.7072V7.88715C13.3482 7.33715 12.8982 6.88715 12.3482 6.88715H8.21819C7.66819 6.88715 7.21819 7.33715 7.21819 7.88715C7.21819 8.43715 7.66819 8.88715 8.21819 8.88715H9.91819C7.95819 10.6472 6.21819 12.6572 4.78819 14.8772C-10.3618 39.0772 12.9182 68.3672 39.9682 59.5572C67.2382 50.1772 67.6082 12.0072 40.6482 1.86715Z"
-                          fill="#9CA3AF"
-                        />
-                      </svg>
-
-                      <p>One-Time</p>
-                    </label>
-                  </div>
-                </div>
-              </div>
-
-              <div id="form-step-3" class="form_quote_row">
-                <h3 class="title-quote">Type of Service</h3>
-                <div id="services-container" class="second_select_quote"></div>
-              </div>
-
-              <div id="form-step-4" class="form_quote_row">
-                <h3 class="title-quote title-quote-less">
-                  Choose additional services to complement your selection.
-                </h3>
-                <p class="subtitle-quote">
-                  Select the options you require and we'll handle the rest.
-                  Customize your service to better suit your needs.
-                </p>
-
-                <p id="additional-caption" class="title-simple-quote">
-                  *Included on Deep Cleanings<br />
-                  Recurring cleaning services always start with a Initial Deep
-                  Cleaning, you can select the extras for your upcoming regular
-                  cleanings.
-                </p>
-
-                <div id="extras-container" class="d-flex f-column g-5">
-                  <div style="margin-bottom: 15px" class="d-flex f-column g-5">
-                    <h3
-                      style="font-weight: 400; margin: 0"
-                      class="color-azul-destaque d-flex g-10"
-                    >
-                      Recommended
-                      <img
-                        width="16px"
-                        height="16px"
-                        src="/img/recommended-star.png"
-                      />
-                    </h3>
+                  <div id="frequency-container" class="second_select_quote">
                     <div
-                      class="second_select_quote3"
-                      id="recommended-container"
-                    ></div>
-                  </div>
-                  <div class="d-flex f-column g-5">
-                    <h3
-                      style="font-weight: 400; margin: 0"
-                      class="color-gray-4"
+                      data-frequency="Weekly"
+                      class="over_card_select quote--four-columns promo-20"
                     >
-                      Additional
-                    </h3>
+                      <label class="card_select" for="regular">
+                        <input type="radio" name="type_service" id="regular" />
+                        <svg
+                          width="33"
+                          height="37"
+                          viewBox="0 0 33 37"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M24.0741 6.13358C23.5472 5.83501 22.8776 6.02162 22.579 6.54851C22.2804 7.0754 22.4671 7.745 22.9939 8.04357C27.3189 10.4914 30.006 15.0974 30.006 20.0611C30.006 27.6725 23.8128 33.8657 16.2014 33.8657C8.59 33.8657 2.3968 27.6725 2.3968 20.0611C2.3968 12.8976 7.95333 6.88001 15.0686 6.30263L15.2596 6.33775L13.3408 7.91843C12.8732 8.30482 12.8051 8.99637 13.1915 9.46399C13.4089 9.72743 13.7228 9.86355 14.039 9.86355C14.2848 9.86355 14.5307 9.78232 14.7371 9.61327L18.8227 6.24774C19.0752 6.03918 19.2223 5.72743 19.2223 5.40032C19.2223 5.07321 19.0752 4.76146 18.8227 4.5529L14.7371 1.18737C14.2695 0.803175 13.5779 0.869037 13.1915 1.33665C12.8051 1.80427 12.8732 2.49582 13.3408 2.88221L14.8469 4.1226C6.61634 4.81635 0.199219 11.7757 0.199219 20.0633C0.199219 28.8866 7.37814 36.0633 16.1992 36.0633C25.0203 36.0633 32.1992 28.8844 32.1992 20.0633C32.1992 14.3092 29.0862 8.97222 24.0741 6.13578V6.13358Z"
+                            fill="#9CA3AF"
+                          />
+                        </svg>
+                        <p>Weekly</p>
+                        <span data-frequency="Weekly" class="frequency-details"
+                          >Details</span
+                        >
+                      </label>
+                    </div>
+
                     <div
-                      class="second_select_quote3"
-                      id="additional-container"
-                    ></div>
+                      data-frequency="Every 2 Weeks"
+                      class="over_card_select quote--four-columns promo-15"
+                    >
+                      <label class="card_select" for="deep">
+                        <input type="radio" name="type_service" id="deep" />
+                        <svg
+                          width="33"
+                          height="37"
+                          viewBox="0 0 33 37"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M24.0741 6.13358C23.5472 5.83501 22.8776 6.02162 22.579 6.54851C22.2804 7.0754 22.4671 7.745 22.9939 8.04357C27.3189 10.4914 30.006 15.0974 30.006 20.0611C30.006 27.6725 23.8128 33.8657 16.2014 33.8657C8.59 33.8657 2.3968 27.6725 2.3968 20.0611C2.3968 12.8976 7.95333 6.88001 15.0686 6.30263L15.2596 6.33775L13.3408 7.91843C12.8732 8.30482 12.8051 8.99637 13.1915 9.46399C13.4089 9.72743 13.7228 9.86355 14.039 9.86355C14.2848 9.86355 14.5307 9.78232 14.7371 9.61327L18.8227 6.24774C19.0752 6.03918 19.2223 5.72743 19.2223 5.40032C19.2223 5.07321 19.0752 4.76146 18.8227 4.5529L14.7371 1.18737C14.2695 0.803175 13.5779 0.869037 13.1915 1.33665C12.8051 1.80427 12.8732 2.49582 13.3408 2.88221L14.8469 4.1226C6.61634 4.81635 0.199219 11.7757 0.199219 20.0633C0.199219 28.8866 7.37814 36.0633 16.1992 36.0633C25.0203 36.0633 32.1992 28.8844 32.1992 20.0633C32.1992 14.3092 29.0862 8.97222 24.0741 6.13578V6.13358Z"
+                            fill="#9CA3AF"
+                          />
+                        </svg>
+
+                        <p>Every 2 Weeks</p>
+                        <span
+                          data-frequency="Every 2 Weeks"
+                          class="frequency-details"
+                          >Details</span
+                        >
+                      </label>
+                    </div>
+
+                    <div
+                      data-frequency="Every 4 Weeks"
+                      class="over_card_select quote--four-columns"
+                    >
+                      <label class="card_select" for="move">
+                        <input type="radio" name="type_service" id="move" />
+                        <svg
+                          width="33"
+                          height="37"
+                          viewBox="0 0 33 37"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M24.0741 6.13358C23.5472 5.83501 22.8776 6.02162 22.579 6.54851C22.2804 7.0754 22.4671 7.745 22.9939 8.04357C27.3189 10.4914 30.006 15.0974 30.006 20.0611C30.006 27.6725 23.8128 33.8657 16.2014 33.8657C8.59 33.8657 2.3968 27.6725 2.3968 20.0611C2.3968 12.8976 7.95333 6.88001 15.0686 6.30263L15.2596 6.33775L13.3408 7.91843C12.8732 8.30482 12.8051 8.99637 13.1915 9.46399C13.4089 9.72743 13.7228 9.86355 14.039 9.86355C14.2848 9.86355 14.5307 9.78232 14.7371 9.61327L18.8227 6.24774C19.0752 6.03918 19.2223 5.72743 19.2223 5.40032C19.2223 5.07321 19.0752 4.76146 18.8227 4.5529L14.7371 1.18737C14.2695 0.803175 13.5779 0.869037 13.1915 1.33665C12.8051 1.80427 12.8732 2.49582 13.3408 2.88221L14.8469 4.1226C6.61634 4.81635 0.199219 11.7757 0.199219 20.0633C0.199219 28.8866 7.37814 36.0633 16.1992 36.0633C25.0203 36.0633 32.1992 28.8844 32.1992 20.0633C32.1992 14.3092 29.0862 8.97222 24.0741 6.13578V6.13358Z"
+                            fill="#9CA3AF"
+                          />
+                        </svg>
+
+                        <p>Every 4 Weeks</p>
+                        <span
+                          data-frequency="Every 4 Weeks"
+                          class="frequency-details"
+                          >Details</span
+                        >
+                      </label>
+                    </div>
+
+                    <div
+                      data-frequency="One Time"
+                      class="over_card_select quote--four-columns"
+                    >
+                      <label class="card_select" for="after_party">
+                        <input
+                          type="radio"
+                          name="type_service"
+                          id="after_party"
+                        />
+                        <svg
+                          width="40"
+                          height="42"
+                          viewBox="0 0 61 62"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M30.0781 51.9488C41.7881 51.9488 51.3181 42.4188 51.3181 30.7088C51.3181 18.9988 41.7881 9.46875 30.0781 9.46875C18.3681 9.46875 8.83813 18.9988 8.83813 30.7088C8.83813 42.4188 18.3681 51.9488 30.0781 51.9488ZM30.0781 11.4688C40.6881 11.4688 49.3181 20.0988 49.3181 30.7088C49.3181 41.3188 40.6881 49.9488 30.0781 49.9488C19.4681 49.9488 10.8381 41.3188 10.8381 30.7088C10.8381 20.0988 19.4681 11.4688 30.0781 11.4688Z"
+                            fill="#9CA3AF"
+                          />
+                          <path
+                            d="M40.4681 30.7087C40.4681 30.1587 40.0181 29.7087 39.4681 29.7087H31.0781V15.6387C31.0781 15.0887 30.6281 14.6387 30.0781 14.6387C29.5281 14.6387 29.0781 15.0887 29.0781 15.6387V31.7087H39.4681C40.0181 31.7087 40.4681 31.2587 40.4681 30.7087Z"
+                            fill="#9CA3AF"
+                          />
+                          <path
+                            d="M40.6482 1.86715C38.1382 0.907153 35.4482 0.337152 32.7682 0.0771524C31.8782 0.167152 30.9582 -0.522847 30.0682 1.02715C29.7982 1.48715 29.7882 2.10715 30.0682 2.59715C30.8682 4.22715 31.6382 3.62715 32.4382 3.79715C33.2282 3.83715 34.0082 4.01715 34.7882 4.10715C62.3582 9.44715 65.1782 46.7772 38.8982 56.4772C9.78819 65.7772 -10.1318 30.1772 11.3482 9.83715V11.7072C11.3482 12.2572 11.7982 12.7072 12.3482 12.7072C12.8982 12.7072 13.3482 12.2572 13.3482 11.7072V7.88715C13.3482 7.33715 12.8982 6.88715 12.3482 6.88715H8.21819C7.66819 6.88715 7.21819 7.33715 7.21819 7.88715C7.21819 8.43715 7.66819 8.88715 8.21819 8.88715H9.91819C7.95819 10.6472 6.21819 12.6572 4.78819 14.8772C-10.3618 39.0772 12.9182 68.3672 39.9682 59.5572C67.2382 50.1772 67.6082 12.0072 40.6482 1.86715Z"
+                            fill="#9CA3AF"
+                          />
+                        </svg>
+
+                        <p>One-Time</p>
+                      </label>
+                    </div>
                   </div>
                 </div>
-              </div>
+                <div id="form-step-3" class="form_quote_row">
+                  <h3 class="title-quote">Type of Service</h3>
+                  <div id="services-container" class="second_select_quote"></div>
+                </div>
+                <div id="form-step-4" class="form_quote_row">
+                  <h3 class="title-quote title-quote-less">
+                    Choose additional services to complement your selection.
+                  </h3>
+                  <p class="subtitle-quote">
+                    Select the options you require and we'll handle the rest.
+                    Customize your service to better suit your needs.
+                  </p>
 
-              <div id="form-step-5" class="form_quote_row">
-                <h3 class="title-quote">Final Details</h3>
+                  <p id="additional-caption" class="title-simple-quote">
+                    *Included on Deep Cleanings<br />
+                    Recurring cleaning services always start with a Initial Deep
+                    Cleaning, you can select the extras for your upcoming regular
+                    cleanings.
+                  </p>
 
-                <div class="fields_form_quote">
+                  <div id="extras-container" class="d-flex f-column g-5">
+                    <div style="margin-bottom: 15px" class="d-flex f-column g-5">
+                      <h3
+                        style="font-weight: 400; margin: 0"
+                        class="color-azul-destaque d-flex g-10"
+                      >
+                        Recommended
+                        <img
+                          width="16px"
+                          height="16px"
+                          src="/img/recommended-star.png"
+                        />
+                      </h3>
+                      <div
+                        class="second_select_quote3"
+                        id="recommended-container"
+                      ></div>
+                    </div>
+                    <div class="d-flex f-column g-5">
+                      <h3
+                        style="font-weight: 400; margin: 0"
+                        class="color-gray-4"
+                      >
+                        Additional
+                      </h3>
+                      <div
+                        class="second_select_quote3"
+                        id="additional-container"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="form-step-5" class="form_quote_row">
+                  <h3 class="title-quote">Final Details</h3>
+
+                  <div class="fields_form_quote">
+                    <div class="w-100">
+                      <h4>Contact</h4>
+
+                      <div class="fields_form_quote_row contact_row">
+                        <div class="form_group_field_33">
+                          <label for="">First name*</label>
+                          <input
+                            type="text"
+                            data-key="firstName"
+                            id="first-name"
+                            class="field validation-field"
+                            placeholder=""
+                            required
+                          />
+                          <div class="form_error">First name are required.</div>
+                        </div>
+                        <div class="form_group_field_33">
+                          <label for="">Last name*</label>
+                          <input
+                            type="text"
+                            data-key="lastName"
+                            id="last-name"
+                            class="field"
+                            placeholder=""
+                            required
+                          />
+                          <div class="form_error">Last name are required.</div>
+                        </div>
+
+                        <div class="form_group_field_33">
+                          <label for="">Phone Number*</label>
+                          <input
+                            type="number"
+                            data-key="phone"
+                            class="field"
+                            id="phone-number"
+                            placeholder=""
+                            required
+                          />
+                          <div class="form_error">Phone number are required.</div>
+                        </div>
+
+                        <div class="form_group_field_33">
+                          <label for="">Email*</label>
+                          <input
+                            type="email"
+                            data-key="email"
+                            class="field"
+                            id="email"
+                            placeholder=""
+                            required
+                          />
+                          <div class="form_error">Email are required.</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="form-step-6" class="form_quote_row">
+                  <div class="fields_form_quote">
+                    <div class="w-100">
+                      <h4>Service Address</h4>
+
+                      <div class="fields_form_quote_row contact_row">
+                        <div class="form_group_field_33 w-100">
+                          <label for="">Address Line 1*</label>
+                          <input
+                            type="text"
+                            id="address1"
+                            data-key="address"
+                            class="field"
+                            placeholder=""
+                            required
+                          />
+                          <div class="form_error">
+                            Address are required.
+                          </div>
+                        </div>
+
+                        <div class="form_group_field_33 w-100">
+                          <label for="">Address Line 2</label>
+                          <input
+                            type="text"
+                            data-key="addressLine2"
+                            id="address2"
+                            class="field"
+                            placeholder=""
+                            required
+                          />
+                        </div>
+
+                        <div class="form_group_field_33">
+                          <label for="">City*</label>
+                          <input
+                            type="text"
+                            data-key="city"
+                            class="field"
+                            placeholder=""
+                            id="city"
+                            required
+                          />
+                          <div class="form_error">
+                            City are required.
+                          </div>
+                        </div>
+
+                        <div class="form_group_field_33">
+                          <label for="">State/Province*</label>
+                          <input
+                            type="text"
+                            data-key="state"
+                            class="field"
+                            placeholder=""
+                            id="state"
+                            required
+                          />
+                          <div class="form_error">
+                            State/Province are required.
+                          </div>
+                        </div>
+                        <div class="form_group_field_33">
+                          <label for="">Zip/Postal/Code*</label>
+                          <input
+                            type="text"
+                            data-key="zipCode"
+                            id="zipCode"
+                            class="field"
+                            placeholder=""
+                            required
+                          />
+                          <div class="form_error">
+                            Zip/Postal/Code are required.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="form-step-7" class="form_quote_row">
                   <div class="w-100">
-                    <h4>Contact</h4>
+                    <h4>Additional Details</h4>
 
-                    <div class="fields_form_quote_row contact_row">
+                    <div class="fields_form_quote_row">
                       <div class="form_group_field_33">
-                        <label for="">First name*</label>
-                        <input
-                          type="text"
-                          data-key="firstName"
-                          id="first-name"
-                          class="field validation-field"
-                          placeholder=""
-                          required
-                        />
-                        <div class="form_error">First name are required.</div>
-                      </div>
-                      <div class="form_group_field_33">
-                        <label for="">Last name*</label>
-                        <input
-                          type="text"
-                          data-key="lastName"
-                          id="last-name"
-                          class="field"
-                          placeholder=""
-                          required
-                        />
-                        <div class="form_error">Last name are required.</div>
-                      </div>
-
-                      <div class="form_group_field_33">
-                        <label for="">Phone Number*</label>
-                        <input
-                          type="number"
-                          data-key="phone"
-                          class="field"
-                          id="phone-number"
-                          placeholder=""
-                          required
-                        />
-                        <div class="form_error">Phone number are required.</div>
-                      </div>
-
-                      <div class="form_group_field_33">
-                        <label for="">Email*</label>
-                        <input
-                          type="email"
-                          data-key="email"
-                          class="field"
-                          id="email"
-                          placeholder=""
-                          required
-                        />
-                        <div class="form_error">Email are required.</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div id="form-step-6" class="form_quote_row">
-                <div class="fields_form_quote">
-                  <div class="w-100">
-                    <h4>Service Address</h4>
-
-                    <div class="fields_form_quote_row contact_row">
-                      <div class="form_group_field_33 w-100">
-                        <label for="">Address Line 1*</label>
-                        <input
-                          type="text"
-                          id="address1"
-                          data-key="address"
-                          class="field"
-                          placeholder=""
-                          required
-                        />
+                        <label for="">How did you hear about us?</label>
+                        <select required data-key="howHearAboutUs" class="field" id="howHearAboutUs">
+                          <option selected disabled value="">Please select</option>
+                          <option value="Google">Google</option>
+                          <option value="Facebook">Facebook</option>
+                          <option value="Instagram">Instagram</option>
+                          <option value="Yelp">Yelp</option>
+                          <option value="Email">Email</option>
+                          <option value="Text Message">Text Message</option>
+                          <option value="Client Referral">Client Referral</option>
+                          <option value="Employee Referral">
+                            Employee Referral
+                          </option>
+                          <option value="Other">Other</option>
+                        </select>
                         <div class="form_error">
-                          Address are required.
-                        </div>
-                      </div>
-
-                      <div class="form_group_field_33 w-100">
-                        <label for="">Address Line 2</label>
-                        <input
-                          type="text"
-                          data-key="addressLine2"
-                          id="address2"
-                          class="field"
-                          placeholder=""
-                          required
-                        />
-                      </div>
-
-                      <div class="form_group_field_33">
-                        <label for="">City*</label>
-                        <input
-                          type="text"
-                          data-key="city"
-                          class="field"
-                          placeholder=""
-                          id="city"
-                          required
-                        />
-                        <div class="form_error">
-                          City are required.
-                        </div>
-                      </div>
-
-                      <div class="form_group_field_33">
-                        <label for="">State/Province*</label>
-                        <input
-                          type="text"
-                          data-key="state"
-                          class="field"
-                          placeholder=""
-                          id="state"
-                          required
-                        />
-                        <div class="form_error">
-                          State/Province are required.
-                        </div>
-                      </div>
-                      <div class="form_group_field_33">
-                        <label for="">Zip/Postal/Code*</label>
-                        <input
-                          type="text"
-                          data-key="zipCode"
-                          id="zipCode"
-                          class="field"
-                          placeholder=""
-                          required
-                        />
-                        <div class="form_error">
-                          Zip/Postal/Code are required.
+                          This field is required
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
 
-              <div id="form-step-7" class="form_quote_row">
-                <div class="w-100">
-                  <h4>Additional Details</h4>
+                  <p class="subtitle-quote">
+                    Any important project details you’d like to share with us?
+                  </p>
 
-                  <div class="fields_form_quote_row">
-                    <div class="form_group_field_33">
-                      <label for="">How did you hear about us?</label>
-                      <select required data-key="howHearAboutUs" class="field" id="howHearAboutUs">
-                        <option selected disabled value="">Please select</option>
-                        <option value="Google">Google</option>
-                        <option value="Facebook">Facebook</option>
-                        <option value="Instagram">Instagram</option>
-                        <option value="Yelp">Yelp</option>
-                        <option value="Email">Email</option>
-                        <option value="Text Message">Text Message</option>
-                        <option value="Client Referral">Client Referral</option>
-                        <option value="Employee Referral">
-                          Employee Referral
-                        </option>
-                        <option value="Other">Other</option>
-                      </select>
-                      <div class="form_error">
-                        This field is required
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <p class="subtitle-quote">
-                  Any important project details you’d like to share with us?
-                </p>
-
-                <textarea
-                  class="field"
-                  data-key="projectDetails"
-                  cols="30"
-                  rows="10"
-                  placeholder="Write text here..."
-                ></textarea>
-
-                <div class="checkbox_line" style="margin-top: 10px;">
-                  <input id="isAGift" class="field" data-key="isGift" type="checkbox" />
-                  <label
-                    class="pointer"
-                    for="isAGift"
+                  <textarea
                     class="field"
-                    data-key="isGift"
-                    >This cleaning service is a gift?</label
-                  >
-                </div>
-              </div>
+                    data-key="projectDetails"
+                    cols="30"
+                    rows="10"
+                    placeholder="Write text here..."
+                  ></textarea>
 
-              <div
-                style="display: flex; width: 100%"
-                id="form-buttons"
-                class="form_quote_row"
-              >
-                <button
-                  id="previous-form-step"
-                  type="button"
-                  class="btn-default btn-gray text-uppercase btn-hover btn-gray-hover"
+                  <div class="checkbox_line" style="margin-top: 10px;">
+                    <input id="isAGift" class="field" data-key="isGift" type="checkbox" />
+                    <label
+                      class="pointer"
+                      for="isAGift"
+                      class="field"
+                      data-key="isGift"
+                      >This cleaning service is a gift?</label
+                    >
+                  </div>
+                </div>
+                <div id="form-step-8" class="form_quote_row">
+                  <div class="d-flex f-column g-15">
+                    <div class="w-100 d-flex f-column g-10">
+                      <h3 class="color-black">Review and Submit</h3>
+                      <span class="color-gray-4">Make sure all your information is correct before submitting.</span>
+                    </div>
+                    <div class="review__info">
+                      <h3>Tell Us About Your Home</h3>
+                      <div class="d-flex g-10">
+                        <span>Bedrooms: </span>
+                        <span id="bedrooms-details-count">0</span>
+                      </div>
+                      <div class="d-flex g-10">
+                        <span>Bathrooms: </span>
+                        <span id="bathrooms-details-count">0</span>
+                      </div>
+                      <div class="d-flex g-10">
+                        <span>Square Footage: </span>
+                        <span id="square-footage-count">0</span>
+                      </div>
+                      <button class="btn-default btn-blue btn-blue-hover">
+                        <svg 
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="#fff"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" />
+                          <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" />
+                        </svg></button>
+                    </div>
+                    <div class="review__info">
+                      <h3>Frequency</h3>
+                      <span id="details-frequency">Weekly</span>
+                      <button class="btn-default btn-blue btn-blue-hover">
+                        <svg 
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="#fff"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" />
+                          <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  style="display: none; width: 100%"
+                  id="form-buttons"
+                  class="form_quote_row"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="16"
-                    viewBox="0 0 512 512"
+                  <button
+                    id="previous-form-step"
+                    type="button"
+                    class="btn-default btn-gray text-uppercase btn-hover btn-gray-hover"
                   >
-                    <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                    <path
-                      d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 288 480 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-370.7 0 73.4-73.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-128 128z"
-                    />
-                  </svg>
-                </button>
-                <div></div>
-                <button
-                  id="next-form-step"
-                  style="align-self: flex-end"
-                  type="button"
-                  class="btn-default btn-blue btn-hover btn-blue-hover"
-                >
-                  Continue
-                </button>
-              </div>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="16"
+                      viewBox="0 0 512 512"
+                    >
+                      <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                      <path
+                        d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 288 480 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-370.7 0 73.4-73.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-128 128z"
+                      />
+                    </svg>
+                  </button>
+                  <div></div>
+                  <button
+                    id="next-form-step"
+                    style="align-self: flex-end"
+                    type="button"
+                    class="btn-default btn-blue btn-hover btn-blue-hover"
+                  >
+                    Continue
+                  </button>
+                </div>
             </form>
           </div>
 
-          <div class="content_quote_right">
+          <div style="display: none;" id="quote-summary" class="content_quote_right">
             <div class="over_summary_quote_right">
               <div class="summary_quote_right">
                 <h3>Quote Summary</h3>
@@ -941,134 +987,91 @@
 
     <footer class="footer bg-azul-destaque">
       <div class="container footer_content">
-        <div class="col_footer">
-          <h4>About us</h4>
+          <div class="col_footer">
+              <h4>Useful Links</h4>
 
-          <ul>
-            <li><a href="">Who We Are</a></li>
-            <li><a href="">What We Do</a></li>
-            <li><a href="">Our Vision</a></li>
-            <li><a href="">Our Mission</a></li>
-            <li><a href="">Our Philosophy</a></li>
-            <li><a href="">Our History</a></li>
-            <li><a href="">Cleaning For A Reason</a></li>
-            <li><a href="">Privacy Policy</a></li>
-            <li><a href="">Terms od Use</a></li>
-          </ul>
-        </div>
+              <ul>
+                  <li class="has-children">
+                      <a href="about-us.html">About Us</a>
+                      <ul class="submenu">
+                          <li class="min-has-children">
+                              <a href=""><span class="text-menu-item-has-children">Services</span> <span class="arrow-down"></span></a>
+                              <ul class="min-submenu">
+                                  <li><a href="deep-cleaning.html">Deep Cleaning</a></li>
+                                  <li><a href="regular-cleaning.html">Regular Cleaning</a></li>
+                                  <li><a href="post-construction.html">Post Construction Cleaning</a></li>
+                                  <li><a href="move-in-out.html">Move In/Out Cleaning</a></li>
+                                  <li><a href="green-cleaning.html">Green Cleaning</a></li>
+                                  <li><a href="services.html#specialty-services"><strong>Others Services</strong></a></li>
+                              </ul>
+                          </li>
+                      </ul>
+                  </li>
+                  <li><a href="blog.html">Blog</a></li>
+                  <li><a href="portfolio.html">Portfolio</a></li>
+                  <li><a href="help-center.html">Help Center</a></li>
+                  <li><a href="terms.html">Terms and Conditions</a></li>
+              </ul>
+          </div>
 
-        <div class="col_footer">
-          <h4>Services</h4>
+          <div class="col_footer">
+              <h4>Business Information</h4>
 
-          <ul>
-            <li><a href="">Deep Cleaning</a></li>
-            <li><a href="">Regular Cleaning</a></li>
-            <li><a href="">Office & Commercial Cleaning</a></li>
-            <li><a href="">Move In/Out Cleaning</a></li>
-            <li><a href="">Post Construction/Renovation Cleaning</a></li>
-            <li><a href="">Green Cleaning</a></li>
-          </ul>
-        </div>
+              <ul>
+                  <li>
+                      <h5>Training Center Address</h5>
+                      <p>7002 Beaver Dam Rd, Unit A -  Levittown, PA 19057</p>
+                  </li>
+              </ul>
+              <ul>
+                  <li>
+                      <h5>Business Hours</h5>
+                      <h5>Monday - Friday</h5>
+                      <p>8:00 AM - 5:00 PM</p>
+                  </li>
+                  <li>
+                      <h5>Saturday</h5>
+                      <p>8:00 AM - 12:00 PM</p>
+                  </li>
+              </ul>
+          </div>
 
-        <div class="col_footer">
-          <h4>Reviews</h4>
+          <div class="col_footer">
+              <h4>Follow Us on Instagram!</h4>
 
-          <ul>
-            <li><a href="">All Reviews</a></li>
-            <li><a href="">Google</a></li>
-            <li><a href="">Yelp</a></li>
-            <li><a href="">Angi</a></li>
-            <li><a href="">Facebook</a></li>
-          </ul>
-        </div>
+               <!-- SnapWidget -->
+<script src="https://snapwidget.com/js/snapwidget.js"></script>
+<iframe src="https://snapwidget.com/embed/1074560" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden;  width:100%; " title="Posts from Instagram"></iframe>
+          </div>
 
-    <footer class="footer bg-azul-destaque">
-        <div class="container footer_content">
-            <div class="col_footer">
-                <h4>Useful Links</h4>
-
-                <ul>
-                    <li class="has-children">
-                        <a href="about-us.html">About Us</a>
-                        <ul class="submenu">
-                            <li class="min-has-children">
-                                <a href=""><span class="text-menu-item-has-children">Services</span> <span class="arrow-down"></span></a>
-                                <ul class="min-submenu">
-                                    <li><a href="deep-cleaning.html">Deep Cleaning</a></li>
-                                    <li><a href="regular-cleaning.html">Regular Cleaning</a></li>
-                                    <li><a href="post-construction.html">Post Construction Cleaning</a></li>
-                                    <li><a href="move-in-out.html">Move In/Out Cleaning</a></li>
-                                    <li><a href="green-cleaning.html">Green Cleaning</a></li>
-                                    <li><a href="services.html#specialty-services"><strong>Others Services</strong></a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="help-center.html">Help Center</a></li>
-                    <li><a href="terms.html">Terms and Conditions</a></li>
-                </ul>
-            </div>
-          <ul>
-            <li><a href="">Get In Touch</a></li>
-          </ul>
-
-          <h4>Blog</h4>
-
-          <ul>
-            <li><a href="">Our Blog</a></li>
-          </ul>
-
-            <div class="col_footer">
-                <div class="d-flex securty_footer">
-                    <div class="s_70">
-                        <span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=QihdGPbOJ14O9Frrk0YXvgw5KnAIgtxk9EDvgFKzQyKZS2OS018cBMJSbkAJ"></script></span>
-                    </div>
-                    <div class="s_30">
-                        <a href="#" onclick="window.open('https://www.sitelock.com/verify.php?site=mydbcleaning.com','SiteLock','width=600,height=600,left=160,top=170');" ><img class="img-fluid" alt="SiteLock" title="SiteLock" src="https://shield.sitelock.com/shield/mydbcleaning.com" /></a>
-                    </div>
-                    <div class="s_100">
-                        <img src="assets/img/sq.png" alt="">
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-
-        <div class="col_footer">
-          <h4>Help Center</h4>
-
-          <ul>
-            <li><a href="">FAQ</a></li>
-            <li><a href="">Resources</a></li>
-          </ul>
-        </div>
-
-        <div class="col_footer">
-          <h4>Get a Quote</h4>
-
-          <ul>
-            <li><a href="">Get A Quote</a></li>
-          </ul>
-        </div>
-
-        <div class="col_footer col_footer_img">
-          <img src="/img/sitelock.png" alt="" />
-
-          <img src="/img/stars-2.png" alt="" class="img_footer_star" />
-        </div>
+          <div class="col_footer">
+              <div class="d-flex securty_footer">
+                  <div class="s_70">
+                      <span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=QihdGPbOJ14O9Frrk0YXvgw5KnAIgtxk9EDvgFKzQyKZS2OS018cBMJSbkAJ"></script></span>
+                  </div>
+                  <div class="s_30">
+                      <a href="#" onclick="window.open('https://www.sitelock.com/verify.php?site=mydbcleaning.com','SiteLock','width=600,height=600,left=160,top=170');" ><img class="img-fluid" alt="SiteLock" title="SiteLock" src="https://shield.sitelock.com/shield/mydbcleaning.com" /></a>
+                  </div>
+                  <div class="s_100">
+                      <img src="assets/img/sq.png" alt="">
+                  </div>
+              </div>
+          </div>
+          
       </div>
 
       <div class="buttom_footer">
-        <p>Copyright © 2024 DB Cleaning Services</p>
+          <p>Copyright © 2024 DB Cleaning Services</p>
       </div>
-    </footer>
+  </footer>
 
+    <div id="notifications-container">
+
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script type="module" src="assets/js/script.js"></script>
-    <script type="module" src="assets/js/get-a-quote.js"></script>
+    <script type="module" src="assets/js/get-a-quote/get-a-quote.js"></script>
   </body>
 </html>

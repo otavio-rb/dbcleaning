@@ -106,43 +106,7 @@ submenu_footer_li.forEach((item, index) => {
 
 });
 
-const notCoveredPopup = new Popup("Location not covered", "Okay", `
-    <h3>We are sorry!</h3>
-    <span>We don't have support to your location.</span>    
-`)
-notCoveredPopup.popupDiv.style.maxHeight = "260px";
-
-const verifyZipCode = (e) => {
-    e.preventDefault();
-    const zipCodePopup = new Popup("Enter your zip code", "Okay", `
-        <div class="form_group">
-            <input type="text" placeholder="Insert your zip code" id="popup-zipCode" />    
-            <div style="color: var(--color-error)" class="form_error">
-                <h3>Sorry, we don't serve your area yet.</h3>
-                <span>We're expanding our services and hope to be there soon!
-For updates, please contact us.</span> 
-            </div>
-        </div>
-    `);
-
-
-    zipCodePopup.popupDiv.style.maxHeight = "300px";
-    zipCodePopup.confirm(() => {
-        const zipCode = zipCodePopup.main.querySelector("#popup-zipCode");
-        if (zipCode.value.length > 0) {
-            if (!zipCodes.includes(zipCode.value)) {
-                zipCodePopup.main.querySelector(".form_error").style.display = "flex";
-                zipCode.classList.add("error");
-            } else {
-                window.location.href = "./get-a-quote.html"
-            }
-        }
-    }, true);
-    zipCodePopup.show();
-}
-
-document.querySelector(".right_bottom_header .btn-default").onclick = (e) =>
-    verifyZipCode(e);
+document.querySelector(".right_bottom_header .btn-default").onclick = (e) => window.location.href = "./get-a-quote.html";
 
 const floatQuote = document.querySelector(".float_quote");
 if (floatQuote !== null) {

@@ -1,9 +1,9 @@
-import Toast from "../class/Toast/Toast.js";
-import servicesData, { serviceDetails, extraRooms, frequencyPopupDetails } from "../constants/services.js";
-import Popup from "../class/Popup/Popup.js";
-import { quoteFormSchema } from "../constants/form-schema.js";
-import zipCodes, { DE, NJ, PA, Philadelphia } from "../constants/zip-codes.js";
-import services from "../constants/services.js";
+import Toast from "../../class/Toast/Toast.js";
+import servicesData, { serviceDetails, extraRooms, frequencyPopupDetails } from "../../constants/services.js";
+import Popup from "../../class/Popup/Popup.js";
+import { quoteFormSchema } from "../../constants/form-schema.js";
+import zipCodes, { DE, NJ, PA, Philadelphia } from "../../constants/zip-codes.js";
+import services from "../../constants/services.js";
 
 const toast = new Toast(5000);
 
@@ -160,7 +160,28 @@ const limitPopup = new Popup("Let’s Schedule Your Free On-Site Visit!", "Sched
       </div>
      
     </form >
-  `);
+`);
+
+const notificationsDummy = [
+  {
+    profile_name: "Jonh Doe",
+    photo: "assets/img/Joe-V-.png",
+    city: "Philadelphia",
+    time_ago: "20 minutes ago",
+  },
+  {
+    profile_name: "Alisson D.",
+    photo: "assets/img/Joe-V-.png",
+    city: "Philadelphia",
+    time_ago: "15 minutes ago"
+  },
+  {
+    profile_name: "Peter Paul",
+    photo: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=600",
+    city: "Philadelphia",
+    time_ago: "10 minutes ago"
+  }
+]
 
 const page = {
   formData: {
@@ -199,7 +220,7 @@ const page = {
     this.additionalFees = 0;
     this.totalValue = 0;
     this.extraRooms = [];
-    this.currentFormStep = 1;
+    this.currentFormStep = 0;
 
     const bedroomInput = document.querySelector("#number-input-bed");
     const bathroomInput = document.querySelector("#number-input-bath");
@@ -218,6 +239,9 @@ const page = {
       this.formData.howHearAboutUs = e.target.value;
     });
 
+    const zipCodeButton = document.querySelector("#zip-code-button");
+    zipCodeButton.onclick = () => this.nextFormStep();
+
     this.nextStepButton = document.querySelector("#next-form-step");
     this.nextStepButton.onclick = () => this.nextFormStep();
 
@@ -235,7 +259,6 @@ const page = {
     });
 
     const center = { lat: 50.064192, lng: -130.605469 };
-    // Create a bounding box with sides ~10km away from the center point
     const defaultBounds = {
       north: center.lat + 0.1,
       south: center.lat - 0.1,
@@ -248,6 +271,51 @@ const page = {
     this.renderQuoteSummary();
     this.frequencyCardFunc();
     this.fieldObserver();
+    this.showNotifications();
+    setInterval(() => {
+      this.showNotifications();
+    }, 1000 * 60 * 2)
+  },
+
+  async checkZipCode() {
+    const zipCodeInput = document.querySelector("#zip-code-input");
+    if (zipCodes.includes(zipCodeInput.value)) {
+      document.querySelector("#form-buttons").style.display = "flex";
+      document.querySelector(".content_quote_left").style.width = "calc(70% - 20px)";
+      document.querySelector("#quote-summary").style.display = "flex";
+      this.formData.zipCode = zipCodeInput.value;
+      await this.fetchZipCode(this.formData.zipCode);
+      return true;
+    }
+
+    return false;
+  },
+
+  showNotifications() {
+    const notificationsContainer = document.querySelector("#notifications-container");
+    const randomNotification = notificationsDummy[Math.floor(Math.random() * notificationsDummy.length)];
+    const notificationDiv = document.createElement("div");
+    notificationDiv.classList = "notification pointer";
+    notificationDiv.innerHTML = `
+      <img src="${randomNotification.photo}" />
+      <div class="notification__infos d-flex f-column g-10">
+        <span>${randomNotification.profile_name} sent a Initial <span class="color-azul-destaque weight-600">Deep Cleaning request</span></span>
+        <span>${randomNotification.time_ago} in <span class="color-azul-destaque weight-600">${randomNotification.city}<span></span>
+      </div>
+    `;
+    notificationsContainer.appendChild(notificationDiv);
+    notificationDiv.onclick = () => {
+      notificationDiv.classList.remove("active");
+      setTimeout(() => {
+        notificationsContainer.removeChild(notificationDiv);
+      }, 200)
+    }
+    setTimeout(() => {
+      notificationDiv.classList.add("active");
+    }, 100);
+    setTimeout(() => {
+      notificationDiv.classList.remove("active");
+    }, 6000);
   },
 
   async scheduleVisit() {
@@ -347,38 +415,41 @@ const page = {
       this.formData.phone = phone;
     }
     if (!!zipCode) {
-      document.querySelector("#zipCode").value = zipCode;
       this.formData.zipCode = zipCode;
 
       this.getStateTaxes();
     }
 
     if (!!zipCode) {
-      try {
-        const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${zipCode}&key=AIzaSyDwHGD2GD27gaVCFupJl-IbjtlV6y6Ijho`);
-        const json = await response.json();
-        const mostSimiliar = json.results[0];
-        for (const component of mostSimiliar.address_components) {
-          const componentType = component.types[0];
-          switch (componentType) {
-            case "locality":
-              (document.querySelector("#city")).value =
-                component.long_name;
-              this.formData.city = component.long_name;
-              break;
+      await this.fetchZipCode(zipCode);
+    }
+  },
 
-            case "administrative_area_level_1": {
-              (document.querySelector("#state")).value =
-                component.long_name;
-              this.formData.state = component.long_name;
-              break;
-            }
+  async fetchZipCode(zipCode) {
+    try {
+      const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${zipCode}&key=AIzaSyDwHGD2GD27gaVCFupJl-IbjtlV6y6Ijho`);
+      const json = await response.json();
+      const mostSimiliar = json.results[0];
+      for (const component of mostSimiliar.address_components) {
+        const componentType = component.types[0];
+        switch (componentType) {
+          case "locality":
+            (document.querySelector("#city")).value =
+              component.long_name;
+            this.formData.city = component.long_name;
+            break;
+
+          case "administrative_area_level_1": {
+            (document.querySelector("#state")).value =
+              component.long_name;
+            this.formData.state = component.long_name;
+            break;
           }
         }
-
-      } catch (error) {
-        console.error("Error on google geocoder request:", error);
       }
+      document.querySelector("#zipCode").value = zipCode;
+    } catch (error) {
+      console.error("Error on google geocoder request:", error);
     }
   },
 
@@ -490,7 +561,7 @@ const page = {
   },
 
   hasFormErrors() {
-    if (this.currentFormStep === 1 && this.formData.squareFootage == "" || this.formData.bathrooms == 0 || this.formData.bedrooms == 0) {
+    if (this.currentFormStep === 1 && this.formData.squareFootage == "") {
       toast.error("Fill in all required fields!");
       return true;
     } else if (this.currentFormStep === 2 && this.formData.frequency == "-") {
@@ -535,11 +606,21 @@ const page = {
   async nextFormStep() {
     if (this.validateStepInformations() || this.hasFormErrors()) return;
 
+    if (this.currentFormStep === 0 && !await this.checkZipCode())
+      return;
+
     if (this.currentFormStep === 8) {
       if (!this.validateStepInformations()) {
         await this.onSubmit();
       }
       return;
+    }
+
+    if(this.currentFormStep === 7){
+      document.querySelector("#bedrooms-details-count").innerHTML = this.formData.bedrooms;
+      document.querySelector("#bathrooms-details-count").innerHTML = this.formData.bathrooms;
+      document.querySelector("#square-footage-count").innerHTML = this.formData.squareFootage;
+      document.querySelector("#details-frequency").innerHTML = this.formData.frequency;
     }
 
 
@@ -580,7 +661,6 @@ const page = {
 
       this.currentFormStep--;
 
-
       //Step 3 skips when frequency is 'One Time'; Step 4 = Extras Add-ons;
       if (this.currentFormStep === 3) {
         if (this.formData.frequency !== "One Time") {
@@ -600,8 +680,7 @@ const page = {
   onStepChange(curElement, nextElement, action) {
     curElement.classList.add("out");
 
-
-    if (this.currentFormStep < 8) {
+    if (this.currentFormStep <= 8) {
       setTimeout(() => {
         curElement.style.display = "none";
         curElement.classList.remove("out");
@@ -611,25 +690,15 @@ const page = {
       }, 489);
     }
 
-    if (this.currentFormStep >= 1) {
+    if (this.currentFormStep > 1) {
       this.previousStepButton.style.display = "block";
     }
 
     if (this.currentFormStep === 1) {
       this.previousStepButton.style.display = "none";
     }
-    document.querySelector("#final-step-cta").style.display = "none";
     if (this.currentFormStep === 8) {
-      document.querySelector("#final-step-cta").style.display = "block";
       this.nextStepButton.innerHTML = "Submit";
-
-      for (let i = 1; i <= 7; i++) {
-        document.querySelector("#form-step-" + i).style.display = "block";
-
-        if (this.formData.frequency !== "One Time") {
-          document.querySelector("#form-step-3").style.display = "none";
-        }
-      }
     }
 
     if (this.currentFormStep === 4) {
@@ -827,7 +896,6 @@ const page = {
 
     ExtraRoomPopup.show();
   },
-
 
   handleSmallAppliances(extra, div) {
     if (div.classList.contains("active")) {
@@ -1206,17 +1274,6 @@ const page = {
         toast.error("The Coupon entered is invalid or does not exist.");
       }
     }
-    // try {
-    //   const response = axios.get(
-    //     `${ process.env.DATABASE_URL } /coupons?code=${couponCode}`
-    //   );
-
-    //   if (response.data.status === 200) {
-    //     this.getQuoteTotalValue(response.data.discountValue);
-    //   }
-    // } catch (error) {
-    //   console.error(error);
-    // }
   },
 
   async onSubmit() {
@@ -1422,7 +1479,6 @@ const page = {
       }
     })
   },
-
 };
 
 window.onload = () => page.init();
